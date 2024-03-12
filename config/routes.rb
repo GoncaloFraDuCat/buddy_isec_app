@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get "/profile", to: "pages#profile"
 
   get "/matches", to: "pages#matches"
+
+  devise_for :users, controllers: { sessions: 'users/sessions' }
 end
