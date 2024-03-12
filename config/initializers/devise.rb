@@ -37,7 +37,7 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
-
+  require 'devise/strategies/student_id_authenticatable'
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -278,7 +278,7 @@ Devise.setup do |config|
   # change the failure app, you can configure them inside the config.warden block.
   #
   config.warden do |manager|
-    manager.default_strategies(scope: :user).unshift :student_id_authenticatable
+    manager.strategies.add(:student_id_authenticatable, Devise::Strategies::StudentIdAuthenticatable)
   end
 
   # ==> Mountable engine configurations

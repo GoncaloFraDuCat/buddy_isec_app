@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :rememberable, :validatable, :trackable, :authentication_keys => [:student_id]
+  devise :authentication_keys => [:student_id]
   validates :student_id, presence: true, uniqueness: true
 
   def mentor?

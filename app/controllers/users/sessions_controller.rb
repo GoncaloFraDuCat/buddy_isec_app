@@ -10,18 +10,8 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    user = User.find_by(student_id: params[:user][:student_id])
-
-    if user.present?
-      # sign_in(user)
-      # Redirect the user to the desired page after successful login
-      redirect_to root_path
-    else
-      # Handle the case where the user does not exist
-      flash[:alert] = "User not found."
-      redirect_to new_user_session_path
-    end
-
+    self.resource = warden.authenticate!(:student_id_authenticatable, scope: resource_name)
+    sign_in_and_redirect resource and return if resource
   end
 
   # DELETE /resource/sign_out
