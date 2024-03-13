@@ -5,7 +5,13 @@ class PagesController < ApplicationController
   end
 
   def profile
-  end
+    unless current_user
+       redirect_to new_user_session_path, alert: "You need to sign in before continuing."
+       return
+    end
+    binding.pry
+    @user = current_user
+   end
 
   def homepage
   end

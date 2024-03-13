@@ -9,4 +9,26 @@
 #   end
 
 
-User.create(student_id: '123')
+areas_of_study = ["Business", "Economics", "Education", "Chemistry", "Journalism"]
+
+# Generate 10 students
+10.times do
+ user = User.create!(
+    name: Faker::Name.name,
+    area_of_study: areas_of_study.sample,
+    current_year: Faker::Number.between(from: 1, to: 3),
+    mentor: false, # This user is a student
+    student_id: "STUDENT-#{User.count + 1}" # Example of setting student_id
+ )
+end
+
+# Generate 5 mentors
+5.times do
+ user = User.create!(
+    name: Faker::Name.name,
+    area_of_study: areas_of_study.sample,
+    current_year: Faker::Number.between(from: 2, to: 3),
+    mentor: true, # This user is a mentor
+    student_id: "MENTOR-#{User.count + 1}" # Example of setting student_id
+ )
+end

@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :authentication_keys => [:student_id]
   validates :student_id, presence: true, uniqueness: true
+  validates :area_of_study, presence: true
+  validates :current_year, presence: true, numericality: { only_integer: true }
+  validates :mentor, inclusion: { in: [true, false] }
+  validates :name, presence: true
 
   def mentor?
     # check
