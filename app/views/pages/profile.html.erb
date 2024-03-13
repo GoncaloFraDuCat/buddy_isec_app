@@ -2,26 +2,25 @@
  O Meu Perfil
 <% end %>
 
-<h1> Helena Ponte </h1>
+<h1> Mentor </h1>
 
 <%= image_tag 'student.jpg', alt: "student picture", class: 'student' %>
 
-<h1> Nome: <%= @user.name %> </h1>
+<h3>Nome:</h3>
+<p><%= @user.name %></p>
 
-<h3>
-Area de Estudo:
-</h3>
-<p>
-  Marketing
-</p>
 
-<h3>
-Ano de Curso:
-</h3>
-<p>
-  3º
-</p>
+<h3>Area de Estudo:</h3>
+<p><%= @user.area_of_study %></p>
 
+
+<h3>Ano de Curso:</h3>
+<p><%= @user.current_year %></p>
+
+<h3> Bio: </h3>
+<p> Olá sou a Kenton :) tenho muita experiencia a ensinar,
+    eu opto por um tipo de estudo mais visual e estou disponivel
+    das 16.00-18.00 , Qualquer tipo de ajuda com Jornalismo é mandar mensagem! </p>
 <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light mx-2" %>
 
 <footer class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
