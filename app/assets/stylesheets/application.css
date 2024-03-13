@@ -33,21 +33,19 @@ html, body {
   z-index: 1000; /* Ensures the header is above other content */
   font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding-right: 40px;
+  background-color: #397ec4;
 }
 
 .logo {
-  width: 30%; /* Adjust the width as needed */
+  width: 20%; /* Adjust the width as needed */
   height: auto;
+  border-radius: 20px;
 }
 
 .main-content {
-  padding-top: 100px;
+  padding-top: 105px;
   padding-bottom: 60px;
   padding-left:10px;
-}
-
-.profile {
-  /* Styles for the profile text */
 }
 
 .student {

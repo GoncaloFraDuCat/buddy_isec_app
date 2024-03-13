@@ -26,10 +26,6 @@
   padding-right: 10px;
  }
 
- .navbar-button {
-
- }
-
  .navbar-button .btn {
   flex: 1; /* Makes the buttons take up equal space */
   text-align: center; /* Centers the text/logo within the button */
