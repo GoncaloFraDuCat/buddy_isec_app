@@ -11,4 +11,9 @@ class User < ApplicationRecord
   def self.find_for_authentication(warden_conditions)
     where(:student_id => warden_conditions[:student_id]).first
  end
+
+ #def logout
+  #sign_out(current_user)
+  #redirect_to_new_user_session_path
+ #end
 end

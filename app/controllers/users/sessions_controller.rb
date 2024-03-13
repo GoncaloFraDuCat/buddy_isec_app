@@ -14,6 +14,9 @@ class Users::SessionsController < Devise::SessionsController
     sign_in_and_redirect resource and return if resource
   end
 
+  def destroy
+    super
+ end
   # DELETE /resource/sign_out
   # def destroy
   #   super
