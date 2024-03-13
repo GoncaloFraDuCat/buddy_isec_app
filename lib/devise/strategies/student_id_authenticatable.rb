@@ -8,7 +8,7 @@ module Devise
       end
 
       def authenticate!
-        user = User.find__by(student_id: params[:user][:student_id])
+        user = User.find_by(student_id: params[:user][:student_id])
         if user
           success!(user)
         else
