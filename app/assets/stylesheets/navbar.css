@@ -1,0 +1,20 @@
+.navbar {
+  position: fixed; /* Fix the position of the footer */
+  bottom: 0; /* Align the footer to the bottom of the page */
+  width: 100%; /* Make the footer fill the width of the viewport */
+  left: 0; /* Align the footer to the left of the viewport */
+  right: 0; /* Ensure the footer fills the entire width */
+  background-color: #397ec4; /* Dark background */
+  color: #ffffff; /* Light text */
+  padding: 10px 0; /* Add some padding */
+ }
+
+ .container-fluid {
+  display: flex;
+  justify-content: center; /* Center the links */
+  align-items: center; /* Vertically center the links */
+ }
+
+ .navbar .btn{
+  margin: 0 25px;
+ }
