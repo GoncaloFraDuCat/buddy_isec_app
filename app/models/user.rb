@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   def mentor?
-    # check
+    mentor
   end
 
   def self.find_for_authentication(warden_conditions)

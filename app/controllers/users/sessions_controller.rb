@@ -17,6 +17,18 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     super
  end
+
+ protected
+
+ def after_sign_in_path_for(resource)
+    # Specify the path you want to redirect users to after sign-in
+    # For example, to redirect to the profile page:
+    search_path
+    # Or, to redirect to the matches page:
+    # matches_path
+    # Or, to redirect to the search page:
+    # search_path
+ end
   # DELETE /resource/sign_out
   # def destroy
   #   super

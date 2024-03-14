@@ -17,6 +17,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #DCE3F5;
 }
 
 .header {
@@ -46,6 +47,7 @@ html, body {
   padding-top: 105px;
   padding-bottom: 60px;
   padding-left:10px;
+  /*background-color: #DCE3F5;*/
 }
 
 .student {
@@ -68,4 +70,52 @@ p{
 
 h1{
   font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/*.mentors-containers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 5px;
+  padding: 5px;
+  width: max-content;
+  height: max-content;
+ }
+*/
+ .mentor {
+  width: 120px;
+  height: 120px;
+  padding: 50px;
+  box-sizing: border-box;
+  border: 2px solid #333;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 8px;
+  margin: 5px;
+ }
+
+ .login-containers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+ }
+
+
+ .FPL {
+  width:200px;
+  height: 270px;
+  padding-top: 50px;
+ }
+
+
+ h2 {
+  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #397ec4;
 }
