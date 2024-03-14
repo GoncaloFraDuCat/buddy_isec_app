@@ -11,7 +11,14 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     self.resource = warden.authenticate!(:student_id_authenticatable, scope: resource_name)
-    sign_in_and_redirect resource and return if resource
+    if resource
+      sign_in_and_redirect(resource)
+   else
+      # Handle the case where authentication fails
+      # For example, you might want to re-render the sign-in form with an error message
+      flash.now[:alert] = "Invalid student ID or password."
+      render :new
+   end
   end
 
   def destroy

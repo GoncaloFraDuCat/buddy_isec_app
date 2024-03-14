@@ -17,8 +17,10 @@
 <h3>Ano de Curso:</h3>
 <p><%= @user.current_year %></p>
 
+<h3>Email:</h3>
+<p><%= @user.email %></p>
+
+
 <h3> Bio: </h3>
-<p> Olá sou a Kenton :) tenho muita experiencia a ensinar,
-    eu opto por um tipo de estudo mais visual e estou disponivel
-    das 16.00-18.00 , Qualquer tipo de ajuda com Jornalismo é mandar mensagem! </p>
+<p> <%= @user.bio %> </p>
 <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light mx-2" %>
