@@ -47,11 +47,10 @@ html, body {
   padding-top: 105px;
   padding-bottom: 60px;
   padding-left:10px;
-  /*background-color: #DCE3F5;*/
 }
 
 .student {
-  width: 50%;
+  width: 40%;
   height: auto;
   border-radius: 50px;
   border-style:solid;
@@ -143,8 +142,8 @@ h1{
  }
 
 .x_button_image {
-  height: 40px; /* Adjust the height as needed */
-  width: 30px; /* Adjust the width as needed */
+  height: 36px; /* Adjust the height as needed */
+  width: 36px; /* Adjust the width as needed */
   padding: 5px 10px; /* Adjust the padding as needed */
   font-size: 12px; /* Adjust the font size as needed */
   position: absolute;
@@ -165,4 +164,35 @@ h1{
 
   border-style: solid;
   border-color: #397ec4;
+}
+
+.log-in_logo{
+  height: auto;
+  width: auto;
+  background-color: transparent;
+}
+
+.button_to { /*this is the login button wrap*/
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer; /* Changes the cursor to a pointer when hovering over the image */
+ }
+
+ .button_to img { /*this is the actual image*/
+  width: 100%; /* Adjust as needed */
+  height: 60px; /* Adjust as needed */
+
+ }
+
+ .field label {
+  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px; /* Adjust the font size as needed */
+  color: #397ec4; /* Adjust the font color as needed */
+  font-weight: bold;
+}
+
+.page-title {
+  color: white;
+  border-radius: 10px;
 }
