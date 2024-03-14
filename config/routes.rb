@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   root to: 'pages#homepage'
-  get '/search', to: 'pages#search'
+  get '/search', to: 'pages#search', as: 'search'
   get '/profile', to: 'pages#profile'
   get '/matches', to: 'pages#matches'
+  get 'users/:id', to: 'users#show', as: 'user'
 end

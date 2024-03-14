@@ -3,16 +3,18 @@
 <% end %>
 
 <div class="mentors-containers">
-    <div class="mentors">
+ <div class="mentors">
     <% @mentors.each do |mentor| %>
-        <div class="mentor">
-          <h3><%= mentor.name %></h3>
-          <p><%= mentor.area_of_study %></p>
-          <p><%= mentor.current_year %></p>
-          <!-- Add more mentor details here -->
-        </div>
+      <div class="mentor">
+        <h3><%= mentor.name %></h3>
+        <% if mentor.mentor? %>
+          <%= link_to user_path(mentor), class: 'view_profile' do %>
+            <%= image_tag "info_logo.png", alt: "Info", class: "info_button_image" %>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
-    </div>
+ </div>
 </div>
 
 <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light mx-2" %>

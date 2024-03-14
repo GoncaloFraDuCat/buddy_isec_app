@@ -72,20 +72,28 @@ h1{
   font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/*.mentors-containers {
+.mentors-containers {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-
+  grid-template-columns: repeat(1, 1fr);
   gap: 5px;
-  padding: 5px;
-  width: max-content;
+  padding: 20px;
+  width: auto;
   height: max-content;
  }
-*/
+
+.mentors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 300px;
+}
+
  .mentor {
-  width: 120px;
+  flex-basis: calc(50% - 10px);
+  margin: 5px;
+  box-sizing: border-box;
+  width: 40px;
   height: 120px;
-  padding: 50px;
   box-sizing: border-box;
   border: 2px solid #333;
   border-radius: 50%;
@@ -94,17 +102,20 @@ h1{
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 8px;
-  margin: 5px;
+  font-size: 11px;
+  border-color: #397ec4;
  }
-
+*/
  .login-containers {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+ }
 
-
+ .login-containers {
+  text-align: center;
+  width: 100%;
  }
 
 
@@ -118,4 +129,40 @@ h1{
  h2 {
   font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #397ec4;
+}
+
+.user_info_container {
+  position: relative;
+  padding-top: 10px;
+}
+
+.x_button {
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none; /* Remove underline from the link */
+ }
+
+.x_button_image {
+  height: 40px; /* Adjust the height as needed */
+  width: 30px; /* Adjust the width as needed */
+  padding: 5px 10px; /* Adjust the padding as needed */
+  font-size: 12px; /* Adjust the font size as needed */
+  position: absolute;
+  top: -6px;
+  right: 5px;
+  margin: 10px; /* Adjust as needed */
+}
+
+.info_button_image {
+  height: 40px; /* Adjust the height as needed */
+  width: 40px; /* Adjust the width as needed */
+}
+
+.show_profile{
+  height: 200px;
+  width: 200px;
+  border-radius: 30px;
+
+  border-style: solid;
+  border-color: #397ec4;
 }
