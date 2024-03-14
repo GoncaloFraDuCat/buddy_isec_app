@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :current_year, presence: true, numericality: { only_integer: true }
   validates :mentor, inclusion: { in: [true, false] }
   validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :bio, length: { maximum: 500 }
 
   def mentor?
     mentor

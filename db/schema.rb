@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_13_180927) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_14_170232) do
   create_table "users", force: :cascade do |t|
     t.string "student_id", default: "", null: false
     t.datetime "created_at", null: false
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_13_180927) do
     t.integer "current_year"
     t.boolean "mentor"
     t.string "name"
+    t.string "email"
+    t.text "bio"
     t.index ["student_id"], name: "index_users_on_student_id", unique: true
   end
 

@@ -1,10 +1,14 @@
-<!-- app/views/users/show.html.erb -->
+<% content_for :page_title do %>
+ Perfil
+<% end %><!-- app/views/users/show.html.erb -->
+
 <div class="user_info_container">
 <%= image_tag "show_profile_image.jpg", alt: "Profile pic", class: "show_profile" %>
   <h1><%= @user.name %></h1>
-  <p><strong>Area de Estudo:   </strong><%= @user.area_of_study %>  </p>
-  <p><strong>Ano de Curso:   </strong><%= @user.current_year %>º ano  </p>
-  <!-- Display other user details here -->
+  <p><strong>Area de Estudo: </strong><%= @user.area_of_study %>  </p>
+  <p><strong>Ano de Curso: </strong><%= @user.current_year %>º ano  </p>
+  <p><strong>Email:</strong> <%= @user.email %></p>
+  <p><strong>Bio:</strong> <%= @user.bio %></p>
 
 
  <%= link_to search_path, class: 'x_button' do %>

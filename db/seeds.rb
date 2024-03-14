@@ -12,9 +12,11 @@
 areas_of_study = ["Business", "Economics", "Education", "Chemistry", "Journalism"]
 
 # Generate 10 students
-10.times do
+20.times do
  user = User.create!(
     name: Faker::Name.name,
+    email: Faker::Internet.email, # Generate a random email
+    bio: Faker::Lorem.paragraph_by_chars(number_of_characters: 500),
     area_of_study: areas_of_study.sample,
     current_year: Faker::Number.between(from: 1, to: 3),
     mentor: false, # This user is a student
@@ -23,9 +25,11 @@ areas_of_study = ["Business", "Economics", "Education", "Chemistry", "Journalism
 end
 
 # Generate 5 mentors
-5.times do
+10.times do
  user = User.create!(
     name: Faker::Name.name,
+    email: Faker::Internet.email, # Generate a random email
+    bio: Faker::Lorem.paragraph_by_chars(number_of_characters: 500),
     area_of_study: areas_of_study.sample,
     current_year: Faker::Number.between(from: 2, to: 3),
     mentor: true, # This user is a mentor
