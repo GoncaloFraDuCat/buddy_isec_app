@@ -138,3 +138,7 @@ h1{
   color: white;
   border-radius: 10px;
 }
+
+.page-title {
+  font-stretch: ultra-condensed;
+}
