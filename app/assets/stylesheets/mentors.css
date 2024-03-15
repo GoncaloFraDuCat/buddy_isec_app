@@ -1,0 +1,67 @@
+.student1{
+  width: 100%;
+  height: 75%;
+  object-fit: cover;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #397ec4;
+}
+
+.mentors-containers {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 5px;
+  width: auto;
+  height: max-content;
+ }
+
+.mentors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 100%;
+  padding-top: 20px;
+}
+
+ .mentor {
+  flex-basis: calc(50% - 10px);
+  box-sizing: border-box;
+  width: 40px;
+  height: 220px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 11px;
+ }
+
+ .mentor-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 0px;
+  text-align: center;
+
+ }
+
+ .mentor-info > * {
+  margin-right: 40px;
+ }
+
+ .info_button_image {
+  height: 30px;
+  width: 30px;
+  padding-bottom: 25px;
+}
+
+.search-page-h3 {
+  margin-right: 20px;
+  padding-bottom: 27px;
+  margin-left: 40px;
+  width: auto;
+  height: auto;
+}

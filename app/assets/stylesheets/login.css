@@ -1,0 +1,25 @@
+.log-in_logo{
+  height: auto;
+  width: auto;
+  background-color: transparent;
+}
+
+.button_to { /*this is the login button wrap*/
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+ }
+
+ .button_to img { /*this is the actual image*/
+  width: 100%;
+  height: 60px;
+  cursor: pointer;
+ }
+
+ .field label {
+  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px; /* Adjust the font size as needed */
+  color: #397ec4; /* Adjust the font color as needed */
+  font-weight: bold;
+}

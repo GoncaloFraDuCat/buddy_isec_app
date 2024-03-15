@@ -22,23 +22,23 @@ html, body {
 
 .header {
   display: flex;
-  justify-content: space-between; /* Aligns children to the opposite sides */
-  align-items: center; /* Centers children vertically */
-  position: fixed; /* Fixes the header to the top of the viewport */
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0; /* Ensures the header spans the full width */
-  height: 100px; /* Adjust based on your design */
-  padding: 0 20px; /* Adds some padding on the sides */
-  background-color: #fff; /* Adjust the background color as needed */
-  z-index: 1000; /* Ensures the header is above other content */
+  right: 0;
+  height: 100px;
+  padding: 0 20px;
+  background-color: #fff;
+  z-index: 1000;
   font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding-right: 40px;
   background-color: #397ec4;
 }
 
 .logo {
-  width: 20%; /* Adjust the width as needed */
+  width: 20%;
   height: auto;
   border-radius: 20px;
 }
@@ -57,9 +57,11 @@ html, body {
 
 }
 
+
 p, h3{
   font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding-bottom: 0px;
+
 }
 
 p{
@@ -71,40 +73,8 @@ h1{
   font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.mentors-containers {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 5px;
-  padding: 20px;
-  width: auto;
-  height: max-content;
- }
 
-.mentors {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  height: 300px;
-}
 
- .mentor {
-  flex-basis: calc(50% - 10px);
-  margin: 5px;
-  box-sizing: border-box;
-  width: 40px;
-  height: 120px;
-  box-sizing: border-box;
-  border: 2px solid #333;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 11px;
-  border-color: #397ec4;
- }
-*/
  .login-containers {
   display: flex;
   flex-direction: column;
@@ -118,7 +88,7 @@ h1{
  }
 
 
- .FPL {
+ .FPL { /*front page logo*/
   width:200px;
   height: 270px;
   padding-top: 50px;
@@ -138,24 +108,21 @@ h1{
 .x_button {
   display: inline-block;
   padding: 10px;
-  text-decoration: none; /* Remove underline from the link */
+  text-decoration: none;
+  cursor: pointer;
  }
 
 .x_button_image {
-  height: 36px; /* Adjust the height as needed */
-  width: 36px; /* Adjust the width as needed */
-  padding: 5px 10px; /* Adjust the padding as needed */
-  font-size: 12px; /* Adjust the font size as needed */
+  height: 36px;
+  width: 36px;
+  padding: 5px 10px;
+  font-size: 12px;
   position: absolute;
   top: -6px;
   right: 5px;
-  margin: 10px; /* Adjust as needed */
+  margin: 10px;
 }
 
-.info_button_image {
-  height: 40px; /* Adjust the height as needed */
-  width: 40px; /* Adjust the width as needed */
-}
 
 .show_profile{
   height: 200px;
@@ -166,31 +133,6 @@ h1{
   border-color: #397ec4;
 }
 
-.log-in_logo{
-  height: auto;
-  width: auto;
-  background-color: transparent;
-}
-
-.button_to { /*this is the login button wrap*/
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer; /* Changes the cursor to a pointer when hovering over the image */
- }
-
- .button_to img { /*this is the actual image*/
-  width: 100%; /* Adjust as needed */
-  height: 60px; /* Adjust as needed */
-
- }
-
- .field label {
-  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 16px; /* Adjust the font size as needed */
-  color: #397ec4; /* Adjust the font color as needed */
-  font-weight: bold;
-}
 
 .page-title {
   color: white;

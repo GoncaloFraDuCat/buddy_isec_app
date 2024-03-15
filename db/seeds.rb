@@ -14,7 +14,7 @@ areas_of_study = ["Business", "Economics", "Education", "Chemistry", "Journalism
 # Generate 10 students
 20.times do
  user = User.create!(
-    name: Faker::Name.name,
+    name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
     email: "#{Faker::Internet.user_name}@iseclisboa.pt", # Generate a random email
     bio: Faker::Lorem.paragraph(sentence_count: 5),
     area_of_study: areas_of_study.sample,
@@ -27,7 +27,7 @@ end
 # Generate 5 mentors
 10.times do
  user = User.create!(
-    name: Faker::Name.name,
+    name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
     email: "#{Faker::Internet.user_name}@iseclisboa.pt", # Generate a random email
     bio: Faker::Lorem.paragraph(sentence_count: 5),
     area_of_study: areas_of_study.sample,
