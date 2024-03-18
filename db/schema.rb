@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_14_170232) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_18_125441) do
+  create_table "mentors", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mentorship_requests", force: :cascade do |t|
+    t.integer "mentor_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "mentee_id"
+    t.index ["mentor_id"], name: "index_mentorship_requests_on_mentor_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "student_id", default: "", null: false
     t.datetime "created_at", null: false
@@ -24,4 +38,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_14_170232) do
     t.index ["student_id"], name: "index_users_on_student_id", unique: true
   end
 
+  add_foreign_key "mentorship_requests", "users", column: "mentee_id"
+  add_foreign_key "mentorship_requests", "users", column: "mentor_id"
 end

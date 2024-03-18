@@ -1,0 +1,32 @@
+table {
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #397ec4;
+}
+
+.mentors_table_container {
+  max-width: 800px; /* Adjust this value based on your design needs */
+  margin: auto;
+  display: block;
+  padding-bottom: 10px;
+}
+
+.mentors_table table {
+  width: 100%;
+}
+
+td, tr {
+  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.status-icon {
+  height: 16px;
+  width: auto;
+}
+
+.info_button_image_matches {
+  height: 30px;
+  width: 30px;
+}

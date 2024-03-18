@@ -15,6 +15,12 @@ class PagesController < ApplicationController
   end
 
   def matches
+    if current_user.mentor?
+      @requests = MentorshipRequest.where(mentor_id: current_user.id)
+    else
+      @requests = MentorshipRequest.where(mentee_id: current_user.id)#.where(status: ['pending', 'accepted'])
+
+    end
   end
 
 end

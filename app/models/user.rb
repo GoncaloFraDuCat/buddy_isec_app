@@ -10,6 +10,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :bio, length: { maximum: 500 }
 
+  has_many :sent_requests, class_name: 'MentorshipRequest', foreign_key: 'mentor_id'
+  has_many :received_requests, class_name: 'MentorshipRequest', foreign_key: 'mentee_id'
+
   def mentor?
     mentor
   end
@@ -18,8 +21,13 @@ class User < ApplicationRecord
     where(:student_id => warden_conditions[:student_id]).first
  end
 
- #def logout
-  #sign_out(current_user)
-  #redirect_to_new_user_session_path
- #end
+  validate :cannot_be_mentor_if_first_year
+
+  private
+
+  def cannot_be_mentor_if_first_year
+    if mentor? && current_year == 1
+      errors.add(:mentor, "cannot be a mentor if in the first year")
+    end
+end
 end

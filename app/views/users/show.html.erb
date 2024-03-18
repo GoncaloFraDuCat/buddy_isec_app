@@ -9,6 +9,13 @@
   <p><strong>Ano de Curso: </strong><%= @user.current_year %>º ano  </p>
   <p><strong>Email:</strong> <%= @user.email %></p>
   <p><strong>Bio:</strong> <%= @user.bio %></p>
+  <p><strong>Studentn:</strong> <%= @user.student_id %></p>
+
+<% if !current_user.mentor? && @user.mentor? %>
+ <%= button_to mentorship_requests_path(mentor_id: @user.id, mentee_id: current_user.id), method: :post, class: 'mentorship_request_button' do %>
+    Request Mentorship
+ <% end %>
+<% end %>
 
 
  <%= link_to search_path, class: 'x_button' do %>
