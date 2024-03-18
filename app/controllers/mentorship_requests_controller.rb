@@ -10,16 +10,21 @@ class MentorshipRequestsController < ApplicationController
   mentee = User.find_by(id: params[:mentee_id])
 
   if mentor && mentee
-    @mentorship_request = MentorshipRequest.new(mentor_id: mentor.id, mentee_id: mentee.id, status: 'pending')
-    if @mentorship_request.save
-      redirect_to matches_path(current_user), notice: 'Mentorship request sent successfully.'
+    existing_request = MentorshipRequest.find_by(mentor_id: mentor.id, mentee_id: mentee.id)
+    if existing_request
+      redirect_to matches_path(current_user), alert: 'You already have a pending request with this mentor.'
     else
-      redirect_to matches_path(current_user), alert: 'Failed to send mentorship request.'
+      @mentorship_request = MentorshipRequest.new(mentor_id: mentor.id, mentee_id: mentee.id, status: 'pending')
+      if @mentorship_request.save
+        redirect_to matches_path(current_user), notice: 'Mentorship request sent successfully.'
+      else
+        redirect_to matches_path(current_user), alert: 'Failed to send mentorship request.'
+      end
     end
-  else
+ else
     redirect_to matches_path(current_user), alert: 'Invalid mentor or mentee ID.'
-    end
-   end
+ end
+end
 
   def index
      @mentorship_requests = MentorshipRequest.all
