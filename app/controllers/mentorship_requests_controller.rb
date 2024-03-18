@@ -33,7 +33,7 @@ class MentorshipRequestsController < ApplicationController
 
   def cancel
     @mentorship_request = MentorshipRequest.find(params[:id])
-    @mentorship_request.update(status: 'cancelled')
+    @mentorship_request.destroy
     redirect_to matches_path, notice: 'Mentorship request cancelled.'
   end
 
@@ -52,6 +52,11 @@ class MentorshipRequestsController < ApplicationController
     @request = MentorshipRequest.find(params[:id])
     @request.destroy
     redirect_to matches_path, notice: 'Request was cancelled.'
+ end
+
+ def reject_request
+  @request = MentorshipRequest.find(params[:id])
+  @request.update(status: 'rejected')
  end
 
   private
