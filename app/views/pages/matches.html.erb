@@ -10,27 +10,36 @@
         <thead>
         </thead>
         <tbody>
-          <% @requests.each do |request| %>
-            <tr>
-              <td><%= request.mentee.name %></td>
-              <td>
-                <% if request.status == 'accepted' %>
-                 <%= image_tag 'tick.png', alt: 'Accepted', class: 'status-icon' %>
-                <% elsif request.status == 'rejected' %>
-                 <%= image_tag 'close.png', alt: 'Rejected', class: 'status-icon' %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to user_path(request.mentee), class: 'view_profile' do %>
-                 <%= image_tag "info_logo.png", alt: "Info", class: "info_button_image_matches" %>
-                <% end %>
-              </td>
-              <td>
-                <%= button_to 'Yes', accept_mentorship_request_path(request), method: :patch %>
-                <%= button_to 'No', cancel_mentorship_request_path(request), method: :patch %>
-              </td>
-            </tr>
-          <% end %>
+     <% @requests.each do |request| %>
+ <tr>
+    <td><%= request.mentee.name %></td>
+    <td>
+      <% if request.status == 'accepted' %>
+        <%= image_tag 'tick.png', alt: 'Accepted', class: 'status-icon' %>
+        <%= link_to 'Message', chatroom_path(request.chatroom), class: 'btn btn-primary' %>
+      <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'cancel_mtr_button' do %>
+ <%= image_tag 'close.png', alt: 'Cancel', class: 'x_button_image' %>
+<% end %>
+
+
+      <% elsif request.status == 'rejected' %>
+        <%= image_tag 'close.png', alt: 'Rejected', class: 'status-icon' %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to user_path(request.mentee), class: 'view_profile' do %>
+        <%= image_tag "info_logo.png", alt: "Info", class: "info_button_image_matches" %>
+      <% end %>
+    </td>
+    <td>
+      <% unless request.status == 'accepted' %>
+        <%= button_to 'Yes', accept_mentorship_request_path(request), method: :patch %>
+        <%= button_to 'No', cancel_mentorship_request_path(request), method: :patch %>
+      <% end %>
+    </td>
+ </tr>
+<% end %>
+
         </tbody>
     </table>
  </div>
@@ -51,6 +60,8 @@
           <td>
             <% if request.status == 'accepted' %>
               <%= image_tag 'tick.png', alt: 'Accepted', class: 'status-icon' %>
+            <%= link_to 'Message', chatroom_path(request.chatroom), class: 'message_button' %>
+
             <% elsif request.status == 'rejected' %>
               <%= image_tag 'close.png', alt: 'Rejected', class: 'status-icon' %>
             <% end %>
@@ -62,7 +73,8 @@
           </td>
           <td>
 
-              <%= button_to 'Cancel Request', mentorship_request_path(request), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= button_to 'Cancel', cancel_mentorship_request_path(request), method: :patch, class: 'cancel_mtr_button' %>
+      <%= image_tag "close.png", alt: "X", class: "x_button_image" %>
 
           </td>
         </tr>

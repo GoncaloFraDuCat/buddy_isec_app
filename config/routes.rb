@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
-  resources :mentorship_requests, only: [:new, :create, :index, :show, :update, :destroy]
-
+  resources :mentorship_requests, only: [:new, :create, :index, :show, :update, :destroy] do
+    member do
+      patch 'accept', to: 'mentorship_requests#accept', as: 'accept_mentorship_request'
+      patch 'cancel', to: 'mentorship_requests#cancel', as: 'cancel_mentorship_request'
+    end
+  end
+  resources :chatrooms , only: :show do
+    resources :messages, only: :create
+  end
   devise_scope :user do
      get 'sign_in', to: 'users/sessions#new', as: 'new_user_session'
      post 'sign_in', to: 'users/sessions#create', as: 'user_session'

@@ -10,8 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_18_125441) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_19_170444) do
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "mentorship_request_id"
+    t.index ["mentorship_request_id"], name: "index_chatrooms_on_mentorship_request_id"
+  end
+
   create_table "mentors", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,6 +32,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_125441) do
     t.datetime "updated_at", null: false
     t.integer "mentee_id"
     t.index ["mentor_id"], name: "index_mentorship_requests_on_mentor_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.integer "chatroom_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +59,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_125441) do
 
   add_foreign_key "mentorship_requests", "users", column: "mentee_id"
   add_foreign_key "mentorship_requests", "users", column: "mentor_id"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
 end

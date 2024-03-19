@@ -32,15 +32,26 @@ end
 
   def accept
     @mentorship_request = MentorshipRequest.find(params[:id])
-    @mentorship_request.update(status: 'accepted')
-    redirect_to matches_path, notice: 'Mentorship request accepted.'
-  end
+    if @mentorship_request.update(status: 'accepted')
+       # Assuming the chatroom is created or associated with the mentorship request
+       redirect_to matches_path, notice: 'Mentorship request accepted.'
+    else
+       redirect_to matches_path, alert: 'Failed to accept mentorship request.'
+    end
+   end
 
-  def cancel
+
+   def cancel
     @mentorship_request = MentorshipRequest.find(params[:id])
-    @mentorship_request.destroy
-    redirect_to matches_path, notice: 'Mentorship request cancelled.'
-  end
+    if @mentorship_request.update(status: 'cancelled')
+       @mentorship_request.destroy
+       redirect_to matches_path, notice: 'Mentorship request cancelled and destroyed.'
+    else
+       redirect_to matches_path, alert: 'Failed to cancel and destroy mentorship request.'
+    end
+   end
+
+
 
   def show
   end

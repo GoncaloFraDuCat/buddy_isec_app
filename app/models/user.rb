@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :bio, length: { maximum: 500 }
 
+  has_many :messages
   has_many :sent_requests, class_name: 'MentorshipRequest', foreign_key: 'mentor_id'
   has_many :received_requests, class_name: 'MentorshipRequest', foreign_key: 'mentee_id'
 
