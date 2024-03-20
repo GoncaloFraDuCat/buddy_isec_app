@@ -19,6 +19,8 @@ td, tr {
   font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   padding: 5px;
+  text-align: left;
+
 }
 
 .status-icon {
@@ -30,3 +32,17 @@ td, tr {
   height: 30px;
   width: 30px;
 }
+
+.close_button {
+  height: 25px;
+}
+
+  /*.cancel_mtr_button {
+  background-color: transparent;
+  border-style: none;
+}
+/*
+.cancel_mtr_button input[type="submit"] {
+  background-color: transparent;
+  border-style: none;
+ }

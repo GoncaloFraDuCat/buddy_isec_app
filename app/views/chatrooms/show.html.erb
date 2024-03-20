@@ -2,6 +2,10 @@
 <div class="container chatroom">
   <h1>#<%= @chatroom.name %></h1>
 
+<%= button_to matches_path(request), method: :patch, class: 'cancel_mtr_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
+ <%= image_tag 'close.png', alt: 'Cancel', class: 'close_button', style: 'height: 25px; width: 25px;' %>
+<% end %>
+
   <div class="messages"
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
@@ -14,6 +18,9 @@
         <p><%= message.content %></p>
       </div>
     <% end %>
+
+
+
   </div>
 </div>
 
