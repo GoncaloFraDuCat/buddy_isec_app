@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
 
   def search
-    @mentors = User.where(mentor: true).sample(4) || []
+    @mentors = User.where(mentor: true).sample(8) || []
   end
 
 
