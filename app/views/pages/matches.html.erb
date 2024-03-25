@@ -22,11 +22,13 @@
           <%= image_tag 'message.png', alt: 'msg', class: 'msg_button', style: 'height: 25px; width: 25px;' %>
         <% end %>
       </td>
+
       <td>
-        <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'cancel_mtr_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
-          <%= image_tag 'close.png', alt: 'Cancel', class: 'close_button', style: 'height: 25px; width: 25px;' %>
+        <%= link_to cancel_mentorship_request_path(request), method: :patch, class: 'mtr_button' do %>
+        <%= image_tag 'close.png', alt: 'Cancel', class: 'mtr_button', style: 'height: 25px; width: 25px;' %>
         <% end %>
       </td>
+
     <% elsif request.status == 'rejected' %>
       <td colspan="3">
         <%= image_tag 'close.png', alt: 'Rejected', class: 'status-icon' %>
@@ -80,8 +82,8 @@
                 </td>
               <% end %>
               <td>
-                <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'cancel_mtr_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
-                 <%= image_tag 'close.png', alt: 'Cancel', class: 'close_button', style: 'height: 25px; width: 25px;' %>
+                <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'mtr_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
+                 <%= image_tag 'close.png', alt: 'Cancel', class: 'mtr_button', style: 'height: 25px; width: 25px;' %>
                 <% end %>
               </td>
             <% elsif request.status == 'rejected' %>

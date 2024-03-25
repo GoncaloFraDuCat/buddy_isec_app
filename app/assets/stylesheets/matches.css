@@ -37,12 +37,14 @@ td, tr {
   height: 25px;
 }
 
-  /*.cancel_mtr_button {
-  background-color: transparent;
-  border-style: none;
+.close_show_button {
+  height: 25px;
+  width: 25px;
+
 }
-/*
-.cancel_mtr_button input[type="submit"] {
-  background-color: transparent;
-  border-style: none;
- }
+
+.close_show_button_image {
+  height: 25px;
+  width: 25px;
+
+}

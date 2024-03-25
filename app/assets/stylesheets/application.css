@@ -113,17 +113,17 @@ h1{
   cursor: pointer;
  }
 
-.x_button_image {
+/*.x_button_image {
   height: 36px;
   width: 36px;
   padding: 5px 10px;
   font-size: 12px;
-  position: absolute;
+  position: fixed;
   top: -6px;
   right: 5px;
   margin: 10px;
 }
-
+*/
 
 .show_profile{
   height: 200px;
