@@ -8,8 +8,10 @@
 
 
   <div class="messages"
+
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+
     <% @chatroom.messages.each do |message| %>
       <div id="message-<%= message.id %>">
         <small>
