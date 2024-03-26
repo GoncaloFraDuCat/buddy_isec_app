@@ -1,13 +1,18 @@
 <!-- app/views/chatrooms/show.html.erb -->
-<%= link_to matches_path, class: 'cancel_mtr_button' do %>
-  <%= image_tag 'close.png', alt: 'Cancel', class: 'close_button', style: 'height: 30px; width: 30px; padding-left: 310px; padding-top: 5px' %>
-<% end %>
 
+<div class= 'whole chatroom'>
+  <div class='headers'>
+    <h1>#<%= @chatroom.mentorship_request_id %></h1>
+
+    <%= link_to matches_path, class: 'matches_x_image_button' do %>
+      <%= image_tag 'close.png', alt: 'Cancel', class: 'close_button', style: 'height: 30px; width: 30px; padding-top: 5px' %>
+    <% end %>
+  </div>
+</div>
 
 <div class="container chatroom"
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1>#<%= @chatroom.mentorship_request_id %></h1>
 
 
   <div class="messages" data-chatroom-subscription-target="messages">
@@ -17,10 +22,12 @@
   </div>
 </div>
 
+<div class="form_div"
+  data-controller="chatroom-subscription">
 
-<%= simple_form_for [@chatroom, @message],
-  html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
-%>
+  <%= simple_form_for [@chatroom, @message],
+    html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+  %>
 
   <%= f.input :content,
     label: false,
@@ -29,3 +36,4 @@
   %>
   <%= f.submit "Send", class: "btn btn-primary mb-3" %>
 <% end %>
+</div>

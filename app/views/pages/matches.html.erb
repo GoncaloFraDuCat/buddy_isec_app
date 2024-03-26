@@ -97,7 +97,7 @@
               </td>
               <td>
                 <% unless request.status == 'accepted' %>
-                  <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'cancel_mtr_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
+                  <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'matches_x_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
                     <%= image_tag 'close.png', alt: 'Cancel', class: 'close_button', style: 'height: 25px; width: 25px;' %>
                   <% end %>
                 <% end %>

@@ -1,3 +1,14 @@
+.whole.chatroom .headers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* This ensures vertical alignment */
+}
+
+.matches_x_image_button {
+  /* Adjust the padding as needed to align the "X" button correctly */
+  padding-right: 10px; /* Example padding adjustment */
+}
+
 .cancel_mtr_button {
   position: absolute;
   top: 0;
@@ -45,10 +56,11 @@ strong {
   position: relative;
   padding: 10px;
   margin: 10px;
-  border-radius: 30px;
+  border-radius: 20px;
   max-width: 80%;
   word-wrap: break-word;
   font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 .sent-by-mentor,
@@ -60,18 +72,18 @@ small {
 .sent-by-mentor,
 .sent-by-non-mentor,
 p {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .sent-by-mentor {
-  background-color: #397ec4;
+  background-color: lightskyblue;
   color: black;
   float: right;
   clear: both;
 }
 
 .sent-by-non-mentor {
-  background-color: rgba(233, 218, 218, 0.805);
+  background-color: lightsteelblue;
   color: black;
   float: left;
   clear: both;
