@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :authentication_keys => [:student_id]
+  devise authentication_keys: [:student_id]
   validates :student_id, presence: true, uniqueness: true
   validates :area_of_study, presence: true
   validates :current_year, presence: true, numericality: { only_integer: true }
@@ -19,16 +19,16 @@ class User < ApplicationRecord
   end
 
   def self.find_for_authentication(warden_conditions)
-    where(:student_id => warden_conditions[:student_id]).first
- end
+    where(student_id: warden_conditions[:student_id]).first
+  end
 
   validate :cannot_be_mentor_if_first_year
 
   private
 
   def cannot_be_mentor_if_first_year
-    if mentor? && current_year == 1
-      errors.add(:mentor, "cannot be a mentor if in the first year")
-    end
-end
+    return unless mentor? && current_year == 1
+
+    errors.add(:mentor, 'cannot be a mentor if in the first year')
+  end
 end

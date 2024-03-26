@@ -1,113 +1,114 @@
 <% content_for :page_title do %>
- Matches
+  Matches
 <% end %>
 
 <% if current_user.mentor? %>
- <h1>Mentee Requests</h1>
- <div class="mentors_table_container">
+  <h1>Mentee Requests</h1>
+  <div class="mentors_table_container">
     <div class="mentors_table">
-    <table>
+      <table>
         <thead>
         </thead>
         <tbody>
-     <% @requests.each do |request| %>
- <tr>
-    <td><%= request.mentee.name %></td>
-    <% if request.status == 'accepted' %>
-      <td>
-        <%= image_tag 'tick.png', alt: 'Accepted', class: 'status-icon' %>
-      </td>
-      <td>
-        <%= link_to chatroom_path(request.chatroom) do %>
-          <%= image_tag 'message.png', alt: 'msg', class: 'msg_button', style: 'height: 25px; width: 25px;' %>
-        <% end %>
-      </td>
-      <td>
-        <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'cancel_mtr_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
-          <%= image_tag 'close.png', alt: 'Cancel', class: 'close_button', style: 'height: 25px; width: 25px;' %>
-        <% end %>
-      </td>
-    <% elsif request.status == 'rejected' %>
-      <td colspan="3">
-        <%= image_tag 'close.png', alt: 'Rejected', class: 'status-icon' %>
-      </td>
-    <% end %>
-    </td>
-    <td>
-      <%= link_to user_path(request.mentee), class: 'view_profile' do %>
-        <%= image_tag "info_logo.png", alt: "Info", class: "info_button_image_matches" %>
-      <% end %>
-    </td>
-    <td>
-      <% unless request.status == 'accepted' %>
-        <%= button_to 'Yes', accept_mentorship_request_path(request), method: :patch %>
-        <%= button_to 'No', cancel_mentorship_request_path(request), method: :patch %>
-      <% end %>
-    </td>
- </tr>
-<% end %>
+          <% @requests.each do |request| %>
+            <tr>
+              <td><%= request.mentee.name %></td>
+              <% if request.status == 'accepted' %>
+                <td>
+                  <%= image_tag 'tick.png', alt: 'Accepted', class: 'status-icon' %>
+                </td>
+                <td>
+                  <%= link_to chatroom_path(request.chatroom) do %>
+                    <%= image_tag 'message.png', alt: 'msg', class: 'msg_button', style: 'height: 25px; width: 25px;' %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'matches_x_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
+                    <%= image_tag 'close.png', alt: 'Cancel', class: 'matches_x_image_button', style: 'height: 25px; width: 25px;' %>
+
+                  <% end %>
+                </td>
+              <% elsif request.status == 'rejected' %>
+                <td colspan="3">
+                  <%= image_tag 'close.png', alt: 'Rejected', class: 'status-icon' %>
+                </td>
+              <% end %>
+
+              <td>
+                <%= link_to user_path(request.mentee), class: 'view_profile' do %>
+                  <%= image_tag "info_logo.png", alt: "Info", class: "info_button_image_matches" %>
+                <% end %>
+              </td>
+              <td>
+                <% unless request.status == 'accepted' %>
+                  <%= button_to 'Yes', accept_mentorship_request_path(request), method: :patch %>
+                  <%= button_to 'No', cancel_mentorship_request_path(request), method: :patch %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
 
         </tbody>
-    </table>
- </div>
- </div>
+      </table>
+    </div>
+  </div>
 
 <% else %>
 
-<h1>Your Requests</h1>
-<div class="mentors_table_container">
- <div class="mentors_table">
-    <table>
-      <thead>
-      </thead>
-      <tbody>
-        <% @requests.each do |request| %>
-          <tr>
-            <td><%= request.mentor.name %></td>
-            <% if request.status == 'accepted' %>
-              <td>
-                <%= image_tag 'tick.png', alt: 'Accepted', class: 'status-icon' %>
-              </td>
-              <% if request.chatroom.present? %>
+  <h1>Your Requests</h1>
+  <div class="mentors_table_container">
+    <div class="mentors_table">
+      <table>
+        <thead>
+        </thead>
+        <tbody>
+          <% @requests.each do |request| %>
+            <tr>
+              <td><%= request.mentor.name %></td>
+              <% if request.status == 'accepted' %>
                 <td>
-                 <%= link_to chatroom_path(request.chatroom), class: 'message_button' do %>
-                    <%= image_tag 'message.png', alt: 'msg', class: 'msg_button', style: 'height: 25px; width: 25px;' %>
-                 <% end %>
+                  <%= image_tag 'tick.png', alt: 'Accepted', class: 'status-icon' %>
                 </td>
-              <% else %>
+                <% if request.chatroom.present? %>
+                  <td>
+                    <%= link_to chatroom_path(request.chatroom), class: 'message_button' do %>
+                      <%= image_tag 'message.png', alt: 'msg', class: 'msg_button', style: 'height: 25px; width: 25px;' %>
+                    <% end %>
+                  </td>
+                <% else %>
+                  <td>
+                    <!-- Handle the case where there is no chatroom, e.g., display a message or a placeholder -->
+                  </td>
+                <% end %>
                 <td>
-                 <!-- Handle the case where there is no chatroom, e.g., display a message or a placeholder -->
+                  <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'matches_x_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
+                    <%= image_tag 'close.png', alt: 'Cancel', class: 'matches_x_image_button', style: 'height: 25px; width: 25px;' %>
+                  <% end %>
+                </td>
+              <% elsif request.status == 'rejected' %>
+                <td colspan="3">
+                  <%= image_tag 'close.png', alt: 'Rejected', class: 'status-icon' %>
                 </td>
               <% end %>
               <td>
-                <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'cancel_mtr_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
-                 <%= image_tag 'close.png', alt: 'Cancel', class: 'close_button', style: 'height: 25px; width: 25px;' %>
+                <%= link_to user_path(request.mentor), class: 'view_profile' do %>
+                  <%= image_tag "info_logo.png", alt: "Info", class: "info_button_image_matches" %>
                 <% end %>
               </td>
-            <% elsif request.status == 'rejected' %>
-              <td colspan="3">
-                <%= image_tag 'close.png', alt: 'Rejected', class: 'status-icon' %>
+              <td>
+                <% unless request.status == 'accepted' %>
+                  <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'cancel_mtr_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
+                    <%= image_tag 'close.png', alt: 'Cancel', class: 'close_button', style: 'height: 25px; width: 25px;' %>
+                  <% end %>
+                <% end %>
               </td>
-            <% end %>
-            <td>
-              <%= link_to user_path(request.mentor), class: 'view_profile' do %>
-                <%= image_tag "info_logo.png", alt: "Info", class: "info_button_image_matches" %>
-              <% end %>
-            </td>
-            <td>
- <% unless request.status == 'accepted' %>
-    <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'cancel_mtr_button', style: 'height: 25px; width: 25px; background: transparent; border: none;' do %>
-      <%= image_tag 'close.png', alt: 'Cancel', class: 'close_button', style: 'height: 25px; width: 25px;' %>
-    <% end %>
- <% end %>
-</td>
 
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
- </div>
-</div>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 <% end %>
 
 <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light mx-2" %>
