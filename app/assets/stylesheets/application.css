@@ -13,11 +13,12 @@
  *= require_tree .
  *= require_self
  */
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #DCE3F5;
+  background-color: #dce3f5;
 }
 
 .header {
@@ -32,7 +33,7 @@ html, body {
   padding: 0 20px;
   background-color: #fff;
   z-index: 1000;
-  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding-right: 40px;
   background-color: #397ec4;
 }
@@ -46,7 +47,7 @@ html, body {
 .main-content {
   padding-top: 105px;
   padding-bottom: 60px;
-  padding-left:10px;
+  padding-left: 10px;
   padding-right: 10px;
 }
 
@@ -54,50 +55,45 @@ html, body {
   width: 40%;
   height: auto;
   border-radius: 50px;
-  border-style:solid;
-
+  border-style: solid;
 }
 
-
-p, h3{
-  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+p,
+h3 {
+  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding-bottom: 0px;
-
 }
 
-p{
+p {
   margin-top: 0;
-  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-h1{
-  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+h1 {
+  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-
-
- .login-containers {
+.login-containers {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- }
+}
 
- .login-containers {
+.login-containers {
   text-align: center;
   width: 100%;
- }
+}
 
-
- .FPL { /*front page logo*/
-  width:200px;
+.FPL {
+  /*front page logo*/
+  width: 200px;
   height: 270px;
   padding-top: 50px;
- }
+}
 
-
- h2 {
-  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+h2 {
+  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #397ec4;
 }
 
@@ -111,7 +107,7 @@ h1{
   padding: 10px;
   text-decoration: none;
   cursor: pointer;
- }
+}
 
 .x_button_image {
   height: 36px;
@@ -124,8 +120,7 @@ h1{
   margin: 10px;
 }
 
-
-.show_profile{
+.show_profile {
   height: 200px;
   width: 200px;
   border-radius: 30px;
@@ -133,7 +128,6 @@ h1{
   border-style: solid;
   border-color: #397ec4;
 }
-
 
 .page-title {
   color: white;
