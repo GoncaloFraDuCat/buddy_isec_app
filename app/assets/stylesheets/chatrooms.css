@@ -23,6 +23,7 @@
 
 .container.chatroom {
   position: relative;
+  overflow: scroll;
   /* Other styles */
 }
 
@@ -117,4 +118,29 @@ p {
   right: 0;
   border-right-color: transparent;
   border-left-color: white;
+}
+
+.new_message {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 50px; /* Adjust this value based on the height of your navbar */
+  left: 0;
+  right: 0;
+  z-index: 2; /* Ensure this is higher than the navbar's z-index */
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.message {
+  z-index: 5; /* Higher value to ensure it's above the form */
+}
+
+.simple_form.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="submit"].btn.btn-primary.mb-3[data-disable-with="Enviar"] {
+  margin-right: 120px; /* Your CSS rules here */
 }

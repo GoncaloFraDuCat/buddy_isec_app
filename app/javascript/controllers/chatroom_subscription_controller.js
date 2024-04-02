@@ -18,6 +18,7 @@ export default class extends Controller {
 
   #insertMessageAndScrollDown(data) {
     this.messagesTarget.insertAdjacentHTML("beforeend", data);
+    console.log("scrolling to the bottom");
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
   }
 

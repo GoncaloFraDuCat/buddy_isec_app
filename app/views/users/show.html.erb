@@ -13,7 +13,7 @@
 
 <% if !current_user.mentor? && @user.mentor? %>
  <%= button_to mentorship_requests_path(mentor_id: @user.id, mentee_id: current_user.id), method: :post, class: 'mentorship_request_button' do %>
-    Request Mentorship
+    Solicitar Mentoria
  <% end %>
 <% end %>
 
