@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+   include ActionView::Helpers::AssetUrlHelper
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise authentication_keys: [:student_id]
@@ -18,9 +20,9 @@ class User < ApplicationRecord
 
   def default_photo
     if photo.attached?
-      photo.key
+      Cloudinary::Utils.cloudinary_url(photo.url)
     else
-      Rails.application.routes.url_helpers.asset_url("student.jpg")
+      ActionController::Base.helpers.asset_url("student.jpg")
     end
   end
 

@@ -7,7 +7,7 @@
     <% @mentors.each do |mentor| %>
       <div class="mentor">
         <div class="mentor-image"
-          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path mentor.default_photo, height: 300, crop: :fill %>')">
+          style="background-image: url('<%= mentor.default_photo %>')">
         </div>
         <div class="mentor-info">
           <h3 class="search-page-h3"><%= mentor.name %></h3>
