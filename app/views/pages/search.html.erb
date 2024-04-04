@@ -1,13 +1,13 @@
 <% content_for :page_title do %>
- Mentores
+  Mentores
 <% end %>
 
 <div class="mentors-containers">
- <div class="mentors">
+  <div class="mentors">
     <% @mentors.each do |mentor| %>
       <div class="mentor">
-        <div class="mentor-image">
-          <%= image_tag 'student.jpg', alt: "student picture", class: 'student1' %>
+        <div class="mentor-image"
+          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path mentor.default_photo, height: 300, crop: :fill %>')">
         </div>
         <div class="mentor-info">
           <h3 class="search-page-h3"><%= mentor.name %></h3>
@@ -19,7 +19,7 @@
         </div>
       </div>
     <% end %>
- </div>
+  </div>
 </div>
 
 

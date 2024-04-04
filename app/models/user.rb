@@ -16,6 +16,13 @@ class User < ApplicationRecord
   has_one_attached :photo
 
 
+  def default_photo
+    if photo.attached?
+      photo.key
+    else
+      Rails.application.routes.url_helpers.asset_url("student.jpg")
+    end
+  end
 
   def mentor?
     mentor

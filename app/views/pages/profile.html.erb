@@ -4,7 +4,10 @@
 
 <h1> Mentor </h1>
 
-<%= image_tag 'student.jpg', alt: "student picture", class: 'student' %>
+<div class="profile-pic"
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @user.default_photo, height: 300, crop: :fill %>')"
+>
+</div>
 
 <h3>Nome:</h3>
 <p><%= @user.name %></p>
