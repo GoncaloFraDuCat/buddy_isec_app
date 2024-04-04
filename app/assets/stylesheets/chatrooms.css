@@ -20,6 +20,7 @@
   position: relative;
   overflow: scroll;
   /* Other styles */
+  scroll-behavior: smooth;
   height: calc(100vh - 105px - 60px - 120px);
 }
 
