@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
- O Meu Perfil
+  O Meu Perfil
 <% end %>
 
 <h1> Mentor </h1>
@@ -25,4 +25,8 @@
 
 <h3> Bio: </h3>
 <p> <%= @user.bio %> </p>
+
+<%= link_to "Edit Profile", edit_user_path(current_user) %>
+
+
 <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light mx-2" %>

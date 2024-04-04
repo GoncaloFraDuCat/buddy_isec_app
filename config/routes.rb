@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   get '/matches', to: 'pages#matches', as: 'matches'
   patch '/mentorship_requests/:id/accept', to: 'mentorship_requests#accept', as: 'accept_mentorship_request'
   patch '/mentorship_requests/:id/cancel', to: 'mentorship_requests#cancel', as: 'cancel_mentorship_request'
+
+  # Updated users resource to include edit and update actions
+  resources :users, only: [:show, :edit, :update]
 end
