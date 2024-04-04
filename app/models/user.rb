@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :messages
   has_many :sent_requests, class_name: 'MentorshipRequest', foreign_key: 'mentor_id'
   has_many :received_requests, class_name: 'MentorshipRequest', foreign_key: 'mentee_id'
+  has_one_attached :photo
+
+
 
   def mentor?
     mentor

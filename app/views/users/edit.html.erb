@@ -1,8 +1,10 @@
-<%= form_for @user do |f| %>
+<%= simple_form_for @user do |f| %>
   <div class="field">
     <%= f.label :bio %>
     <%= f.text_area :bio, size: "60x12" %>
   </div>
+  <%= f.input :photo, as: :file %>
+
   <div class="actions">
     <%= f.submit "Update Bio" %>
   </div>
