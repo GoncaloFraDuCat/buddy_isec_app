@@ -17,6 +17,19 @@ export default class extends Controller {
   }
 
   #insertMessageAndScrollDown(data) {
+    const temp1 = document.createElement("div");
+    temp1.innerHTML = data;
+    const dataHTML = temp1.childNodes[0];
+    const firstMessageSent = document.querySelector(".sent-by-mentor");
+
+    if (firstMessageSent.dataset.userId !== dataHTML.dataset.userId) {
+      // remove sent-by-mentor class from dataHTML
+      dataHTML.classList.remove("sent-by-mentor");
+      dataHTML.classList.add("sent-by-non-mentor");
+
+      data = dataHTML.outerHTML;
+    }
+
     this.messagesTarget.insertAdjacentHTML("beforeend", data);
     this.#scrollDown();
   }
