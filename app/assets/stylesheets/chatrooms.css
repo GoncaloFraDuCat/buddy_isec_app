@@ -16,15 +16,11 @@
   /* Other styles */
 }
 
-.messages {
-  position: relative;
-  /* Other styles */
-}
-
 .container.chatroom {
   position: relative;
   overflow: scroll;
   /* Other styles */
+  height: calc(100vh - 105px - 60px - 120px);
 }
 
 .cancel_mtr_button {
@@ -38,6 +34,7 @@
   background-color: transparent;
   margin-bottom: 10px;
   border-radius: 5px;
+  height: 100%;
 }
 
 .message,

@@ -147,3 +147,14 @@ h2 {
   background-repeat: no-repeat;
   border-radius: 50px;
 }
+
+.profile-pic,
+.mentor-image-show {
+  height: 140px;
+  width: 140px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50px;
+  margin-bottom: 36px;
+}

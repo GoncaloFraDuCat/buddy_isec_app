@@ -12,16 +12,19 @@ export default class extends Controller {
         received: data => this.#insertMessageAndScrollDown(data),
       }
     );
-    console.log(`Subscribed to the chatroom with the id
-    ${this.chatroomIdValue}.`);
+
+    this.#scrollDown();
   }
 
   #insertMessageAndScrollDown(data) {
     this.messagesTarget.insertAdjacentHTML("beforeend", data);
-    console.log("scrolling to the bottom");
-    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
+    this.#scrollDown();
   }
 
+  #scrollDown() {
+    const chatroom = document.querySelector(".container.chatroom");
+    chatroom.scrollTo(0, chatroom.scrollHeight);
+  }
   resetForm(event) {
     event.target.reset();
   }

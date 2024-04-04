@@ -22,7 +22,7 @@ class User < ApplicationRecord
     if photo.attached?
       Cloudinary::Utils.cloudinary_url(photo.url)
     else
-      ActionController::Base.helpers.asset_url("student.jpg")
+      ActionController::Base.helpers.asset_url("missing-pic.png")
     end
   end
 
