@@ -3,7 +3,13 @@
 <% end %>
 
 <div class='profile-page-title'>
-  <h1> Mentor </h1>
+  <div>
+    <% if current_user.mentor? %>
+      <h1> Mentor </h1>
+    <% else %>
+      <h1> Mentee </h1>
+    <% end %>
+  </div>
   <%= button_to(image_tag("user-pen.png", alt: "Edit Profile", class: "image-responsive"), edit_user_path(current_user), method: :get, class: "edit-profile-button") %>
 </div>
 
@@ -21,7 +27,7 @@
 
 
 <h3>Ano de Curso:</h3>
-<p><%= @user.current_year %></p>
+<p><%= @user.current_year %>º</p>
 
 <h3>Email:</h3>
 <p><%= @user.email %></p>

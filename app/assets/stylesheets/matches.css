@@ -19,13 +19,13 @@ td, tr {
   font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   padding: 5px;
-  text-align: left;
+  text-align: center;
 
 }
 
 .status-icon {
-  height: 16px;
-  width: auto;
+  height: 30px;
+  width: 30px;
 }
 
 .info_button_image_matches {

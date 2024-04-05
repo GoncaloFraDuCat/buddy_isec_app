@@ -47,7 +47,7 @@ body {
 .main-content {
   padding-top: 105px;
   padding-bottom: 60px;
-  padding-left: 10px;
+  padding-left: 20px;
   padding-right: 10px;
 }
 
@@ -178,7 +178,7 @@ h2 {
 }
 
 textarea {
-  width: 300px;
+  width: 280px;
   margin-top: 5px;
 }
 
@@ -191,6 +191,7 @@ label {
   font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding-right: 5px;
   font-weight: bold;
+  padding-top: 10px;
 }
 
 .update-bio-button {
@@ -199,5 +200,20 @@ label {
 
 input {
   display: flex;
-  margin-top: 5px;
+  margin-top: 10px;
+}
+
+.form-with-x {
+  display: flex;
+  flex-direction: row;
+}
+
+.x_button_image_edit {
+  height: 36px;
+  width: 36px;
+  padding-right: 5px;
+  font-size: 12px;
+
+  top: -6px;
+  right: 5px;
 }

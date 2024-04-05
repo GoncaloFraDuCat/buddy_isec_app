@@ -1,7 +1,12 @@
 <%= simple_form_for @user do |f| %>
-  <div class="bio-field">
-    <%= f.label :bio %>
-    <%= f.text_area :bio, size: "60x12" %>
+  <div class ="form-with-x">
+    <div class="bio-field">
+      <%= f.label :bio %>
+      <%= f.text_area :bio, size: "60x12" %>
+    </div>
+    <%= link_to profile_path, class: 'x_button' do %>
+      <%= image_tag "close.png", alt: "X", class: "x_button_image_edit" %>
+    <% end %>
   </div>
 
   <div class="photo-field">
