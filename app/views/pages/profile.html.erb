@@ -2,7 +2,10 @@
   O Meu Perfil
 <% end %>
 
-<h1> Mentor </h1>
+<div class='profile-page-title'>
+  <h1> Mentor </h1>
+  <%= button_to(image_tag("user-pen.png", alt: "Edit Profile", class: "image-responsive"), edit_user_path(current_user), method: :get, class: "edit-profile-button") %>
+</div>
 
 <div class="profile-pic"
   style="background-image: url('<%= @user.default_photo %>')"
@@ -28,8 +31,6 @@
 
 <h3> Bio: </h3>
 <p> <%= @user.bio %> </p>
-
-<%= link_to "Edit Profile", edit_user_path(current_user) %>
 
 
 <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light mx-2" %>

@@ -1,11 +1,13 @@
 <%= simple_form_for @user do |f| %>
-  <div class="field">
+  <div class="bio-field">
     <%= f.label :bio %>
     <%= f.text_area :bio, size: "60x12" %>
   </div>
-  <%= f.input :photo, as: :file %>
 
-  <div class="actions">
-    <%= f.submit "Update Bio" %>
+  <div class="photo-field">
+    <%= f.input :photo, as: :file %>
+  </div>
+  <div class="update-bio-button">
+    <%= f.submit "Update Profile" %>
   </div>
 <% end %>

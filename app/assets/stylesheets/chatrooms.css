@@ -137,6 +137,7 @@ p {
 .simple_form.d-flex {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 input[type="submit"].btn.btn-primary.mb-3[data-disable-with="Enviar"] {
