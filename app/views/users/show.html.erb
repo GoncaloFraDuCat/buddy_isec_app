@@ -3,17 +3,18 @@
 <% end %><!-- app/views/users/show.html.erb -->
 
 <div class="user_info_container">
-  <div class="profile-pic"
+  <div class="profile-pic-show"
   style="background-image: url('<%= @user.default_photo %>')"
 >
   </div>
-  <h1><%= @user.name %></h1>
-  <p><strong>Area de Estudo: </strong><%= @user.area_of_study %>  </p>
-  <p><strong>Ano de Curso: </strong><%= @user.current_year %>º ano  </p>
-  <p><strong>Email:</strong> <%= @user.email %></p>
-  <p><strong>Bio:</strong> <%= @user.bio %></p>
-  <p><strong>Studentn:</strong> <%= @user.student_id %></p>
-
+  <div class="user-show-p">
+    <h1><%= @user.name %></h1>
+    <p><strong>Area de Estudo: </strong><%= @user.area_of_study %>  </p>
+    <p><strong>Ano de Curso: </strong><%= @user.current_year %>º ano  </p>
+    <p><strong>Email:</strong> <%= @user.email %></p>
+    <p><strong>Bio:</strong> <%= @user.bio %></p>
+    <p><strong>Studentn:</strong> <%= @user.student_id %></p>
+  </div>
   <% if !current_user.mentor? && @user.mentor? %>
     <%= button_to mentorship_requests_path(mentor_id: @user.id, mentee_id: current_user.id), method: :post, class: 'mentorship_request_button' do %>
       Solicitar Mentoria

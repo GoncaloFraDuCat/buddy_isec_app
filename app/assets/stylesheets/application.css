@@ -64,13 +64,12 @@ h3 {
   padding-bottom: 0px;
 }
 
-.profile-h3-p,
-p,
+.profile-h3-p p,
 h3 {
   font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0;
   margin: 5px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 p {
@@ -169,6 +168,17 @@ h2 {
   border-color: #397ec4;
   margin-bottom: 36px;
 }
+.profile-pic-show {
+  height: 180px;
+  width: 180px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 100px;
+  border-style: solid;
+  border-color: #397ec4;
+  margin-bottom: 0px;
+}
 
 .profile-page-title {
   display: flex;
@@ -226,4 +236,8 @@ input {
 
   top: -6px;
   right: 5px;
+}
+
+.user-show-p p {
+  padding: 5px;
 }
