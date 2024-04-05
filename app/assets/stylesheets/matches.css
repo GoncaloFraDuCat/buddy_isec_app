@@ -13,9 +13,10 @@ table {
 
 .mentors_table table {
   width: 100%;
+  border-width: thick;
 }
 
-td, tr {
+td, .table-row {
   font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   padding: 5px;
@@ -31,9 +32,8 @@ td, tr {
 .info_button_image_matches {
   height: 30px;
   width: 30px;
+  padding-left: 6px;
 }
-
-
 
   /*.cancel_mtr_button {
   background-color: transparent;

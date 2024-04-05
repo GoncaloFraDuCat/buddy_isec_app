@@ -11,7 +11,7 @@
         </thead>
         <tbody>
           <% @requests.each do |request| %>
-            <tr>
+            <tr class= "table-row">
               <td><%= request.mentee.name %></td>
               <% if request.status == 'accepted' %>
                 <td>
@@ -63,7 +63,7 @@
         </thead>
         <tbody>
           <% @requests.each do |request| %>
-            <tr>
+            <tr class= "table-row">
               <td><%= request.mentor.name %></td>
               <% if request.status == 'accepted' %>
                 <td>
