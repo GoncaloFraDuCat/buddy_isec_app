@@ -241,3 +241,16 @@ input {
 .user-show-p p {
   padding: 5px;
 }
+
+.log-in-body .main-content {
+  padding-bottom: 0;
+}
+
+.log-in-body .log-in-email {
+  padding-bottom: 5px;
+  color: #397ec4;
+}
+
+.log-in-body .log-in-id {
+  color: #397ec4;
+}
