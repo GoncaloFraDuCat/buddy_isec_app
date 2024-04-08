@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
     @message.chatroom = @chatroom
     @message.user = current_user
 
+
     if @message.save
   ChatroomChannel.broadcast_to(
     @chatroom,
