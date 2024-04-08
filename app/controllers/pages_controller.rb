@@ -9,22 +9,24 @@ class PagesController < ApplicationController
     mentors = mentors.by_area_of_study(params[:area_of_study]) unless params[:area_of_study] == "Todas as Areas"
 
     # Select 8 random mentors from the filtered list
-    @mentors = mentors.pluck(:id).sample(8)
-    @mentors = User.where(id: @mentors)
+    @pagy, @mentors = pagy(mentors, items: 8)
+
+
  end
 
   def profile
     @user = current_user
   end
 
-  def homepage; end
+    def homepage;
+    end
 
-  def matches
-    @requests = if current_user.mentor?
-                  MentorshipRequest.where(mentor_id: current_user.id)
-                else
-                  MentorshipRequest.where(mentee_id: current_user.id) # .where(status: ['pending', 'accepted'])
+    def matches
+      @requests = if current_user.mentor?
+        MentorshipRequest.where(mentor_id: current_user.id)
+      else
+        MentorshipRequest.where(mentee_id: current_user.id) # .where(status: ['pending', 'accepted'])
 
-                end
-  end
+      end
+    end
 end

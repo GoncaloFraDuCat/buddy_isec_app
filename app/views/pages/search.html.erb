@@ -29,5 +29,9 @@
   </div>
 </div>
 
+<div class="pagy">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>
+
 
 <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light mx-2" %>

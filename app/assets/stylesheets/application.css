@@ -254,3 +254,27 @@ input {
 .log-in-body .log-in-id {
   color: #397ec4;
 }
+
+.pagy nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Aligns items horizontally in the center */
+  padding-top: 30px;
+  color: #397ec4;
+  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.pagy nav ul li a {
+  padding: 0 10px; /* Adjust padding as needed */
+  text-decoration: none; /* Removes underline from all links */
+  color: #397ec4; /* Link color */
+  transition: background-color 0.3s;
+}
+
+.page-item.active {
+  text-decoration: underline; /* Underlines the active link */
+  color: #397ec4; /* You can change the color of the active link if desired */
+  font-weight: bolder;
+}

@@ -18,7 +18,8 @@ class UsersController < ApplicationController
 
    def index
     @users = User.by_area_of_study(params[:area_of_study])
- end
+      @pagy, @users = pagy(User.all, items: 8)
+  end
 
   private
 
