@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     end
   end
 
+   def index
+    @users = User.by_area_of_study(params[:area_of_study])
+ end
+
   private
 
   def user_params

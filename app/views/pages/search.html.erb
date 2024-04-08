@@ -2,6 +2,13 @@
   Mentores
 <% end %>
 
+<%= form_with(url: search_path, method: "get") do %>
+  <%= label_tag(:area_of_study, "Area de Estudo:") %>
+  <%= select_tag(:area_of_study, options_for_select(["Todas as Areas"] + User.pluck(:area_of_study).uniq, params[:area_of_study])) %>
+  <%= submit_tag("Filtrar") %>
+<% end %>
+
+
 <div class="mentors-containers">
   <div class="mentors">
     <% @mentors.each do |mentor| %>

@@ -1,9 +1,17 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!
 
-  def search
-    @mentors = User.where(mentor: true).sample(8) || []
-  end
+ def search
+    # Start with all mentors
+    mentors = User.where(mentor: true)
+
+    # Filter mentors by area_of_study if a parameter is provided and not "All Areas of Study"
+    mentors = mentors.by_area_of_study(params[:area_of_study]) unless params[:area_of_study] == "Todas as Areas"
+
+    # Select 8 random mentors from the filtered list
+    @mentors = mentors.pluck(:id).sample(8)
+    @mentors = User.where(id: @mentors)
+ end
 
   def profile
     @user = current_user

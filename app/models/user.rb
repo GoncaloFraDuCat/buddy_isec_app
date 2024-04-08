@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :received_requests, class_name: 'MentorshipRequest', foreign_key: 'mentee_id'
   has_one_attached :photo
 
+ scope :by_area_of_study, ->(area) { where(area_of_study: area) if area.present?}
 
   def default_photo
     if photo.attached?
