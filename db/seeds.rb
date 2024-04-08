@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-areas_of_study = %w[Business Economics Education Chemistry Journalism]
+areas_of_study = ["Comunicação Global", "Design e Produção Gráfica", "Educação Básica", "Engenharia de Proteção Civil", "Energias Renováveis e Ambiente", "Gestão Aeronáutica", "Gestão Autárquica", "Gestão Hoteleira", "Óptica e Optometria", "Ciências Aeronáuticas e do Espaço", "Ciência e Visualização de Dados"]
 
 # Generate 10 students
 20.times do
@@ -19,7 +19,7 @@ areas_of_study = %w[Business Economics Education Chemistry Journalism]
     area_of_study: areas_of_study.sample,
     current_year: Faker::Number.between(from: 1, to: 3),
     mentor: false, # This user is a student
-    student_id: "STUDENT-#{User.count + 1}" # Example of setting student_id
+    student_id: Faker::Number.number(digits: 6)
   )
 end
 
@@ -32,6 +32,6 @@ end
     area_of_study: areas_of_study.sample,
     current_year: Faker::Number.between(from: 2, to: 3),
     mentor: true, # This user is a mentor
-    student_id: "MENTOR-#{User.count + 1}" # Example of setting student_id
+    student_id: Faker::Number.number(digits: 6)
   )
 end
