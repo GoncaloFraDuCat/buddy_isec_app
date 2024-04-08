@@ -4,24 +4,36 @@ table {
   border-color: #397ec4;
 }
 
-.mentors_table_container {
-  max-width: 800px; /* Adjust this value based on your design needs */
-  margin: auto;
-  display: block;
-  padding-bottom: 10px;
-}
-
-.mentors_table table {
+.mentors_table {
   width: 100%;
-  border-width: thick;
+  min-width: 90vw;
+  margin-bottom: 2rem;
 }
 
-td, .table-row {
+.mentors_table .request {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #397ec4;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.mentors_table div {
   font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   padding: 5px;
-  text-align: center;
+}
 
+.mentors_table .name {
+  flex-grow: 2;
+}
+
+.mentors_table .others {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 0;
 }
 
 .status-icon {

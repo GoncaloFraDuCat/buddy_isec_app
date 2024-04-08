@@ -19,25 +19,32 @@
 </div>
 
 <div class='profile-h3-p'>
-  <h3>Nome:</h3>
-  <p><%= @user.name %></p>
+  <div class="group">
+    <h3>Nome:</h3>
+    <p><%= @user.name %></p>
+  </div>
+  <div class="group">
+    <h3>Area de Estudo:</h3>
+    <p><%= @user.area_of_study %></p>
+  </div>
 
-  <h3>Area de Estudo:</h3>
-  <p><%= @user.area_of_study %></p>
+  <div class="group">
+    <h3>Ano de Curso:</h3>
+    <p><%= @user.current_year %>º</p>
+  </div>
+  <div class="group">
+    <h3>Email:</h3>
+    <p><%= @user.email %></p>
+  </div>
+  <div class="group">
+    <h3>Id Estudante:</h3>
+    <p><%= @user.student_id %></p>
+  </div>
 
-
-  <h3>Ano de Curso:</h3>
-  <p><%= @user.current_year %>º</p>
-
-  <h3>Email:</h3>
-  <p><%= @user.email %></p>
-
-  <h3>Id Estudante:</h3>
-  <p><%= @user.student_id %></p>
-
-
-  <h3> Bio: </h3>
-  <p> <%= @user.bio %> </p>
+  <div class="group">
+    <h3> Bio: </h3>
+    <p> <%= @user.bio %> </p>
+  </div>
 </div>
 
 

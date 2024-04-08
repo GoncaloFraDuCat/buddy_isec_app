@@ -1,3 +1,7 @@
+.whole.chatroom {
+  min-width: 90vw;
+}
+
 .whole.chatroom .headers {
   display: flex;
   justify-content: space-between;
@@ -21,7 +25,9 @@
   overflow: scroll;
   /* Other styles */
   scroll-behavior: smooth;
-  height: calc(100vh - 105px - 60px - 120px);
+  height: calc(100vh - 85px - 60px - 130px);
+  height: calc(calc(var(--vh, 1vh) * 100) - 85px - 60px - 130px);
+  width: 100%;
 }
 
 .cancel_mtr_button {
@@ -36,30 +42,42 @@
   margin-bottom: 10px;
   border-radius: 5px;
   height: 100%;
+  width: 100%;
 }
 
-.message,
-p {
-  font-size: 14px;
-  color: #333;
-}
-
-.message,
-strong {
-  font-weight: bold;
-  color: #020203;
-}
-
-.sent-by-mentor,
-.sent-by-non-mentor {
+.message {
   position: relative;
-  padding: 10px;
+  padding: 15px 20px;
   margin: 10px;
   border-radius: 20px;
   max-width: 80%;
   word-wrap: break-word;
   font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.message p {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+}
+
+.message strong {
+  font-weight: bold;
+  color: #020203;
+}
+
+.message .message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+
+.message .message-header * {
+  white-space: nowrap;
 }
 
 .sent-by-mentor,
@@ -140,6 +158,30 @@ p {
   margin-top: 10px;
 }
 
-input[type="submit"].btn.btn-primary.mb-3[data-disable-with="Enviar"] {
-  margin-right: 120px; /* Your CSS rules here */
+.form_div form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form_div .message_content {
+  flex-grow: 2;
+}
+
+.form_div font,
+.form_div input[type="submit"] {
+  width: auto;
+  margin-right: 0 !important;
+  border-radius: 0 5px 5px 0;
+  border-left: none;
+}
+
+.form_div input[type="text"] {
+  width: calc(100% - 20px);
+  border-radius: 5px 0 0 5px;
+  border-right: none;
+}
+
+.form_div input[type="text"],
+.form_div input[type="submit"] {
+  border: 1px solid #397ec4;
 }

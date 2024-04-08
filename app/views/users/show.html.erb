@@ -3,10 +3,7 @@
 <% end %><!-- app/views/users/show.html.erb -->
 
 <div class="user_info_container">
-  <div class="profile-pic-show"
-  style="background-image: url('<%= @user.default_photo %>')"
->
-  </div>
+  <div class="profile-pic-show" style="background-image: url('<%= @user.default_photo %>')"></div>
   <div class="user-show-p">
     <h1><%= @user.name %></h1>
     <p><strong>Area de Estudo: </strong><%= @user.area_of_study %>  </p>
@@ -22,7 +19,7 @@
   <% end %>
 
 
-  <%= link_to search_path, class: 'x_button' do %>
+  <%= link_to :back, class: "x_button" do %>
     <%= image_tag "close.png", alt: "X", class: "x_button_image" %>
   <% end %>
 

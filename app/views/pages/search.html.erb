@@ -11,6 +11,9 @@
 
 <div class="mentors-containers">
   <div class="mentors">
+    <% if @mentors.empty? %>
+      <h2>Não há mentores disponíveis</h2>
+    <% end %>
     <% @mentors.each do |mentor| %>
       <div class="mentor">
         <div class="mentor-image-show"
@@ -29,9 +32,8 @@
   </div>
 </div>
 
-<div class="pagy">
-  <%== pagy_bootstrap_nav(@pagy) %>
-</div>
-
-
-<%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light mx-2" %>
+<% if @pagy.pages > 1 %>
+  <div class="pagy">
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
+<% end %>

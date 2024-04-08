@@ -8,11 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-areas_of_study = ["Comunicação Global", "Design e Produção Gráfica", "Educação Básica", "Engenharia de Proteção Civil", "Energias Renováveis e Ambiente", "Gestão Aeronáutica", "Gestão Autárquica", "Gestão Hoteleira", "Óptica e Optometria", "Ciências Aeronáuticas e do Espaço", "Ciência e Visualização de Dados"]
+areas_of_study = ['Comunicação Global', 'Design e Produção Gráfica', 'Educação Básica', 'Engenharia de Proteção Civil',
+                  'Energias Renováveis e Ambiente', 'Gestão Aeronáutica', 'Gestão Autárquica', 'Gestão Hoteleira', 'Óptica e Optometria', 'Ciências Aeronáuticas e do Espaço', 'Ciência e Visualização de Dados']
 
 # Generate 10 students
 20.times do
-  user = User.create!(
+  User.create!(
     name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
     email: "#{Faker::Internet.user_name}@iseclisboa.pt", # Generate a random email
     bio: Faker::Lorem.paragraph(sentence_count: 5),
@@ -25,7 +26,7 @@ end
 
 # Generate 5 mentors
 10.times do
-  user = User.create!(
+  User.create!(
     name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
     email: "#{Faker::Internet.user_name}@iseclisboa.pt", # Generate a random email
     bio: Faker::Lorem.paragraph(sentence_count: 5),
@@ -33,5 +34,17 @@ end
     current_year: Faker::Number.between(from: 2, to: 3),
     mentor: true, # This user is a mentor
     student_id: Faker::Number.number(digits: 6)
+  )
+end
+
+15.times do
+  mentor = User.mentors.sample
+  student = User.students.sample
+
+  # Create a mentorship request
+  MentorshipRequest.create!(
+    mentor:,
+    mentee: student,
+    status: 'accepted'
   )
 end

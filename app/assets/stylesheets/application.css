@@ -30,7 +30,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 100px;
+  height: 80px;
   padding: 0 20px;
   background-color: #fff;
   z-index: 1000;
@@ -50,14 +50,14 @@ body {
 
 .logo {
   max-height: 90%;
-  max-width: 63px;
+  max-width: 60px;
   aspect-ratio: 1;
   height: auto;
   border-radius: 20px;
 }
 
 .main-content {
-  padding-top: 105px;
+  padding-top: 85px;
   padding-bottom: 60px;
   padding-left: 15px;
   padding-right: 10px;
@@ -77,9 +77,22 @@ h3 {
   padding-bottom: 0px;
 }
 
+.profile-h3-p {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1rem auto;
+}
+
+.profile-h3-p .group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .profile-h3-p p,
-h3 {
-  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+.profile-h3-p h3 {
   padding: 0;
   margin: 5px;
   margin-top: 10px;
@@ -87,7 +100,6 @@ h3 {
 
 p {
   margin-top: 0;
-  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -125,20 +137,39 @@ h2 {
 
 .x_button {
   display: inline-block;
-  padding: 10px;
+  padding: 5px;
   text-decoration: none;
-  cursor: pointer;
+  background: none;
 }
 
 .x_button_image {
-  height: 36px;
-  width: 36px;
-  padding: 5px 10px;
+  height: 20px !important;
+  width: 20px !important;
+  padding: 10px;
   font-size: 12px;
   position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 10px;
+}
+
+.form-with-x {
+  display: flex;
+  flex-direction: row;
+}
+
+.x_button_image_edit {
+  height: 20px;
+  width: 20px;
+  font-size: 12px;
+
   top: -6px;
   right: 5px;
-  margin: 10px;
+}
+
+.matches-x-button {
+  height: 20px !important;
+  width: 20px !important;
 }
 
 .show_profile {
@@ -238,20 +269,6 @@ input {
   margin-top: 10px;
 }
 
-.form-with-x {
-  display: flex;
-  flex-direction: row;
-}
-
-.x_button_image_edit {
-  height: 36px;
-  width: 36px;
-  font-size: 12px;
-
-  top: -6px;
-  right: 5px;
-}
-
 .user-show-p p {
   padding: 5px;
 }
@@ -277,6 +294,30 @@ input[type="submit"] {
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
+}
+
+input[type="file"] {
+  /* style the file input */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="url"],
+input[type="tel"],
+input[type="search"],
+textarea {
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid #397ec4;
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 
 input[type="select"],
