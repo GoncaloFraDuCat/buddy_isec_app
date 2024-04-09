@@ -20,6 +20,14 @@ development:
 test:
   <<: *default
   database: isec_test
+
 production:
   <<: *default
   database: isec_production
+
+oracle_db:
+  adapter: oracle_enhanced
+  database: your_oracle_db_name
+  username: your_oracle_db_username
+  password: your_oracle_db_password
+  host: your_oracle_db_host
