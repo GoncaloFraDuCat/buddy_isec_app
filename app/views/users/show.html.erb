@@ -1,26 +1,46 @@
 <% content_for :page_title do %>
   Perfil
-<% end %><!-- app/views/users/show.html.erb -->
+<% end %>
 
 <div class="user_info_container">
   <div class="profile-pic-show" style="background-image: url('<%= @user.default_photo %>')"></div>
-  <div class="user-show-p">
-    <h1><%= @user.name %></h1>
-    <p><strong>Area de Estudo: </strong><%= @user.area_of_study %>  </p>
-    <p><strong>Ano de Curso: </strong><%= @user.current_year %>º ano  </p>
-    <p><strong>Email:</strong> <%= @user.email %></p>
-    <p><strong>Bio:</strong> <%= @user.bio %></p>
-    <p><strong>Id Estudante:</strong> <%= @user.student_id %></p>
+
+  <div class='profile-h3-p'>
+    <div class="group">
+      <h3>Nome:</h3>
+      <p><%= @user.name %></p>
+    </div>
+    <div class="group">
+      <h3>Area de Estudo:</h3>
+      <p><%= @user.area_of_study %></p>
+    </div>
+
+    <div class="group">
+      <h3>Ano de Curso:</h3>
+      <p><%= @user.current_year %>º</p>
+    </div>
+    <div class="group">
+      <h3>Email:</h3>
+      <p><%= @user.email %></p>
+    </div>
+    <div class="group">
+      <h3>Id Estudante:</h3>
+      <p><%= @user.student_id %></p>
+    </div>
+
+    <div class="group">
+      <h3> Bio: </h3>
+      <p> <%= @user.bio %> </p>
+    </div>
   </div>
+
   <% if !current_user.mentor? && @user.mentor? %>
     <%= button_to mentorship_requests_path(mentor_id: @user.id, mentee_id: current_user.id), method: :post, class: 'mentorship_request_button' do %>
       Solicitar Mentoria
     <% end %>
   <% end %>
 
-
   <%= link_to :back, class: "x_button" do %>
     <%= image_tag "close.png", alt: "X", class: "x_button_image" %>
   <% end %>
-
 </div>

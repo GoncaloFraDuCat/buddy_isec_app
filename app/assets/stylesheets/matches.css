@@ -6,7 +6,6 @@ table {
 
 .mentors_table {
   width: 100%;
-  min-width: 90vw;
   margin-bottom: 2rem;
 }
 
@@ -20,7 +19,6 @@ table {
 }
 
 .mentors_table div {
-  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   padding: 5px;
 }
@@ -37,8 +35,8 @@ table {
 }
 
 .status-icon {
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
 }
 
 .info_button_image_matches {
@@ -46,13 +44,3 @@ table {
   width: 30px;
   padding-left: 6px;
 }
-
-  /*.cancel_mtr_button {
-  background-color: transparent;
-  border-style: none;
-}
-/*
-.cancel_mtr_button input[type="submit"] {
-  background-color: transparent;
-  border-style: none;
- }

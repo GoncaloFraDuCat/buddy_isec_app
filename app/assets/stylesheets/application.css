@@ -14,6 +14,12 @@
  *= require_self
  */
 
+* {
+  box-sizing: border-box;
+  transition: all 0.3s;
+  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 html,
 body {
   height: 100%;
@@ -34,7 +40,7 @@ body {
   padding: 0 20px;
   background-color: #fff;
   z-index: 1000;
-  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
   padding-right: 40px;
   background-color: #397ec4;
 }
@@ -60,8 +66,10 @@ body {
   padding-top: 85px;
   padding-bottom: 60px;
   padding-left: 15px;
-  padding-right: 10px;
+  padding-right: 15px;
   margin: 0 auto;
+  width: 100%;
+  max-width: calc(100% - 30px);
 }
 
 .student {
@@ -73,7 +81,6 @@ body {
 
 p,
 h3 {
-  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding-bottom: 0px;
 }
 
@@ -82,6 +89,7 @@ h3 {
   flex-direction: column;
   align-items: flex-start;
   margin: 1rem auto;
+  gap: 10px;
 }
 
 .profile-h3-p .group {
@@ -89,13 +97,14 @@ h3 {
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 10px;
+  gap: 10px;
 }
 
 .profile-h3-p p,
 .profile-h3-p h3 {
   padding: 0;
-  margin: 5px;
-  margin-top: 10px;
+  margin: 0;
 }
 
 p {
@@ -103,7 +112,6 @@ p {
 }
 
 h1 {
-  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .login-containers {
@@ -119,14 +127,12 @@ h1 {
 }
 
 .FPL {
-  /*front page logo*/
   width: 200px;
   height: 270px;
   padding-top: 50px;
 }
 
 h2 {
-  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #397ec4;
 }
 
@@ -142,6 +148,11 @@ h2 {
   background: none;
 }
 
+.x_button:hover {
+  background-color: inherit;
+  color: inherit;
+}
+
 .x_button_image {
   height: 20px !important;
   width: 20px !important;
@@ -151,6 +162,7 @@ h2 {
   top: 0px;
   right: 0px;
   margin: 10px;
+  box-sizing: content-box;
 }
 
 .form-with-x {
@@ -200,8 +212,7 @@ h2 {
   border-radius: 50px;
 }
 
-.profile-pic,
-.mentor-image-show {
+.profile-pic {
   height: 150px;
   width: 150px;
   background-position: center;
@@ -254,7 +265,6 @@ textarea {
 }
 
 label {
-  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding-right: 5px;
   font-weight: bold;
   padding-top: 10px;
@@ -296,8 +306,9 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-input[type="file"] {
-  /* style the file input */
+button:hover,
+input[type="submit"]:hover {
+  background-color: #3067a8;
 }
 
 input[type="text"],
@@ -335,6 +346,6 @@ select {
 }
 
 .small-img {
-  height: 40px !important;
-  width: 40px !important;
+  height: 35px !important;
+  width: 35px !important;
 }

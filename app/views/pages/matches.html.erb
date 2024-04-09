@@ -4,101 +4,16 @@
 
 <% if @requests.empty? %>
   <h2>Não tens pedidos ativos</h2>
-<% elsif current_user.mentor? %>
-  <h1>Pedidos</h1>
+<% else %>
+  <h1><%= current_user.mentor? ? 'Pedidos' : 'Os Teus Pedidos' %></h1>
   <div class="container">
     <div class="mentors_table">
       <% @requests.each do |request| %>
         <div class="request">
-
           <div class="name"><%= request.mentee.name %></div>
           <div class="others">
-            <% if request.status == 'accepted' %>
-              <div>
-                <%= image_tag 'tick.png', alt: 'Accepted', class: 'status-icon' %>
-              </div>
-              <div>
-                <%= link_to chatroom_path(request.chatroom), class: 'x_button' do %>
-                  <%= image_tag 'message.png', alt: 'msg', class: 'matches-x-button' %>
-                <% end %>
-              </div>
-              <div>
-                <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'x_button' do %>
-                  <%= image_tag 'close.png', alt: 'Cancel', class: 'matches-x-button' %>
-                <% end %>
-              </div>
-            <% elsif request.status == 'rejected' %>
-              <div colspan="3">
-                <%= image_tag 'close.png', alt: 'Rejected', class: 'status-icon' %>
-              </div>
-            <% end %>
-
-            <div>
-              <%= link_to user_path(request.mentee), class: 'view_profile' do %>
-                <%= image_tag "info_logo.png", alt: "Info", class: "info_button_image_matches" %>
-              <% end %>
-            </div>
-            <% unless request.status == 'accepted' %>
-              <div>
-                <%= button_to 'Yes', accept_mentorship_request_path(request), method: :patch %>
-                <%= button_to 'No', cancel_mentorship_request_path(request), method: :patch %>
-              </div>
-            <% end %>
+            <%= render partial: 'shared/request_status', locals: { request: request } %>
           </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-<% else %>
-
-  <h1>Os Teus Pedidos</h1>
-  <div class="container">
-    <div class="mentors_table">
-      <% @requests.each do |request| %>
-        <div class= "request">
-          <div class="name"><%= request.mentor.name %></div>
-          <div class="others">
-
-            <% if request.status == 'accepted' %>
-              <div>
-                <%= image_tag 'tick.png', alt: 'Accepted', class: 'status-icon' %>
-              </div>
-              <% if request.chatroom.present? %>
-                <div>
-                  <%= link_to chatroom_path(request.chatroom), class: 'x_button' do %>
-                    <%= image_tag 'message.png', alt: 'msg', class: 'matches-x-button' %>
-                  <% end %>
-                </div>
-              <% else %>
-                <div>
-                  <!-- Handle the case where there is no chatroom, e.g., display a message or a placeholder -->
-                </div>
-              <% end %>
-              <div>
-                <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'x_button' do %>
-                  <%= image_tag 'close.png', alt: 'Cancel', class: 'matches-x-button' %>
-                <% end %>
-              </div>
-            <% elsif request.status == 'rejected' %>
-              <div colspan="3">
-                <%= image_tag 'close.png', alt: 'Rejected', class: 'status-icon' %>
-              </div>
-            <% end %>
-            <div>
-              <%= link_to user_path(request.mentor), class: 'view_profile' do %>
-                <%= image_tag "info_logo.png", alt: "Info", class: "info_button_image_matches" %>
-              <% end %>
-            </div>
-            <% unless request.status == 'accepted' %>
-              <div>
-                <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'x_button' do %>
-                  <%= image_tag 'close.png', alt: 'Cancel', class: 'close_button' %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-
         </div>
       <% end %>
     </div>

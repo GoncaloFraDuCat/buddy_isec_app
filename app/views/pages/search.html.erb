@@ -20,17 +20,24 @@
           style="background-image: url('<%= mentor.default_photo %>')">
         </div>
         <div class="mentor-info">
-          <h3 class="search-page-h3"><%= mentor.name %></h3>
-          <% if mentor.mentor? %>
-            <%= link_to user_path(mentor), class: 'view_profile' do %>
-              <%= image_tag "info_logo.png", alt: "Info", class: "info_button_image" %>
+          <h3 class="mentor-name"><%= mentor.name %></h3>
+          <div class="mentor-subinfo">
+            <ul>
+              <li>Ano: <%= mentor.current_year %></li>
+              <li><%= mentor.area_of_study %></li>
+            </ul>
+            <% if mentor.mentor? %>
+              <%= link_to user_path(mentor), class: 'view_profile' do %>
+                <%= image_tag "info_logo.png", alt: "Info", class: "info_button_image" %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
 
 <% if @pagy.pages > 1 %>
   <div class="pagy">

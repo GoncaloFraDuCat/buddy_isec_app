@@ -11,15 +11,14 @@
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: center; /* Aligns items horizontally in the center */
+  justify-content: center;
   padding-top: 30px;
   color: #397ec4;
-  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .pagy nav ul li a {
-  padding: 0 10px; /* Adjust padding as needed */
-  text-decoration: none; /* Removes underline from all links */
+  padding: 0 10px;
+  text-decoration: none;
   transition: background-color 0.3s;
 }
 
@@ -35,5 +34,17 @@
   margin: 5px;
   border-radius: 5px;
   background-color: #fff;
-  color: #397ec4; /* Link color */
+  color: #397ec4;
+}
+
+.page-item.disabled {
+  display: none;
+}
+
+.page-item:hover:not(.active) {
+  background-color: #0056b3;
+}
+
+.page-item:hover:not(.active) .page-link {
+  color: #fff !important;
 }

@@ -1,7 +1,7 @@
 <div id="message-<%= message.id %>" data-user-id="<%= message.user.id %>" class="message <%= message.user == current_user ? 'sent-by-mentor' : 'sent-by-non-mentor' %>">
   <small class='message-header'>
     <strong><%= message.user.name %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+    <em><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></em>
   </small>
   <p><%= message.content%></p>
 </div>
