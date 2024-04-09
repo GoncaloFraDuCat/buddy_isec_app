@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.1.2'
+ruby '3.3.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
@@ -56,7 +56,7 @@ gem 'pgreset'
 gem 'pagy'
 
 # gem 'activerecord-oracle_enhanced-adapter'
-# gem 'ruby-oci8'
+gem 'ruby-oci8'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

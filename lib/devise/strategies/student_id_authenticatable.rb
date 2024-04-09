@@ -4,12 +4,14 @@ module Devise
   module Strategies
     class StudentIdAuthenticatable < Authenticatable
       def valid?
+        return true
         # Check if the request contains the necessary parameters for authentication
         params[:user] && params[:user][:email] && params[:user][:password]
       end
 
       def authenticate!
         # Establish a connection to the Oracle database
+        binding.pry
         oracle_db = ActiveRecord::Base.establish_connection(:oracle_db).connection
 
         # Query the Oracle database for the user's credentials
