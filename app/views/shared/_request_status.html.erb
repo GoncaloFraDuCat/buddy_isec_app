@@ -13,18 +13,29 @@
       <!-- Handle the case where there is no chatroom -->
     </div>
   <% end %>
+
   <div>
     <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'x_button', form: { data: { turbo_confirm: 'De certeza que queres apagar esta conversa? Esta acção não é reversível!' } } do %>
       <%= image_tag 'close.png', alt: 'Cancel', class: 'matches-x-button' %>
     <% end %>
   </div>
-<% elsif request.status == 'rejected' %>
-  <div colspan="3">
-    <%= image_tag 'close.png', alt: 'Rejected', class: 'status-icon' %>
+
+<% else %>
+  <div>
+    <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'x_button', form: { data: { turbo_confirm: 'De certeza que queres apagar esta conversa? Esta acção não é reversível!' } } do %>
+      <%= image_tag 'close.png', alt: 'Cancel', class: 'matches-x-button' %>
+    <% end %>
   </div>
+
 <% end %>
 <div>
   <%= link_to user_path(request.mentee), class: 'x_button' do %>
     <%= image_tag "info_logo.png", alt: "Info", class: "matches-x-button" %>
   <% end %>
 </div>
+<% if current_user.mentor? && request.status != 'accepted' %>
+  <div>
+    <%= button_to 'Yes', accept_mentorship_request_path(request), method: :patch %>
+    <%= button_to 'No', cancel_mentorship_request_path(request), method: :patch %>
+  </div>
+<% end %>

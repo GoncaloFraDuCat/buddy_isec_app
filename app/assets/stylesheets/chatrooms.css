@@ -21,8 +21,8 @@
 
 .container.chatroom {
   position: relative;
-  overflow: scroll;
-  /* Other styles */
+  overflow-y: scroll;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   height: calc(100vh - 85px - 60px - 130px);
   height: calc(calc(var(--vh, 1vh) * 100) - 85px - 60px - 130px);
@@ -179,7 +179,7 @@ p {
 }
 
 .form_div input[type="text"] {
-  width: calc(100% - 20px);
+  width: 100%;
   border-radius: 5px 0 0 5px;
   border-right: none;
 }
@@ -187,4 +187,8 @@ p {
 .form_div input[type="text"],
 .form_div input[type="submit"] {
   border: 1px solid #397ec4;
+}
+
+.headers h1 {
+  font-size: 23px;
 }
