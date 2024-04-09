@@ -2,7 +2,7 @@
   Mentores
 <% end %>
 
-<%= form_with(url: search_path, method: "get") do %>
+<%= form_with(url: search_path, method: "get", class: 'filter-form') do %>
   <%= label_tag(:area_of_study, "Area de Estudo:") %>
   <%= select_tag(:area_of_study, options_for_select(["Todas as Areas"] + User.pluck(:area_of_study).uniq, params[:area_of_study])) %>
   <%= submit_tag("Filtrar") %>
