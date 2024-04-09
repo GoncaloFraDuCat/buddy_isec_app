@@ -24,9 +24,3 @@ test:
 production:
   <<: *default
   database: isec_production
-
-oracle_db:
-  adapter: oci8
-  database: //your_database_host:port/service_name
-  username: your_username
-  password: your_password
