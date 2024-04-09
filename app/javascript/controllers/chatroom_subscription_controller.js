@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import { createConsumer } from "@rails/actioncable";
 
 export default class extends Controller {
-  static values = { chatroomId: Number };
+  static values = { chatroomId: Number, currentUserId: Number };
   static targets = ["messages"];
 
   connect() {
@@ -20,9 +20,8 @@ export default class extends Controller {
     const temp1 = document.createElement("div");
     temp1.innerHTML = data;
     const dataHTML = temp1.childNodes[0];
-    const firstMessageSent = document.querySelector(".sent-by-mentor");
 
-    if (firstMessageSent.dataset.userId !== dataHTML.dataset.userId) {
+    if (this.currentUserIdValue != dataHTML.dataset.userId) {
       // remove sent-by-mentor class from dataHTML
       dataHTML.classList.remove("sent-by-mentor");
       dataHTML.classList.add("sent-by-non-mentor");

@@ -1,6 +1,6 @@
 <!-- app/views/chatrooms/show.html.erb -->
 
-<div class= 'whole chatroom' data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+<div class= 'whole chatroom' data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
   <div class='headers'>
     <h1><%= @chatroom.other_user(current_user).name %></h1>
 
