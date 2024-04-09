@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to @user, notice: 'Bio was successfully updated.'
+      redirect_to profile_path, notice: 'Bio was successfully updated.'
     else
       render :edit
     end
