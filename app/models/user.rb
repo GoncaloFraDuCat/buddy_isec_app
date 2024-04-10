@@ -41,17 +41,17 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(access_token)
-    binding.pry
     data = access_token.info
     user = User.where(email: data['email']).first
 
     # If the user doesn't exist, create a new one
-    user ||= User.create(
+    user ||= User.new(
       email: data['email'],
-      password: Devise.friendly_token[0, 20], # Secure random token
+      # password: Devise.friendly_token[0, 20], # Secure random token
       # Add any additional fields you want to store from Google
       # For example, if you want to store the user's name:
-      name: data['name']
+      name: data['name'],
+      mentor: false
       # Add other fields as necessary
     )
     user

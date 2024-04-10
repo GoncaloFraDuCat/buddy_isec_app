@@ -37,6 +37,18 @@ end
   )
 end
 
+if ENV['ADMIN_EMAIL'].present?
+  User.create!(
+    name: 'Admin',
+    email: ENV['ADMIN_EMAIL'],
+    bio: 'I am the administrator of this application.',
+    area_of_study: 'Computer Science',
+    current_year: 3,
+    mentor: true,
+    student_id: Faker::Number.number(digits: 6)
+  )
+end
+
 15.times do
   mentor = User.mentors.sample
   student = User.students.sample
