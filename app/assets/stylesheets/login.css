@@ -4,6 +4,10 @@
   background-color: transparent;
 }
 
+.button_to:hover {
+  background-color: transparent;
+}
+
 .button_to {
   /*this is the login button wrap*/
   background: none;

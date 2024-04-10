@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'users/sessions#destroy', as: 'destroy_user_session'
   end
 
-  root to: 'pages#homepage'
+  root to: 'pages#search'
   get '/search', to: 'pages#search', as: 'search'
   get '/profile', to: 'pages#profile'
 
