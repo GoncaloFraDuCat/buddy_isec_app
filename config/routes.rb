@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, controllers: { sessions: 'users/sessions', omniauth_callbacks: 'users/omniauth_callbacks' }
+
   resources :mentorship_requests, only: %i[new create index show update destroy] do
     member do
       patch 'accept', to: 'mentorship_requests#accept', as: 'accept_mentorship_request'
@@ -25,5 +26,5 @@ Rails.application.routes.draw do
   patch '/mentorship_requests/:id/cancel', to: 'mentorship_requests#cancel', as: 'cancel_mentorship_request'
 
   # Updated users resource to include edit and update actions
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: %i[show edit update]
 end
