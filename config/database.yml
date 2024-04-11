@@ -24,11 +24,3 @@ test:
 production:
   <<: *default
   database: isec_production
-
-mysql:
-  adapter: mysql2
-  encoding: utf8
-  username: <%= ENV.fetch("MYSQL_USER") { root } %>
-  password: <%= ENV.fetch("MYSQL_PASSWORD") { password } %>
-  host: 94.46.175.52
-  port: 3306
