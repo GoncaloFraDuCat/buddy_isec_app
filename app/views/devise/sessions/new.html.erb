@@ -16,13 +16,11 @@
           <%= f.label :email, "Email" %><br />
           <%= f.email_field :email, autocomplete: "email" %>
         </div>
-
         <div class="log-in-id">
-          <%= f.label :student_id, "Student ID" %><br />
-          <%= f.number_field :student_id, autofocus: true, autocomplete: "student_id" %>
+        <%= f.label :student_id, "Student ID" %><br />
+        <%= f.number_field :student_id, autofocus: true, autocomplete: "student_id" %>
         </div>
-
-
+    
         <div class="actions">
           <%= button_to image_tag('log-in_logo.png', alt: 'log-in_logo', class: 'log-in_logo'), user_session_path, method: :post, class: 'button_to' %>
         </div>

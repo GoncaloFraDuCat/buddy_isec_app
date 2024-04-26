@@ -8,27 +8,50 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: Isec_buddy_db
+  timeout: 5000
 
 development:
   <<: *default
-  username: GoncaloFraDuCat
-  password: Gcatarro97NYK!
-  host: localhost
+  adapter: mysql2
+  encoding: utf8mb4
+  database: isec_buddy_db
+  username: '5uDb8udDy'
+  password: 'uMGUdk>9#Yx!5G7N_AzEv}i0'
+  #username: <%= ENV.fetch("MYSQL_USER") { user } %>
+  #password: <%= ENV.fetch("MYSQL_PASSWORD") { password } %>
+  host: 127.0.0.1
+  #host: 94.46.175.52
   port: 3306
-  database: Isec_buddy_db
+
+  
 
 test:
   <<: *default
-  username: GoncaloFraDuCat
-  password: Gcatarro97NYK!
+  adapter: mysql2
+  encoding: utf8mb4
+  database: isec_buddy_db
+  username: '5uDb8udDy'
+  password: 'uMGUdk>9#Yx!5G7N_AzEv}i0'
+  #username: <%= ENV.fetch("MYSQL_USER") { user } %>
+  #password: <%= ENV.fetch("MYSQL_PASSWORD") { password } %>
   host: 127.0.0.1
+  #host: 94.46.175.52
   port: 3306
-  database: Isec_buddy_db
+
 
 production:
   <<: *default
-  username: <%= ENV.fetch("MYSQL_USER", "default_username") %>
-  password: <%= ENV.fetch("MYSQL_PASSWORD") { "default_password" } %>
-  host: 94.46.175.52
+  database: isec_buddy_db
+
+
+mysql:
+  adapter: mysql2
+  encoding: utf8mb4
+  database: isec_buddy_db
+  username: '5uDb8udDy'
+  password: 'uMGUdk>9#Yx!5G7N_AzEv}i0'
+  #username: <%= ENV.fetch("MYSQL_USER") { user } %>
+  #password: <%= ENV.fetch("MYSQL_PASSWORD") { password } %>
+  host: 127.0.0.1
+  #host: 94.46.175.52
   port: 3306

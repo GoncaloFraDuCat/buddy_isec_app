@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include ActionView::Helpers::AssetUrlHelper
 
-  USER_DATA_QUERY = 'SELECT * FROM users WHERE email = ?'.freeze
+  USER_DATA_QUERY = 'SELECT * FROM users WHERE email = ?'
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

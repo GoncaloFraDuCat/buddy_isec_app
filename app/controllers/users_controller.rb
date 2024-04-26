@@ -10,11 +10,12 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to profile_path, notice: 'Bio was successfully updated.'
+       redirect_to profile_path, notice: 'Bio was successfully updated.'
     else
-      render :edit
+       render :edit, status: :unprocessable_entity
     end
-  end
+   end
+   
 
    def index
     @users = User.by_area_of_study(params[:area_of_study])

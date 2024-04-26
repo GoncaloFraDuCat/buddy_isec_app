@@ -340,6 +340,7 @@ select {
   padding: 5px 10px;
   cursor: pointer;
   margin-top: 5px;
+  width: 90%;
 }
 
 .small {
@@ -354,3 +355,4 @@ select {
 .filter-form {
   margin-top: 15px;
 }
+
