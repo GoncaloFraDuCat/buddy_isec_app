@@ -1,4 +1,4 @@
-<%= simple_form_for @user do |f| %>
+<%= simple_form_for @user, url: user_path(@user), method: :patch do |f| %>
   <div class ="form-with-x">
     <div class="bio-field">
       <%= f.label :bio %>
@@ -10,6 +10,24 @@
       <% end %>
     </div>
   </div>
+
+ <% if current_user.mentor? %>
+    <div class='profile-h3-p'>
+      <div class="group">
+        <h3>Apoio ao Estudo:</h3>
+        <%= f.input_field :apoio_estudo, type: :checkbox, checked: @user.apoio_estudo %>
+      </div>
+      <div class="group">
+        <h3>Apoio a Bolsas:</h3>
+        <%= f.input_field :apoio_bolsas, type: :checkbox, checked: @user.apoio_bolsas %>
+      </div>
+      <div class="group">
+        <h3>Ajuda Social:</h3>
+        <%= f.input_field :ajuda_social, type: :checkbox, checked: @user.ajuda_social %>
+      </div>
+    </div>
+  <% end %>
+
 
   <div class="photo-field">
     <%= f.input :photo, as: :file %>

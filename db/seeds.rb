@@ -15,25 +15,31 @@ areas_of_study = ['Comunicação Global', 'Design e Produção Gráfica', 'Educa
 20.times do
   User.create!(
     name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
-    email: "#{Faker::Internet.user_name}@iseclisboa.pt", # Generate a random email
+    email: "#{Faker::Internet.user_name}@iseclisboa.pt",
     bio: Faker::Lorem.paragraph(sentence_count: 5),
     area_of_study: areas_of_study.sample,
     current_year: Faker::Number.between(from: 1, to: 3),
-    mentor: false, # This user is a student
-    student_id: Faker::Number.number(digits: 6)
+    mentor: false,
+    student_id: Faker::Number.number(digits: 6),
+    ajuda_social: false,
+    apoio_estudo: false,
+    apoio_bolsas: false
   )
 end
 
-# Generate 5 mentors
+# Generate 10 mentors
 10.times do
   User.create!(
     name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
-    email: "#{Faker::Internet.user_name}@iseclisboa.pt", # Generate a random email
+    email: "#{Faker::Internet.user_name}@iseclisboa.pt",
     bio: Faker::Lorem.paragraph(sentence_count: 5),
     area_of_study: areas_of_study.sample,
     current_year: Faker::Number.between(from: 2, to: 3),
-    mentor: true, # This user is a mentor
-    student_id: Faker::Number.number(digits: 6)
+    mentor: true,
+    student_id: Faker::Number.number(digits: 6),
+    ajuda_social: [true, false].sample,
+    apoio_estudo: [true, false].sample,
+    apoio_bolsas: [true, false].sample
   )
 end
 

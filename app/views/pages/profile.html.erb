@@ -40,5 +40,22 @@
   </div>
 </div>
 
+<% if current_user.mentor? %>
+  <div class='profile-h3-p'>
+    <div class="group">
+      <h3>Apoio ao Estudo:</h3>
+      <p><%= current_user.apoio_estudo ? 'Sim' : 'Não' %></p>
+    </div>
+    <div class="group">
+      <h3>Apoio a Bolsas:</h3>
+      <p><%= current_user.apoio_bolsas ? 'Sim' : 'Não' %></p>
+    </div>
+    <div class="group">
+      <h3>Apoio Social:</h3>
+      <p><%= current_user.ajuda_social ? 'Sim' : 'Não' %></p>
+    </div>
+  </div>
+<% end %>
+
 
 <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light mx-2" %>
