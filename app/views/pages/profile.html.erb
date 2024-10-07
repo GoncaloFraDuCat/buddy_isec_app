@@ -58,4 +58,25 @@
 <% end %>
 
 
+<% if current_user.mentor? %>
+  <h2>Posts by <%= @user.name %></h2>
+  <% @user.posts.each do |post| %>
+    <div class="post">
+      <h1><%= post.title %></h1>
+      <%= image_tag post.image, alt: post.title %>
+      <p><%= post.body %></p>
+      <div class="post-buttons">
+        <%= button_to "Delete Post", post_path(post), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+
+<% if current_user.mentor? %>
+  <%= link_to "Create New Post", new_post_path, class: "btn btn-primary" %>
+<% end %>
+
 <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light mx-2" %>
+
+<%= javascript_tag 'posts' %>

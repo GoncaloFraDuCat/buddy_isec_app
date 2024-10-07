@@ -3,6 +3,7 @@ import "@hotwired/turbo-rails";
 import "controllers";
 import "@rails/actioncable";
 
+
 function appHeight() {
   const doc = document.documentElement;
   // Multiplied by 0.01 to get a percentage value
@@ -11,3 +12,6 @@ function appHeight() {
 
 window.addEventListener("resize", appHeight);
 appHeight();
+
+//= require rails-ujs
+//= require posts

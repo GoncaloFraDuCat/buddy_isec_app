@@ -27,4 +27,7 @@ Rails.application.routes.draw do
 
   # Updated users resource to include edit and update actions
   resources :users, only: %i[show edit update]
+
+  resources :posts, only: [:new, :create, :edit, :update, :destroy]
+
 end

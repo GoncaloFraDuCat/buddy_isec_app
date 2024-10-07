@@ -50,6 +50,17 @@
   </div>
 <% end %>
 
+<% if @user.mentor? %>
+  <h2>Posts by <%= @user.name %></h2>
+  <% @user.posts.each do |post| %>
+    <div class="post">
+      <h1><%= post.title %></h1>
+<%= image_tag post.default_image, alt: post.title %>
+      <p><%= post.body %></p>
+    </div>
+  <% end %>
+<% end %>
+
 
 
   <% if !current_user.mentor? && @user.mentor? %>

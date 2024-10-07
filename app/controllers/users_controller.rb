@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
   end
 
   def edit
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
    def index
     @users = User.by_area_of_study(params[:area_of_study])
       @pagy, @users = pagy(User.all, items: 8)
-  end
+   end
 
   private
 
@@ -34,7 +35,8 @@ class UsersController < ApplicationController
       :student_id,
       :apoio_estudo,
       :ajuda_social,
-      :apoio_bolsas
+      :apoio_bolsas,
+      :photo
     )
   end
 end

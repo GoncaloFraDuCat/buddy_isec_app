@@ -22,6 +22,8 @@ class User < ApplicationRecord
   has_many :sent_requests, class_name: 'MentorshipRequest', foreign_key: 'mentor_id'
   has_many :received_requests, class_name: 'MentorshipRequest', foreign_key: 'mentee_id'
   has_one_attached :photo
+  has_many :posts, dependent: :destroy
+
 
   scope :by_area_of_study, ->(area) { where(area_of_study: area) if area.present? }
   scope :mentors, -> { where(mentor: true) }

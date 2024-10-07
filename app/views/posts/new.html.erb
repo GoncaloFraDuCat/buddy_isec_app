@@ -1,0 +1,16 @@
+<h1>Create a Post</h1>
+
+<%= simple_form_for @post, html: { multipart: true } do |f| %>
+  <div>
+    <%= f.input :title, label: "Title (H1)" %>
+  </div>
+  <div>
+    <%= f.input :body, label: "Content (p)" %>
+  </div>
+  <div>
+    <%= f.input :image, as: :file, label: "Image" %>
+  </div>
+  <div>
+    <%= f.submit "Create Post" %>
+  </div>
+<% end %>
