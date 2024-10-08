@@ -3,9 +3,14 @@
 <% end %>
 
 <%= form_with(url: search_path, method: "get", class: 'filter-form') do %>
-  <%= label_tag(:area_of_study, "Area de Estudo:") %>
-  <%= select_tag(:area_of_study, options_for_select(["Todas as Areas"] + User.pluck(:area_of_study).uniq, params[:area_of_study])) %>
+
+   <%= label_tag(:tipo_ajuda, "Tipo de Ajuda") %>
+  <%= select_tag(:tipo_ajuda, options_for_select(['Ajuda Social', 'Apoio Estudo', 'Apoio Bolsas'], params[:tipo_ajuda]), class: "form-control") %>
   <%= submit_tag("Filtrar") %>
+
+
+
+
 <% end %>
 
 

@@ -5,11 +5,23 @@ class PagesController < ApplicationController
     # Start with all mentors
     mentors = User.where(mentor: true)
 
+
+    case params[:tipo_ajuda]
+    when 'Ajuda Social'
+      mentors = mentors.where(ajuda_social: true)
+    when 'Apoio Estudo'
+      mentors = mentors.where(apoio_estudo: true)
+    when 'Apoio Bolsas'
+      mentors = mentors.where(apoio_bolsas: true)
+    end
+
     # Filter mentors by area_of_study if a parameter is provided and not "All Areas of Study"
     mentors = mentors.by_area_of_study(params[:area_of_study]) unless params[:area_of_study] == 'Todas as Areas'
 
-    # Select 8 random mentors from the filtered list
+
+  # Select 8 random mentors from the filtered list
     @pagy, @mentors = pagy(mentors, items: 8)
+
   end
 
   def profile
