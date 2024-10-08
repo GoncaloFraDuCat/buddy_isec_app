@@ -16,6 +16,10 @@ class Post < ApplicationRecord
     ActionController::Base.helpers.asset_url('missing-pic.png')
   end
 
+  def created_at
+    read_attribute(:created_at) || Time.now
+  end
+
 
 
     private

@@ -90,9 +90,9 @@ small {
 }
 
 .sent-by-mentor,
-.sent-by-non-mentor,
+.sent-by-non-mentor
 p {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .sent-by-mentor {

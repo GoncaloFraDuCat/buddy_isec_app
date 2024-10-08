@@ -16,6 +16,8 @@ table {
   border: 2px solid #397ec4;
   border-radius: 10px;
   margin-bottom: 10px;
+  box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+
 }
 
 .mentors_table div {

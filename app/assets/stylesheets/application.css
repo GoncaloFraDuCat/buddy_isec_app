@@ -17,7 +17,10 @@
 * {
   box-sizing: border-box;
   transition: all 0.3s;
-  font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+
 }
 
 html,
@@ -26,6 +29,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #dce3f5;
+  font-family: "Montserrat", sans-serif;
 }
 
 .header {
@@ -353,4 +357,42 @@ select {
 
 .filter-form {
   margin-top: 15px;
+}
+
+.post {
+  margin-bottom: 2%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  padding: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10%;
+  font-size: 14px;;
+}
+
+.post h1 {
+  font-size: medium;
+}
+
+.post img {
+  border-style: solid;
+  border-radius: 5px;
+  /* -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75); */
+  -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  /* box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75); */
+  box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  margin: 3% 3% 10% 3%;
+  max-width: 33vh;
+}
+
+#post-date {
+  font-stretch: extra-condensed;
+}
+
+#posts-h1 {
+  color: #397ec4;
+    font-size: x-large;
+    margin-top: 20%;
+    text-align: center;
+
 }
