@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
-
+    @user = User.find(params[:id])
+    @user.reload
   end
 
   def update

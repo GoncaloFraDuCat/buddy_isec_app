@@ -61,19 +61,33 @@
 <% if current_user.mentor? %>
   <h2 id="posts-h1">Posts</h2>
   <% @user.posts.each do |post| %>
+      <% next if post.nil? %>
+
     <div class="post">
       <h1><%= post.title %></h1>
+            <% if post.image.attached? %>
+
       <%= image_tag post.image, alt: post.title %>
-      <p id="post-date"><%= post.created_at.strftime("%B %d, %Y") %></p>
+            <% else %>
+        <p>No image attached</p>
+      <% end %>
+
+<p id="post-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
       <p><%= post.body %></p>
       <div class="post-buttons">
         <%= button_to "Delete Post", post_path(post), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
       </div>
     </div>
   <% end %>
+
+
 <% if current_user.mentor? %>
-  <%= link_to "Create New Post", new_post_path, class: "btn btn-primary" %>
+  <%= link_to " ", new_post_path, class: "new_post_logo" %>
+
 <% end %>
+
+
+
 <% end %>
 
 

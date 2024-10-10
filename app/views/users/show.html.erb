@@ -33,25 +33,23 @@
 
 
 
-  <% if current_user.mentor? %>
   <div class='profile-h3-p'>
     <div class="group">
       <h3>Apoio ao Estudo:</h3>
-      <p><%= current_user.apoio_estudo ? 'Sim' : 'Não' %></p>
+      <p><%= @user.apoio_estudo ? 'Sim' : 'Não' %></p>
     </div>
     <div class="group">
       <h3>Apoio a Bolsas:</h3>
-      <p><%= current_user.apoio_bolsas ? 'Sim' : 'Não' %></p>
+      <p><%= @user.apoio_bolsas ? 'Sim' : 'Não' %></p>
     </div>
     <div class="group">
       <h3>Apoio Social:</h3>
-      <p><%= current_user.ajuda_social ? 'Sim' : 'Não' %></p>
+      <p><%= @user.ajuda_social ? 'Sim' : 'Não' %></p>
     </div>
   </div>
-<% end %>
 
-<% if @user.mentor? %>
-  <h2>Posts<%= @user.name %></h2>
+
+  <h2 id="posts-h1">Posts</h2>
   <% @user.posts.each do |post| %>
     <div class="post">
       <h1><%= post.title %></h1>
@@ -60,7 +58,6 @@
       <p><%= post.body %></p>
     </div>
   <% end %>
-<% end %>
 
 
 
