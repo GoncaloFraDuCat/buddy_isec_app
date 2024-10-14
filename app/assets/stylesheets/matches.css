@@ -49,3 +49,17 @@ table {
   width: 30px;
   padding-left: 6px;
 }
+
+.user-img {
+  max-width: 8vh;
+}
+
+.user-img-1 {
+  max-width: 8vh;
+}
+
+.user-img img {
+  height: 100%;
+  width: 100%;
+    border-radius: 50%;
+}

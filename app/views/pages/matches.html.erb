@@ -10,8 +10,22 @@
     <div class="mentors_table">
       <% @requests.each do |request| %>
         <div class="request">
-          <div class="name"><%= request.mentee == current_user ? request.mentor.name : request.mentee.name
- %></div>
+          <div class="user-img">
+            <% if request.mentor&.default_photo.present? %>
+              <%= image_tag request.mentor.default_photo %>
+            <% else %>
+            <div class="user-img-1">
+              <%= image_tag "default_user_image.jpg" %>
+            </div>
+            <% end %>
+          </div>
+          <div class="name">
+            <% if request.mentee == current_user %>
+              <%= request.mentor.name %>
+            <% else %>
+              <%= request.mentee.name %>
+            <% end %>
+          </div>
           <div class="others">
             <%= render partial: 'shared/request_status', locals: { request: request } %>
           </div>

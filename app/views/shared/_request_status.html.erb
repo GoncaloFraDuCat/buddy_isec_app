@@ -29,8 +29,14 @@
 
 <% end %>
 <div>
-  <%= link_to user_path(request.mentee), class: 'x_button' do %>
-    <%= image_tag "info_logo.png", alt: "Info", class: "matches-x-button" %>
+  <% if current_user.mentor? %>
+    <%= link_to user_path(request.mentee), class: 'x_button' do %>
+      <%= image_tag "info_logo.png", alt: "Info", class: "matches-x-button" %>
+    <% end %>
+  <% else %>
+    <%= link_to user_path(request.mentor), class: 'x_button' do %>
+      <%= image_tag "info_logo.png", alt: "Info", class: "matches-x-button" %>
+    <% end %>
   <% end %>
 </div>
 <% if current_user.mentor? && request.status != 'accepted' %>
