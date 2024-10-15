@@ -22,6 +22,15 @@ class PagesController < ApplicationController
   # Select 8 random mentors from the filtered list
     @pagy, @mentors = pagy(mentors, items: 8)
 
+    @areas_of_study = ['Comunicação Global', 'Design e Produção Gráfica', 'Educação Básica', 'Engenharia de Proteção Civil',
+                       'Energias Renováveis e Ambiente', 'Gestão Aeronáutica', 'Gestão Autárquica', 'Gestão Hoteleira',
+                       'Óptica e Optometria', 'Ciências Aeronáuticas e do Espaço', 'Ciência e Visualização de Dados']
+
+    @selected_area_of_study = params[:area_of_study]
+    @selected_tipo_ajuda = params[:tipo_ajuda]
+
+    session[:filter_type] = params[:tipo_ajuda]
+    session[:filter_area] = params[:area_of_study]
   end
 
   def profile

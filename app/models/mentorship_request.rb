@@ -22,4 +22,7 @@ class MentorshipRequest < ApplicationRecord
   def create_chatroom
     self.chatroom = Chatroom.create(mentorship_request_id: id)
   end
+
+
+
 end

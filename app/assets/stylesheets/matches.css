@@ -50,16 +50,20 @@ table {
   padding-left: 6px;
 }
 
-.user-img {
-  max-width: 8vh;
+.request {
+  display: flex;
+  align-items: center;
 }
 
-.user-img-1 {
-  max-width: 8vh;
+.user-img img{
+  width: 6vh;
+  height: 6vh;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
-.user-img img {
-  height: 100%;
+.circle-image {
   width: 100%;
-    border-radius: 50%;
+  height: 100%;
+  object-fit: contain;
 }

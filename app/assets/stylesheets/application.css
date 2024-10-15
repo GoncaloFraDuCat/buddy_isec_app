@@ -42,11 +42,10 @@ body {
   right: 0;
   height: 80px;
   padding: 0 20px;
-  background-color: #fff;
   z-index: 1000;
-
+  background-image: url("nav_color.png");
   padding-right: 40px;
-  background-color: #397ec4;
+
 }
 
 .container {
@@ -413,4 +412,8 @@ select {
   background-image: url('new_post.png');
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.area-of-study-filter-form {
+  margin-top: 5%;
 }

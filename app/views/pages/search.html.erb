@@ -3,15 +3,18 @@
 <% end %>
 
 <%= form_with(url: search_path, method: "get", class: 'filter-form') do %>
-
-   <%= label_tag(:tipo_ajuda, "Tipo de Ajuda") %>
+  <%= label_tag(:tipo_ajuda, "Tipo de Ajuda") %>
   <%= select_tag(:tipo_ajuda, options_for_select(['Ajuda Social', 'Apoio Estudo', 'Apoio Bolsas'], params[:tipo_ajuda]), class: "form-control") %>
   <%= submit_tag("Filtrar") %>
-
-
-
-
 <% end %>
+
+<div id="area-of-study-filter" style="display: <%= params[:tipo_ajuda] == 'Apoio Estudo' ? 'block' : 'none' %>;">
+  <%= form_with(url: search_path, method: "get", class: 'area-of-study-filter-form') do %>
+    <%= label_tag(:area_of_study, "Área de Estudo") %>
+    <%= select_tag(:area_of_study, options_for_select(@areas_of_study, @selected_area_of_study), class: "form-control area-of-study-select") %>
+    <%= submit_tag("Filtrar por Área de Estudo") %>
+  <% end %>
+</div>
 
 
 <div class="mentors-containers">
@@ -49,3 +52,58 @@
     <%== pagy_bootstrap_nav(@pagy) %>
   </div>
 <% end %>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tipoAjudaSelect = document.getElementById('tipo_ajuda');
+  const areaOfStudyFilter = document.getElementById('area-of-study-filter');
+
+  // Function to handle tipo_ajuda change
+  function handleTipoAjudaChange(selectedOption) {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (selectedOption === 'Apoio Estudo') {
+      areaOfStudyFilter.style.display = 'block';
+      urlParams.set('tipo_ajuda', selectedOption);
+      window.history.pushState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+    } else {
+      areaOfStudyFilter.style.display = 'none';
+      urlParams.delete('tipo_ajuda');
+      window.history.pushState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+    }
+  }
+
+  // Handle tipo_ajuda change event
+  tipoAjudaSelect.addEventListener('change', function() {
+    handleTipoAjudaChange(this.value);
+  });
+
+  // Function to handle area_of_study form submission
+  function handleSubmitAreaOfStudy(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Extract area_of_study value from form data
+    const areaOfStudyValue = Array.from(formData.entries()).find(([_, value]) => value.name === 'area_of_study')[1].value;
+
+    // Update URL parameters without changing tipo_ajuda
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('area_of_study', areaOfStudyValue);
+
+    window.history.pushState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+
+    // Submit the form
+    form.submit();
+  }
+
+  // Add event listener to area_of_study submit button
+  const areaOfStudySubmitButton = document.querySelector('.area-of-study-filter-form input[type="submit"]');
+  if (areaOfStudySubmitButton) {
+    areaOfStudySubmitButton.addEventListener('click', handleSubmitAreaOfStudy);
+  }
+}
+
+</script>

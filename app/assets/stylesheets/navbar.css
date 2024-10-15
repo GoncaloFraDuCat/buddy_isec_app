@@ -8,6 +8,7 @@
   color: #ffffff; /* Light text */
   padding: 10px 0; /* Add some padding */
   height: 50px;
+  background-image:url("nav_color.png")
 }
 
 .container-fluid {

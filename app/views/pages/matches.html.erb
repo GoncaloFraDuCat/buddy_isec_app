@@ -9,16 +9,23 @@
   <div class="container">
     <div class="mentors_table">
       <% @requests.each do |request| %>
-        <div class="request">
-          <div class="user-img">
-            <% if request.mentor&.default_photo.present? %>
-              <%= image_tag request.mentor.default_photo %>
-            <% else %>
-            <div class="user-img-1">
-              <%= image_tag "default_user_image.jpg" %>
-            </div>
-            <% end %>
-          </div>
+
+
+
+    <div class="request">
+  <div class="user-img">
+    <% if request.mentee == current_user %>
+      <%= image_tag(request.mentor&.default_photo || "missing-pic.png") %>
+    <% elsif request.mentor == current_user %>
+      <%= image_tag(request.mentee&.default_photo || "missing-pic.png") %>
+    <% else %>
+      <div class="user-img-1">
+        <%= image_tag "missing-pic.png" %>
+      </div>
+    <% end %>
+  </div>
+
+
           <div class="name">
             <% if request.mentee == current_user %>
               <%= request.mentor.name %>
