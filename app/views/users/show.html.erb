@@ -2,13 +2,16 @@
   Perfil
 <% end %>
 
+
+<div class="profile-page-info-1">
 <div class="user_info_container">
   <div class="profile-pic-show" style="background-image: url('<%= @user.default_photo %>')"></div>
+<p><%= @user.name %></p>
+</div>
+</div>
 
   <div class='profile-h3-p'>
     <div class="group">
-      <h3>Nome:</h3>
-      <p><%= @user.name %></p>
     </div>
     <div class="group">
       <h3>Area de Estudo:</h3>
@@ -51,15 +54,20 @@
 
   <div class="badges">
   <h2 style="text-align: center;">Badges</h2>
-<% if current_user.badges.any? %>
+<% if @user.badges.any? %>
 <div class="badges-content">
-  <% current_user.badges.each do |badge| %>
+  <% @user.badges.each do |badge| %>
+    <div class="badges-content-all">
+
     <%= image_tag(badge.image_url) %> <%= badge.name %>
+    </div>
   <% end %>
 </div>
 <% else %>
   <p>Nenhum badge obtido ainda.</p>
 <% end %>
+
+
 </div>
 
 

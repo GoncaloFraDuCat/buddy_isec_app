@@ -89,19 +89,26 @@ h3 {
 
 .profile-h3-p {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 1rem auto;
-  gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1rem auto;
+    gap: 10px;
+    font-size: 0.85em;
+    background: lavenderblush;
+    padding: 1% 5% 6% 5%;
+    BORDER-RADIUS: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
+    padding-top: 1%;
 }
 
 .profile-h3-p .group {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 10px;
-  gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    gap: 10px;
+    align-content: flex-start;
 }
 
 .profile-h3-p p,
@@ -199,11 +206,10 @@ h2 {
 .page-title {
   color: white;
   border-radius: 10px;
+  font-size: x-large;
 }
 
-.page-title {
-  font-stretch: ultra-condensed;
-}
+
 
 .profile-pic,
 .mentor-image {
@@ -233,9 +239,12 @@ h2 {
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 100px;
-  border-style: solid;
+
   border-color: #397ec4;
   margin-bottom: 0px;
+  background-image: url(http://res.cloudinary.com/dso6mnrzm/image/upload/g6mplcsnosgjs7oqqy4rvwvymaxd.jpeg);
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 11px;
 }
 
 .profile-page-title {
@@ -350,8 +359,8 @@ select {
 }
 
 .small-img {
-  height: 35px !important;
-  width: 35px !important;
+  height: 25px !important;
+  width: 25px !important;
 }
 
 .filter-form {
@@ -359,16 +368,19 @@ select {
 }
 
 .post {
-  margin-bottom: 2%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.84);
-    padding: 4%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10%;
-    font-size: 14px;
-    background: darkturquoise;
-    border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10%;
+  font-size: 0.85em;
+  /* background: lavenderblush; */
+  /* border-radius: 5px; */
+  font-size: 0.85em;
+  background: lavenderblush;
+  padding: 1% 5% 6% 5%;
+  BORDER-RADIUS: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
+  padding-top: 4%;
 }
 
 .post h1 {
@@ -377,15 +389,12 @@ select {
 }
 
 .post img {
-  border-style: solid;
   border-radius: 5px;
-  /* -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75); */
-  -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
-  /* box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75); */
-  box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
-  margin: 3% 3% 10% 3%;
-  max-width: 33vh;
+    box-shadow: 3px 2px 5px 0px rgba(0, 7, 14, 0.75);
+    margin: 3% 3% 10% 3%;
+    width: 73%;
 }
+
 
 #post-date {
   font-stretch: extra-condensed;
@@ -407,7 +416,7 @@ select {
   cursor: pointer;
   margin-top: 5%;
   margin-bottom: 5%;
-  width: 20%;
+  width: 15%;
   height: 11vh;
   background-image: url('new_post.png');
   background-repeat: no-repeat;
@@ -419,9 +428,10 @@ select {
 }
 
 
-.badges
-{
-
+.badges {
+  padding-top: 2%;
+  padding-bottom: 1%;
+  font-size: 0.9em;
 }
 
 .badges-content
@@ -447,4 +457,13 @@ select {
 
 .logout-button {
   margin-top: 5%;
+}
+
+.profile-page-info-1, .profile-page-info-1 p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0vh;
+  font-weight: 700;
+  margin-top: 3vh;
 }
