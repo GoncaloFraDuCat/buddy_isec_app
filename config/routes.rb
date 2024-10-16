@@ -29,5 +29,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit update]
 
   resources :posts, only: [:new, :create, :edit, :update, :destroy]
+  resources :badges, only: [:show]
+
+
 
 end

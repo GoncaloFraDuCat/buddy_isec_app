@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   include ActionView::Helpers::AssetUrlHelper
 
+  after_create :assign_mentor_ativo_badge_if_needed
+
+
 
   USER_DATA_QUERY = 'SELECT * FROM users WHERE email = ?'.freeze
 
@@ -17,12 +20,18 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :bio, length: { maximum: 500 }
   validate :cannot_be_mentor_if_first_year
+  validates :active_mentorships_count, numericality: { greater_than_or_equal_to: 0 }
+  validate :allow_blank_name
+
+
 
   has_many :messages
   has_many :sent_requests, class_name: 'MentorshipRequest', foreign_key: 'mentor_id'
   has_many :received_requests, class_name: 'MentorshipRequest', foreign_key: 'mentee_id'
   has_one_attached :photo
   has_many :posts, dependent: :destroy
+  has_many :badges
+
 
 
   scope :by_area_of_study, ->(area) { where(area_of_study: area) if area.present? }
@@ -52,15 +61,76 @@ class User < ApplicationRecord
     # If the user doesn't exist, create a new one
     user ||= User.new(
       email: data['email'],
-      # password: Devise.friendly_token[0, 20], # Secure random token
-      # Add any additional fields you want to store from Google
-      # For example, if you want to store the user's name:
       name: data['name'],
       mentor: false
-      # Add other fields as necessary
     )
     user
   end
+
+  def cannot_be_mentor_if_first_year
+    return unless mentor? && current_year == 1
+
+    errors.add(:mentor, 'cannot be a mentor if in the first year')
+  end
+
+
+  def has_first_connection?
+    Badge.where(user_id: self.id).exists?(name: "1ª Conexão")
+  end
+
+  def first_connection_badge
+    Badge.first_connection unless has_first_connection?
+  end
+
+
+  def active_mentorships_count
+    received_requests.where(status: 'active').count
+  end
+
+  def is_mentor_active?
+    active_mentorships_count > 0
+  end
+
+  def award_active_mentor_badge
+    return unless mentor? && active_mentorships_count > 0
+
+    Badge.create!(
+      user_id: self.id,
+      name: "Active Mentor",
+      image_url: "active_mentor.png"
+    )
+  end
+
+  def remove_active_mentor_badge
+    badges.where(name: "Active Mentor").destroy_all
+  end
+
+
+
+
+  def increment_active_mentorships!
+    update(active_mentorships_count: active_mentorships_count + 1)
+  end
+
+  def decrement_active_mentorships!
+    update(active_mentorships_count: [active_mentorships_count - 1, 0].max)
+  end
+
+  def remove_mentor_ativo_badge
+    logger.info "Removing Mentor Ativo badge for user #{self.id}"
+    badges.where(name: "Mentor Ativo").destroy_all
+  end
+
+  def remove_active_mentor_badge
+    logger.info "Removing Active Mentor badge for user #{self.id}"
+    badges.where(name: "Active Mentor").destroy_all
+  end
+
+  def remove_badge(name)
+    logger.info "Removing badge '#{name}' for user #{self.id}"
+    badges.where(name: name).destroy_all
+  end
+
 
   private
 
@@ -69,4 +139,6 @@ class User < ApplicationRecord
 
     errors.add(:mentor, 'cannot be a mentor if in the first year')
   end
+
+
 end

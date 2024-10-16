@@ -395,7 +395,7 @@ select {
 #posts-h1 {
   color: #397ec4;
     font-size: x-large;
-    margin-top: 20%;
+    margin-top: 10%;
     text-align: center;
 
 }
@@ -415,5 +415,36 @@ select {
 }
 
 .area-of-study-filter-form {
+  margin-top: 5%;
+}
+
+
+.badges
+{
+
+}
+
+.badges-content
+{
+  display: flex;
+  gap: 30px;
+  font-weight: bold;
+  width: 11vh;
+  align-items: center;
+  align-content: space-between;
+  flex-direction: row;
+  text-align: center;
+}
+
+.badges-content img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
+  border-style: solid;
+  border-color: #397ec4;
+}
+
+
+.logout-button {
   margin-top: 5%;
 }

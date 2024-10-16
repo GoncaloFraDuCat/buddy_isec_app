@@ -54,15 +54,3 @@ if ENV['ADMIN_EMAIL'].present?
     student_id: Faker::Number.number(digits: 6)
   )
 end
-
-15.times do
-  mentor = User.mentors.sample
-  student = User.students.sample
-
-  # Create a mentorship request
-  MentorshipRequest.create!(
-    mentor:,
-    mentee: student,
-    status: 'accepted'
-  )
-end

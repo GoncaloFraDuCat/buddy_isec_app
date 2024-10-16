@@ -49,6 +49,20 @@
   </div>
 
 
+  <div class="badges">
+  <h2 style="text-align: center;">Badges</h2>
+<% if current_user.badges.any? %>
+<div class="badges-content">
+  <% current_user.badges.each do |badge| %>
+    <%= image_tag(badge.image_url) %> <%= badge.name %>
+  <% end %>
+</div>
+<% else %>
+  <p>Nenhum badge obtido ainda.</p>
+<% end %>
+</div>
+
+
   <h2 id="posts-h1">Posts</h2>
   <% @user.posts.each do |post| %>
     <div class="post">

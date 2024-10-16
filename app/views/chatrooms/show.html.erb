@@ -3,8 +3,8 @@
 <div class= 'whole chatroom' data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
   <div class='headers'>
 
-    <h1><%= @chatroom.other_user(current_user).name %></h1>
     <img src="<%= @chatroom.other_user(current_user).default_photo %>" alt="User Photo" id="chatroom-pic">
+    <h1><%= @chatroom.other_user(current_user).name %></h1>
 
     <div class="x_button">
       <%= link_to matches_path, class: 'x_button' do %>

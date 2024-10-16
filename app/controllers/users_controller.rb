@@ -20,17 +20,14 @@ class UsersController < ApplicationController
 
    def index
     @users = User.by_area_of_study(params[:area_of_study])
-
     if params[:tipo_ajuda] == 'Apoio Estudo'
       @users = @users.where(mentor: false)
     end
-
     @pagy, @users = pagy(User.all, items: 8)
-
-
    end
 
-  private
+
+    private
 
   def user_params
     params.require(:user).permit(
@@ -44,7 +41,8 @@ class UsersController < ApplicationController
       :apoio_estudo,
       :ajuda_social,
       :apoio_bolsas,
-      :photo
+      :photo,
+      :active_mentorships_count
     )
   end
 end

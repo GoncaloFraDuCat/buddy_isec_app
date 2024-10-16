@@ -4,7 +4,7 @@
 
 <%= form_with(url: search_path, method: "get", class: 'filter-form') do %>
   <%= label_tag(:tipo_ajuda, "Tipo de Ajuda") %>
-  <%= select_tag(:tipo_ajuda, options_for_select(['Ajuda Social', 'Apoio Estudo', 'Apoio Bolsas'], params[:tipo_ajuda]), class: "form-control") %>
+  <%= select_tag(:tipo_ajuda, options_for_select(['-', 'Ajuda Social', 'Apoio Estudo', 'Apoio Bolsas'], params[:tipo_ajuda]), class: "form-control") %>
   <%= submit_tag("Filtrar") %>
 <% end %>
 
@@ -55,7 +55,61 @@
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+ddocument.addEventListener('DOMContentLoaded', function() {
+  const tipoAjudaSelect = document.querySelector('.filter-form select[name="tipo_ajuda"]');
+  const areaOfStudyFilter = document.getElementById('area-of-study-filter');
+
+  // Function to handle tipo_ajuda change
+  function handleTipoAjudaChange(selectedOption) {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (selectedOption === 'Apoio Estudo') {
+      areaOfStudyFilter.style.display = 'block';
+      urlParams.set('tipo_ajuda', selectedOption);
+      window.history.pushState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+    } else {
+      areaOfStudyFilter.style.display = 'none';
+      urlParams.delete('tipo_ajuda');
+      window.history.pushState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+    }
+  }
+
+  // Handle tipo_ajuda change event
+  tipoAjudaSelect.addEventListener('change', function() {
+    handleTipoAjudaChange(this.value);
+  });
+
+  // Function to handle area_of_study form submission
+  function handleSubmitAreaOfStudy(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Extract area_of_study value from form data
+    const areaOfStudyValue = Array.from(formData.entries()).find(([_, value]) => value.name === 'area_of_study')[1].value;
+
+    // Get current tipo_ajuda value from URL
+    const currentTipoAjuda = new URLSearchParams(window.location.search).get('tipo_ajuda') || 'Ajuda Social';
+
+    // Create new URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('tipo_ajuda', currentTipoAjuda);
+    urlParams.set('area_of_study', areaOfStudyValue);
+
+    window.history.pushState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+
+    // Submit the form
+    form.submit();
+  }
+
+  // Add event listener to area_of_study submit button
+  const areaOfStudySubmitButton = document.querySelector('.area-of-study-filter-form input[type="submit"]');
+  if (areaOfStudySubmitButton) {
+    areaOfStudySubmitButton.addEventListener('click', handleSubmitAreaOfStudy);
+  }
+});
+
   const tipoAjudaSelect = document.getElementById('tipo_ajuda');
   const areaOfStudyFilter = document.getElementById('area-of-study-filter');
 
