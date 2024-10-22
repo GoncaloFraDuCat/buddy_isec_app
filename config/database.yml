@@ -10,12 +10,9 @@ default: &default
   database: development.sqlite3
 
 development:
-  <<: *default
-  username: GoncaloFraDuCat
-  password: Gcatarro97NYK!
-  host: localhost
-  port: 3306
-  database: Isec_buddy_db
+  adapter: sqlite3
+  encoding: utf8mb4
+  database: development.sqlite3
 
 test:
   <<: *default

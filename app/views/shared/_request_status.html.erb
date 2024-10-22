@@ -2,6 +2,17 @@
   <div>
     <%= image_tag 'tick.png', alt: 'Accepted', class: 'status-icon' %>
   </div>
+<div>
+  <% if current_user.mentor? %>
+    <%= link_to user_path(request.mentee), class: 'x_button' do %>
+      <%= image_tag "info_logo.png", alt: "Info", class: "matches-x-button" %>
+    <% end %>
+  <% else %>
+    <%= link_to user_path(request.mentor), class: 'x_button' do %>
+      <%= image_tag "info_logo.png", alt: "Info", class: "matches-x-button" %>
+    <% end %>
+  <% end %>
+</div>
   <% if request.chatroom.present? %>
     <div>
       <%= link_to chatroom_path(request.chatroom), class: 'x_button' do %>
@@ -15,33 +26,26 @@
   <% end %>
 
   <div>
-    <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'x_button', form: { data: { turbo_confirm: 'De certeza que queres apagar esta conversa? Esta acção não é reversível!' } } do %>
+    <%= button_to destroy_mentorship_request_path(request), method: :patch, class: 'x_button', form: { data: { turbo_confirm: 'De certeza que queres apagar esta conversa? Esta acção não é reversível!' } } do %>
       <%= image_tag 'close.png', alt: 'Cancel', class: 'matches-x-button' %>
     <% end %>
   </div>
 
 <% else %>
   <div>
-    <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'x_button', form: { data: { turbo_confirm: 'De certeza que queres apagar esta conversa? Esta acção não é reversível!' } } do %>
+    <%= button_to destroy_mentorship_request_path(request), method: :patch, class: 'x_button', form: { data: { turbo_confirm: 'De certeza que queres apagar esta conversa? Esta acção não é reversível!' } } do %>
       <%= image_tag 'close.png', alt: 'Cancel', class: 'matches-x-button' %>
     <% end %>
   </div>
 
 <% end %>
-<div>
-  <% if current_user.mentor? %>
-    <%= link_to user_path(request.mentee), class: 'x_button' do %>
-      <%= image_tag "info_logo.png", alt: "Info", class: "matches-x-button" %>
-    <% end %>
-  <% else %>
-    <%= link_to user_path(request.mentor), class: 'x_button' do %>
-      <%= image_tag "info_logo.png", alt: "Info", class: "matches-x-button" %>
-    <% end %>
-  <% end %>
-</div>
 <% if current_user.mentor? && request.status != 'accepted' %>
   <div>
-    <%= button_to 'Yes', accept_mentorship_request_path(request), method: :patch %>
-    <%= button_to 'No', cancel_mentorship_request_path(request), method: :patch %>
+    <%= button_to accept_mentorship_request_path(request), method: :patch, class: 'yes_button' do %>
+      Yes
+    <% end %>
+    <%= button_to cancel_mentorship_request_path(id: request.id), method: :patch, class: 'no_button' do %>
+      No
+    <% end %>
   </div>
 <% end %>

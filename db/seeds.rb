@@ -18,7 +18,7 @@ areas_of_study = ['Comunicação Global', 'Design e Produção Gráfica', 'Educa
     email: "#{Faker::Internet.user_name}@iseclisboa.pt",
     bio: Faker::Lorem.paragraph(sentence_count: 5),
     area_of_study: areas_of_study.sample,
-    current_year: Faker::Number.between(from: 1, to: 3),
+    current_year: 1,
     mentor: false,
     student_id: Faker::Number.number(digits: 6),
     ajuda_social: false,

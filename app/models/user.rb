@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   include ActionView::Helpers::AssetUrlHelper
 
-  after_create :assign_mentor_ativo_badge_if_needed
 
 
 
@@ -88,7 +87,7 @@ class User < ApplicationRecord
   end
 
   def is_mentor_active?
-    active_mentorships_count > 0
+    :active_mentorships_count > 0
   end
 
   def award_active_mentor_badge
@@ -101,35 +100,21 @@ class User < ApplicationRecord
     )
   end
 
-  def remove_active_mentor_badge
-    badges.where(name: "Active Mentor").destroy_all
+  def remove_badge(badge_name)
+    badges.where(name: badge_name).destroy_all
   end
 
 
 
 
-  def increment_active_mentorships!
-    update(active_mentorships_count: active_mentorships_count + 1)
+  def increment_active_mentorships
+    User.increment_counter(:active_mentorships_count, id)
   end
 
-  def decrement_active_mentorships!
-    update(active_mentorships_count: [active_mentorships_count - 1, 0].max)
+  def decrement_active_mentorships
+    User.decrement_counter(:active_mentorships_count, id)
   end
 
-  def remove_mentor_ativo_badge
-    logger.info "Removing Mentor Ativo badge for user #{self.id}"
-    badges.where(name: "Mentor Ativo").destroy_all
-  end
-
-  def remove_active_mentor_badge
-    logger.info "Removing Active Mentor badge for user #{self.id}"
-    badges.where(name: "Active Mentor").destroy_all
-  end
-
-  def remove_badge(name)
-    logger.info "Removing badge '#{name}' for user #{self.id}"
-    badges.where(name: name).destroy_all
-  end
 
 
   private
@@ -139,6 +124,10 @@ class User < ApplicationRecord
 
     errors.add(:mentor, 'cannot be a mentor if in the first year')
   end
-
+  def allow_blank_name
+    if name.blank? && image_url.present?
+      errors.add(:name, "can't be blank")
+    end
+  end
 
 end

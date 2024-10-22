@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :mentorship_requests, only: %i[new create index show update destroy] do
     member do
       patch 'accept', to: 'mentorship_requests#accept', as: 'accept_mentorship_request'
+      delete 'destroy', to: 'mentorship_requests#destroy', as: 'destroy_mentorship_request'
       patch 'cancel', to: 'mentorship_requests#cancel', as: 'cancel_mentorship_request'
+
     end
   end
   resources :chatrooms, only: :show do
@@ -23,7 +25,9 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show', as: 'user'
   get '/matches', to: 'pages#matches', as: 'matches'
   patch '/mentorship_requests/:id/accept', to: 'mentorship_requests#accept', as: 'accept_mentorship_request'
+  patch '/mentorship_requests/:id/destroy', to: 'mentorship_requests#destroy', as: 'destroy_mentorship_request'
   patch '/mentorship_requests/:id/cancel', to: 'mentorship_requests#cancel', as: 'cancel_mentorship_request'
+
 
   # Updated users resource to include edit and update actions
   resources :users, only: %i[show edit update]

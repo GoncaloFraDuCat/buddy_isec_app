@@ -8,25 +8,21 @@ class MentorshipRequestsController < ApplicationController
   end
 
   def create
-    mentor = User.find_by(id: params[:mentor_id])
-    mentee = User.find_by(id: params[:mentee_id])
+    @mentor = User.find(params[:mentor_id])
+    @mentee = User.find(params[:mentee_id])
 
-    if mentor && mentee
-      existing_request = MentorshipRequest.find_by(mentor_id: mentor.id, mentee_id: mentee.id)
-      if existing_request
-        redirect_to matches_path(current_user), alert: 'You already have a pending request with this mentor.'
-      else
-        @mentorship_request = MentorshipRequest.new(mentor_id: mentor.id, mentee_id: mentee.id, status: 'pending')
-        if @mentorship_request.save
-          redirect_to matches_path(current_user), notice: 'Mentorship request sent successfully.'
-        else
-          redirect_to matches_path(current_user), alert: 'Failed to send mentorship request.'
-        end
-      end
+    @mentorship_request = MentorshipRequest.new(mentor_id: @mentor.id, mentee_id: @mentee.id, status: 'pending')
+
+    if @mentorship_request.save
+      # Notification logic here
+
+
+      redirect_to matches_path(current_user), notice: 'Mentorship request sent successfully.'
     else
-      redirect_to matches_path(current_user), alert: 'Invalid mentor or mentee ID.'
+      redirect_to matches_path(current_user), alert: 'Failed to send mentorship request.'
     end
   end
+
 
   def index
     @mentorship_requests = MentorshipRequest.all
@@ -34,21 +30,14 @@ class MentorshipRequestsController < ApplicationController
 
   def accept
     @mentorship_request = MentorshipRequest.find(params[:id])
+
     if @mentorship_request.update(status: 'accepted')
-      @mentorship_request.mentor.increment_active_mentorships!
-      @mentorship_request.mentee.increment_active_mentorships!
+      User.increment_counter(:active_mentorships_count, @mentorship_request.mentor.id)
+
 
       # Check if the mentor exists and is valid
-      if @mentorship_request.mentor && @mentorship_request.mentor.valid?
-        # Create the badge if the mentor doesn't have it yet
-        if @mentorship_request.mentor.badges.where(name: "Mentor Ativo").empty?
-          Badge.create!(
-            user_id: @mentorship_request.mentor.id,
-            name: "Mentor Ativo",
-            image_url: "mentor_ativo.png"
-          )
-        end
-      end
+      award_badge(@mentorship_request.mentor)
+
 
       redirect_to matches_path, notice: 'Mentorship request accepted.'
     else
@@ -62,11 +51,7 @@ class MentorshipRequestsController < ApplicationController
     @mentorship_request = MentorshipRequest.find(params[:id])
     if @mentorship_request.update(status: 'cancelled')
       @mentorship_request.destroy
-      @mentorship_request.mentor.remove_badge("Mentor Ativo")
-      @mentorship_request.mentee.remove_badge("Mentor Ativo")
 
-      @mentorship_request.mentor.decrement_active_mentorships!
-      @mentorship_request.mentee.decrement_active_mentorships!
 
       redirect_to matches_path, notice: 'Mentorship request cancelled and destroyed.'
     else
@@ -85,20 +70,26 @@ class MentorshipRequestsController < ApplicationController
   end
 
   def destroy
-    @request = MentorshipRequest.find(params[:id])
-    if @request.destroy
-      @request.mentor.remove_badge("Mentor Ativo")
-      @request.mentee.remove_badge("Mentor Ativo")
+    @mentorship_request = MentorshipRequest.find(params[:id])
+    if @mentorship_request.update(status: 'destroyed')
+      @mentorship_request.destroy
 
-      @request.mentor.decrement_active_mentorships!
-      @request.mentee.decrement_active_mentorships!
+      User.decrement_counter(:active_mentorships_count, @mentorship_request.mentor.id)
+      User.decrement_counter(:active_mentorships_count, @mentorship_request.mentee.id)
 
-      redirect_to matches_path, notice: 'Mentorship request was cancelled.'
+      # Get the current count for the mentor
+      current_count = User.where(id: @mentorship_request.mentor.id).sum('active_mentorships_count')
+
+      # Remove the badge only if the count is 0
+      if current_count == 0
+        @mentorship_request.mentor.remove_badge("Mentor Ativo")
+      end
+
+      redirect_to matches_path, notice: 'Mentorship request cancelled and destroyed.'
     else
-      redirect_to matches_path, alert: 'Failed to cancel mentorship request.'
+      redirect_to matches_path, alert: 'Failed to cancel and destroy mentorship request.'
     end
   end
-
 
 
 
@@ -127,18 +118,28 @@ class MentorshipRequestsController < ApplicationController
     )
   end
 
-  def award_mentor_ativo_badge
-    return unless mentor? && active_mentorships_count > 0
+  def award_badge(user)
+    return unless user && user.valid?
 
-    Badge.create!(
-      user_id: id,
-      name: "Mentor Ativo",
-      image_url: "mentor_ativo_badge.png"
-    )
+    if user.badges.where(name: "Mentor Ativo").empty?
+      Badge.create!(
+        user_id: user.id,
+        name: "Mentor Ativo",
+        image_url: "mentor_ativo.png"
+      )
+    end
   end
 
   def remove_mentor_ativo_badge
     badges.where(name: "Mentor Ativo").destroy_all
   end
 
+
+  def increment_user_mentorships
+    user.increment_active_mentorships
+  end
+
+  def decrement_user_mentorships
+    user.decrement_active_mentorships
+  end
 end

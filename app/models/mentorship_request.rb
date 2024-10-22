@@ -5,8 +5,7 @@ class MentorshipRequest < ApplicationRecord
 
   before_create :create_chatroom
 
-  after_create :increment_mentor_and_mentee_counts
-  after_destroy :decrement_mentor_and_mentee_counts
+
 
   validates :status, presence: true
 
@@ -26,14 +25,14 @@ class MentorshipRequest < ApplicationRecord
     self.chatroom = Chatroom.create(mentorship_request_id: id)
   end
 
-  def increment_mentor_and_mentee_counts
-    mentor.increment_active_mentorships!
-    mentee.increment_active_mentorships!
+  def increment_user_mentorships
+    User.increment_counter(:active_mentorships_count, mentor.id)
+    User.increment_counter(:active_mentorships_count, mentee.id)
   end
 
-  def decrement_mentor_and_mentee_counts
-    mentor.decrement_active_mentorships!
-    mentee.decrement_active_mentorships!
+  def decrement_user_mentorships
+    User.decrement_counter(:active_mentorships_count, mentor.id)
+    User.decrement_counter(:active_mentorships_count, mentee.id)
   end
 
 
