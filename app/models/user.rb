@@ -1,9 +1,6 @@
 class User < ApplicationRecord
   include ActionView::Helpers::AssetUrlHelper
 
-
-
-
   USER_DATA_QUERY = 'SELECT * FROM users WHERE email = ?'.freeze
 
   # Include default devise modules. Others available are:
@@ -72,39 +69,9 @@ class User < ApplicationRecord
     errors.add(:mentor, 'cannot be a mentor if in the first year')
   end
 
-
-  def has_first_connection?
-    Badge.where(user_id: self.id).exists?(name: "1ª Conexão")
-  end
-
-  def first_connection_badge
-    Badge.first_connection unless has_first_connection?
-  end
-
-
   def active_mentorships_count
     received_requests.where(status: 'active').count
   end
-
-  def is_mentor_active?
-    :active_mentorships_count > 0
-  end
-
-  def award_active_mentor_badge
-    return unless mentor? && active_mentorships_count > 0
-
-    Badge.create!(
-      user_id: self.id,
-      name: "Active Mentor",
-      image_url: "active_mentor.png"
-    )
-  end
-
-  def remove_badge(badge_name)
-    badges.where(name: badge_name).destroy_all
-  end
-
-
 
 
   def increment_active_mentorships
@@ -115,7 +82,33 @@ class User < ApplicationRecord
     User.decrement_counter(:active_mentorships_count, id)
   end
 
+  def increment_user_mentorships
+    User.increment_counter(:active_mentorships_count, mentor.id)
+    User.increment_counter(:active_mentorships_count, mentee.id)
+  end
 
+  def decrement_user_mentorships
+    User.decrement_counter(:active_mentorships_count, mentor.id)
+    User.decrement_counter(:active_mentorships_count, mentee.id)
+  end
+
+  def check_first_connection_badge
+    if user.has_badge?(Badge::FIRST_CONNECTION)
+      return
+    elsif user.mentee? && user.mentorship_requests.accepted.count == 1
+      award_badge!(Badge::FIRST_CONNECTION)
+    end
+  end
+
+  def check_active_mentor_badge
+    if user.has_badge?(Badge::ACTIVE_MENTOR) && user.active_mentorships.count > 0
+      return
+    elsif user.active_mentorships.count > 0 && user.mentor?
+      award_badge!(Badge::ACTIVE_MENTOR)
+    else
+      remove_badge!(Badge::ACTIVE_MENTOR)
+    end
+  end
 
   private
 

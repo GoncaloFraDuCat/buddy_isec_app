@@ -33,12 +33,8 @@ class MentorshipRequestsController < ApplicationController
 
     if @mentorship_request.update(status: 'accepted')
       User.increment_counter(:active_mentorships_count, @mentorship_request.mentor.id)
-
-
-      # Check if the mentor exists and is valid
-      award_badge(@mentorship_request.mentor)
-
-
+      User.check_first_connection_badge
+      User.check_active_mentor_badge
       redirect_to matches_path, notice: 'Mentorship request accepted.'
     else
       redirect_to matches_path, alert: 'Failed to accept mentorship request.'
@@ -51,8 +47,8 @@ class MentorshipRequestsController < ApplicationController
     @mentorship_request = MentorshipRequest.find(params[:id])
     if @mentorship_request.update(status: 'cancelled')
       @mentorship_request.destroy
-
-
+      User.check_first_connection_badge
+      User.check_active_mentor_badge
       redirect_to matches_path, notice: 'Mentorship request cancelled and destroyed.'
     else
       redirect_to matches_path, alert: 'Failed to cancel and destroy mentorship request.'
@@ -77,13 +73,8 @@ class MentorshipRequestsController < ApplicationController
       User.decrement_counter(:active_mentorships_count, @mentorship_request.mentor.id)
       User.decrement_counter(:active_mentorships_count, @mentorship_request.mentee.id)
 
-      # Get the current count for the mentor
-      current_count = User.where(id: @mentorship_request.mentor.id).sum('active_mentorships_count')
-
-      # Remove the badge only if the count is 0
-      if current_count == 0
-        @mentorship_request.mentor.remove_badge("Mentor Ativo")
-      end
+      User.check_first_connection_badge
+      User.check_active_mentor_badge
 
       redirect_to matches_path, notice: 'Mentorship request cancelled and destroyed.'
     else
@@ -108,38 +99,4 @@ class MentorshipRequestsController < ApplicationController
     params.require(:mentorship_request).permit(:mentor_id, :mentee_id, :status)
   end
 
-  def award_first_connection_badge
-    mentor = current_user
-    mentor.badges.where(name: "1ª Conexão").exists? ? nil :
-    Badge.create!(
-      user_id: mentor.id,
-      name: "1ª Conexão",
-      image_url: "first_connection_badge.png"
-    )
-  end
-
-  def award_badge(user)
-    return unless user && user.valid?
-
-    if user.badges.where(name: "Mentor Ativo").empty?
-      Badge.create!(
-        user_id: user.id,
-        name: "Mentor Ativo",
-        image_url: "mentor_ativo.png"
-      )
-    end
-  end
-
-  def remove_mentor_ativo_badge
-    badges.where(name: "Mentor Ativo").destroy_all
-  end
-
-
-  def increment_user_mentorships
-    user.increment_active_mentorships
-  end
-
-  def decrement_user_mentorships
-    user.decrement_active_mentorships
-  end
 end
