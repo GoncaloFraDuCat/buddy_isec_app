@@ -1,6 +1,6 @@
 class MentorshipRequestsController < ApplicationController
   before_action :set_mentorship_request, only: %i[show update]
-    after_action :award_first_connection_badge
+
 
 
   def new
@@ -32,9 +32,9 @@ class MentorshipRequestsController < ApplicationController
     @mentorship_request = MentorshipRequest.find(params[:id])
 
     if @mentorship_request.update(status: 'accepted')
-      User.increment_counter(:active_mentorships_count, @mentorship_request.mentor.id)
-      User.check_first_connection_badge
-      User.check_active_mentor_badge
+      @mentorship_request.mentor.increment_counter(:active_mentorships_count, @mentorship_request.mentor.id)
+      @mentorship_request.mentor.check_first_connection_badge
+      @mentorship_request.mentor.check_active_mentor_badge
       redirect_to matches_path, notice: 'Mentorship request accepted.'
     else
       redirect_to matches_path, alert: 'Failed to accept mentorship request.'
@@ -47,8 +47,8 @@ class MentorshipRequestsController < ApplicationController
     @mentorship_request = MentorshipRequest.find(params[:id])
     if @mentorship_request.update(status: 'cancelled')
       @mentorship_request.destroy
-      User.check_first_connection_badge
-      User.check_active_mentor_badge
+      @mentorship_request.mentor.check_first_connection_badge
+      @mentorship_request.mentor.check_active_mentor_badge
       redirect_to matches_path, notice: 'Mentorship request cancelled and destroyed.'
     else
       redirect_to matches_path, alert: 'Failed to cancel and destroy mentorship request.'
@@ -70,11 +70,11 @@ class MentorshipRequestsController < ApplicationController
     if @mentorship_request.update(status: 'destroyed')
       @mentorship_request.destroy
 
-      User.decrement_counter(:active_mentorships_count, @mentorship_request.mentor.id)
-      User.decrement_counter(:active_mentorships_count, @mentorship_request.mentee.id)
+      @mentorship_request.decrement_counter(:active_mentorships_count, @mentorship_request.mentor.id)
+      @mentorship_request.decrement_counter(:active_mentorships_count, @mentorship_request.mentee.id)
 
-      User.check_first_connection_badge
-      User.check_active_mentor_badge
+      @mentorship_request.mentor.check_first_connection_badge
+      @mentorship_request.mentor.check_active_mentor_badge
 
       redirect_to matches_path, notice: 'Mentorship request cancelled and destroyed.'
     else
@@ -99,4 +99,21 @@ class MentorshipRequestsController < ApplicationController
     params.require(:mentorship_request).permit(:mentor_id, :mentee_id, :status)
   end
 
+  def check_first_connection_badge
+    if user.has_badge?(Badge::FIRST_CONNECTION)
+      return
+    elsif user.mentee? && user.mentorship_requests.accepted.count == 1
+      award_badge!(Badge::FIRST_CONNECTION)
+    end
+  end
+
+  def check_active_mentor_badge
+    if user.has_badge?(Badge::ACTIVE_MENTOR) && user.active_mentorships.count > 0
+      return
+    elsif user.active_mentorships.count > 0 && user.mentor?
+      award_badge!(Badge::ACTIVE_MENTOR)
+    else
+      remove_badge!(Badge::ACTIVE_MENTOR)
+    end
+  end
 end

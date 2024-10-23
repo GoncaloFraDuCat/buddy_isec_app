@@ -110,6 +110,22 @@ class User < ApplicationRecord
     end
   end
 
+  def award_badge!(badge_name)
+    return if badges.pluck(:name).include?(badge_name)
+
+    Badge.create!(user: self, name: badge_name, image_url: "#{badge_name}_badge.png")
+  end
+
+  def remove_badge!(badge_name)
+    badge = badges.find_by(name: badge_name)
+    badge.destroy if badge.present?
+  end
+
+  def has_badge?(badge_name)
+    badges.pluck(:name).include?(badge_name)
+  end
+
+
   private
 
   def cannot_be_mentor_if_first_year
