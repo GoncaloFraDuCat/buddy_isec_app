@@ -13,6 +13,11 @@ class Badge < ApplicationRecord
   def self.mentor_ativo
     new(name: "Mentor Ativo", image_url: "mentor_ativo_badge.png")
   end
+
+  def self.three_posts
+    new(name: "Top Blogger", image_url: "three_post_badge.png")
+  end
+
 end
 
 private

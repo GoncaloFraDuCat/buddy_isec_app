@@ -436,14 +436,21 @@ select {
 
 .badges-content
 {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal-width columns */
   gap: 30px;
   font-weight: bold;
-  width: 11vh;
+  width: 100%; /* Changed from 11vh to 100% */
   align-items: center;
-  align-content: space-between;
-  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.badges-content-all {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  gap: 1vh;
 }
 
 .badges-content img {

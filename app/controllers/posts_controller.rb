@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
+      award_three_posts_badge if current_user.mentor? && current_user.posts.count == 3
       redirect_to profile_path, notice: 'Post created successfully!'
     else
       render :new
@@ -32,6 +33,8 @@ class PostsController < ApplicationController
 
     if @post && @post.user == current_user
       @post.destroy
+      remove_three_posts_badge if current_user.mentor? && current_user.posts.count < 3
+      redirect_to profile_path(current_user), notice: "Post deleted successfully."
     else
       redirect_to profile_path(current_user), alert: "You don't have permission to delete this post."
     end
@@ -54,5 +57,18 @@ class PostsController < ApplicationController
     redirect_to root_path unless current_user.mentor?
   end
 
+  def award_three_posts_badge
+    badge = Badge.three_posts
+    unless current_user.badges.exists?(name: badge.name)
+      if current_user.mentor? && current_user.posts.count >= 3
+        current_user.badges << badge
+      end
+    end
+  end
+
+  def remove_three_posts_badge
+    badge = Badge.three_posts
+    current_user.badges.where(name: badge.name).destroy_all if current_user.posts.count < 3
+  end
 
 end
