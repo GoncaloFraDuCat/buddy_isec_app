@@ -25,15 +25,6 @@ class MentorshipRequest < ApplicationRecord
     self.chatroom = Chatroom.create(mentorship_request_id: id)
   end
 
-  def increment_user_mentorships
-    User.increment_counter(:active_mentorships_count, mentor.id)
-    User.increment_counter(:active_mentorships_count, mentee.id)
-  end
-
-  def decrement_user_mentorships
-    User.decrement_counter(:active_mentorships_count, mentor.id)
-    User.decrement_counter(:active_mentorships_count, mentee.id)
-  end
 
 
 end

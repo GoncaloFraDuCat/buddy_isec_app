@@ -5,22 +5,19 @@
 #   gem "sqlite3"
 #
 default: &default
-  adapter: sqlite3
-  encoding: utf8mb4
-  database: development.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
 
 development:
-  adapter: sqlite3
-  encoding: utf8mb4
-  database: development.sqlite3
+  <<: *default
+  database: buddy_isec_app_development
 
 test:
   <<: *default
-  username: GoncaloFraDuCat
-  password: Gcatarro97NYK!
-  host: 127.0.0.1
-  port: 3306
-  database: Isec_buddy_db
+  database: buddy_isec_app_development
+
 
 production:
   <<: *default
@@ -28,3 +25,12 @@ production:
   password: <%= ENV.fetch("MYSQL_PASSWORD") { "default_password" } %>
   host: 94.46.175.52
   port: 3306
+
+
+#test:
+#  <<: *default
+#  username: GoncaloFraDuCat
+#  password: Gcatarro97NYK!
+#  host: 127.0.0.1
+#  port: 3306
+#  database: Isec_buddy_db

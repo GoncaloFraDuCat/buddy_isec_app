@@ -15,8 +15,6 @@ class MentorshipRequestsController < ApplicationController
 
     if @mentorship_request.save
       # Notification logic here
-
-
       redirect_to matches_path(current_user), notice: 'Mentorship request sent successfully.'
     else
       redirect_to matches_path(current_user), alert: 'Failed to send mentorship request.'
@@ -33,12 +31,8 @@ class MentorshipRequestsController < ApplicationController
 
     if @mentorship_request.update(status: 'accepted')
       User.increment_counter(:active_mentorships_count, @mentorship_request.mentor.id)
-
-
       # Check if the mentor exists and is valid
       award_badge(@mentorship_request.mentor)
-
-
       redirect_to matches_path, notice: 'Mentorship request accepted.'
     else
       redirect_to matches_path, alert: 'Failed to accept mentorship request.'
@@ -51,8 +45,6 @@ class MentorshipRequestsController < ApplicationController
     @mentorship_request = MentorshipRequest.find(params[:id])
     if @mentorship_request.update(status: 'cancelled')
       @mentorship_request.destroy
-
-
       redirect_to matches_path, notice: 'Mentorship request cancelled and destroyed.'
     else
       redirect_to matches_path, alert: 'Failed to cancel and destroy mentorship request.'
@@ -73,18 +65,13 @@ class MentorshipRequestsController < ApplicationController
     @mentorship_request = MentorshipRequest.find(params[:id])
     if @mentorship_request.update(status: 'destroyed')
       @mentorship_request.destroy
-
       User.decrement_counter(:active_mentorships_count, @mentorship_request.mentor.id)
-      User.decrement_counter(:active_mentorships_count, @mentorship_request.mentee.id)
-
       # Get the current count for the mentor
       current_count = User.where(id: @mentorship_request.mentor.id).sum('active_mentorships_count')
-
       # Remove the badge only if the count is 0
       if current_count == 0
         @mentorship_request.mentor.remove_badge("Mentor Ativo")
       end
-
       redirect_to matches_path, notice: 'Mentorship request cancelled and destroyed.'
     else
       redirect_to matches_path, alert: 'Failed to cancel and destroy mentorship request.'

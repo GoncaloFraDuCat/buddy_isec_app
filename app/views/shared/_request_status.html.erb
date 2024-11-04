@@ -33,7 +33,7 @@
 
 <% else %>
   <div>
-    <%= button_to destroy_mentorship_request_path(request), method: :patch, class: 'x_button', form: { data: { turbo_confirm: 'De certeza que queres apagar esta conversa? Esta acção não é reversível!' } } do %>
+    <%= button_to cancel_mentorship_request_path(request), method: :patch, class: 'x_button', form: { data: { turbo_confirm: 'De certeza que queres apagar esta conversa? Esta acção não é reversível!' } } do %>
       <%= image_tag 'close.png', alt: 'Cancel', class: 'matches-x-button' %>
     <% end %>
   </div>

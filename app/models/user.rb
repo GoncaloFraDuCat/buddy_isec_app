@@ -108,11 +108,11 @@ class User < ApplicationRecord
 
 
   def increment_active_mentorships
-    User.increment_counter(:active_mentorships_count, id)
+    @mentorship_request.mentor.increment_counter(:active_mentorships_count, id)
   end
 
   def decrement_active_mentorships
-    User.decrement_counter(:active_mentorships_count, id)
+    @mentorship_request.mentor.decrement_counter(:active_mentorships_count, id)
   end
 
 

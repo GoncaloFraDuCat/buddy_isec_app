@@ -381,6 +381,14 @@ select {
   BORDER-RADIUS: 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
   padding-top: 4%;
+  width: 50vh;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .post h1 {
@@ -390,9 +398,12 @@ select {
 
 .post img {
   border-radius: 5px;
-    box-shadow: 3px 2px 5px 0px rgba(0, 7, 14, 0.75);
-    margin: 3% 3% 10% 3%;
-    width: 73%;
+  box-shadow: 1px 2px 7px 0px rgba(0, 7, 14, 0.75);
+  margin: 3% 3% 10% 3%;
+  width: 73%;
+  max-height: 30vh;
+  max-width: 30vh;
+  object-fit: contain;
 }
 
 
@@ -451,6 +462,7 @@ select {
   flex-direction: column;
   text-align: center;
   gap: 1vh;
+  align-items: center;
 }
 
 .badges-content img {

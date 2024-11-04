@@ -51,6 +51,7 @@
     </div>
   </div>
 
+<% if @user.mentor? %>
 
   <div class="badges">
   <h2 style="text-align: center;">Badges</h2>
@@ -66,20 +67,26 @@
 <% else %>
   <p>Nenhum badge obtido ainda.</p>
 <% end %>
-
-
 </div>
+<% end %>
 
+<% if @user.mentor? %>
+
+
+<div class="post-container">
 
   <h2 id="posts-h1">Posts</h2>
   <% @user.posts.each do |post| %>
     <div class="post">
       <h1><%= post.title %></h1>
 <%= image_tag post.default_image, alt: post.title %>
-      <p><%= post.created_at.strftime("%B %d, %Y") %></p>
+<p id="post-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
       <p><%= post.body %></p>
     </div>
   <% end %>
+</div>
+
+<% end %>
 
 
 

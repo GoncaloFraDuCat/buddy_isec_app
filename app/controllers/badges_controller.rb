@@ -1,4 +1,4 @@
-# app/controllers/badges_controller.rb
+# app/controllers/roller.rb
 class BadgesController < ApplicationController
   def show
     @badge = Badge.find(params[:id])

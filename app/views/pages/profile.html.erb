@@ -60,24 +60,28 @@
   </div>
 <% end %>
 
-<div class="badges">
-  <h2 style="text-align: center;">Badges</h2>
-<% if current_user.badges.any? %>
-<div class="badges-content">
-  <% current_user.badges.each do |badge| %>
-  <div class="badges-content-all">
-    <%= image_tag(badge.image_url) %> <%= badge.name %>
-  </div>
-  <% end %>
-</div>
-<% else %>
-  <p>Nenhum badge obtido ainda.</p>
+<% if current_user.mentor? %>
+
+    <div class="badges">
+      <h2 style="text-align: center;">Badges</h2>
+    <% if current_user.badges.any? %>
+    <div class="badges-content">
+      <% current_user.badges.each do |badge| %>
+      <div class="badges-content-all">
+        <%= image_tag(badge.image_url) %> <%= badge.name %>
+      </div>
+      <% end %>
+    </div>
+    <% else %>
+      No Badges Added Yet
+    <% end %>
+    </div>
 <% end %>
-</div>
 
 
 
 <% if current_user.mentor? %>
+<div class="post-container">
   <h2 id="posts-h1">Posts</h2>
   <% @user.posts.each do |post| %>
       <% next if post.nil? %>
@@ -102,6 +106,7 @@
 
 <% if current_user.mentor? %>
   <%= link_to " ", new_post_path, class: "new_post_logo" %>
+</div>
 <% end %>
 
 
