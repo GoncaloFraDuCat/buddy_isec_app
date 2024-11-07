@@ -24,9 +24,11 @@
     <% end %>
     <% @mentors.each do |mentor| %>
       <div class="mentor">
+        <div class="mentor-image-wrap">
         <div class="mentor-image-show"
           style="background-image: url('<%= mentor.default_photo %>')">
         </div>
+      </div>
         <div class="mentor-info">
           <h3 class="mentor-name"><%= mentor.name %></h3>
           <div class="mentor-subinfo">

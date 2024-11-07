@@ -2,15 +2,15 @@
 
 <%= simple_form_for @post, html: { multipart: true } do |f| %>
   <div>
-    <%= f.input :title, label: "Title (H1)" %>
+    <%= f.input :title, label: "Título" %>
   </div>
   <div>
-    <%= f.input :body, label: "Content (p)" %>
+    <%= f.input :body, label: "Conteúdo" %>
   </div>
   <div>
-    <%= f.input :image, as: :file, label: "Image" %>
+    <%= f.input :image, as: :file, label: "Imagem" %>
   </div>
   <div>
-    <%= f.submit "Create Post" %>
+    <%= f.submit "Criar Post" %>
   </div>
 <% end %>

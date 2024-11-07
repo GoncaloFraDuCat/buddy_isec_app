@@ -38,6 +38,7 @@ table {
 
 .mentors_table .others * {
   display: inline-flex;
+  gap: 5px;
 }
 .status-icon {
   height: 25px;
