@@ -61,11 +61,7 @@ body {
 }
 
 .logo {
-  max-height: 90%;
-  max-width: 60px;
-  aspect-ratio: 1;
-  height: auto;
-  border-radius: 20px;
+  width: 15vh;
 }
 
 .main-content {
@@ -92,16 +88,30 @@ h3 {
 
 .profile-h3-p {
   display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 1rem auto;
-    gap: 10px;
-    font-size: 0.85em;
-    background: bisque;
-    padding: 1% 5% 6% 5%;
-    BORDER-RADIUS: 10px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 4vh 0vh;
+  font-size: 0.85em;
+  background: bisque;
+  padding: 1% 5% 3% 3%;
+  BORDER-RADIUS: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
+  width: 35vh;
 }
+
+.profile-h3-boxes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 4vh 0vh;
+  font-size: 0.85em;
+  background: bisque;
+  padding: 1% 5% 3% 3%;
+  BORDER-RADIUS: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
+}
+
+
 
 .profile-h3-p .group {
   display: flex;
@@ -157,8 +167,12 @@ h2 {
   padding: 5px;
   text-decoration: none;
   background: none;
-  align-items: flex-end;
-  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
+  align-content: space-between;
+  justify-content: space-between;
+  gap: 38vh;
+  color: black;
 }
 
 .x_button_show{
@@ -215,7 +229,7 @@ h2 {
 }
 
 .page-title {
-  color: white;
+  color: black;
   border-radius: 10px;
   font-size: x-large;
 }
@@ -275,7 +289,6 @@ h2 {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-  gap: 2vh;
 }
 
 #user_bio {
@@ -292,6 +305,7 @@ h2 {
 label {
   padding-right: 5px;
   font-weight: bold;
+  font-size: larger;
 }
 
 .update-bio-button {
@@ -335,12 +349,13 @@ input[type="submit"] {
   color: black;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 3px 5px;
   cursor: pointer;
-  background: white;
+  background: #b6ff9e;
   border-color: black;
   border-style: solid;
   border-width: thin;
+  font-size: smaller;
 }
 
 
@@ -368,6 +383,9 @@ textarea {
   border: 1px solid black;
   border-radius: 5px;
   padding: 5px 10px;
+  margin-top: 1vh;
+  width: 35vh
+
 }
 
 input[type="select"],
@@ -445,6 +463,19 @@ select {
     margin-top: 10%;
     text-align: center;
 
+}
+
+.create_post_display {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2vh;
+  max-width: 10vh;
+}
+
+#post_body.text_optional {
+  display: flex;
+  gap: 1vh;
 }
 
 .new_post_logo {

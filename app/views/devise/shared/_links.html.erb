@@ -20,6 +20,6 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to image_tag('log-in_logo.png', alt: 'log-in_logo', class: 'log-in_logo'), omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "button_to" %><br />
+    <%= button_to image_tag('log-in1.png', alt: 'log-in_logo', class: 'log-in_logo'), omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "button_to" %><br />
   <% end %>
 <% end %>

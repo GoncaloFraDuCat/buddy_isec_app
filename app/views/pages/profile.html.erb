@@ -18,7 +18,7 @@
 <p><%= @user.name %></p>
 </div>
 
-<div class='profile-h3-p'>
+<div class='profile-h3-boxes'>
   <div class="group">
 
 
@@ -44,7 +44,7 @@
 </div>
 
 <% if current_user.mentor? %>
-  <div class='profile-h3-p' style="margin-top: 4vh">
+  <div class='profile-h3-boxes' style="margin-top: 4vh">
     <div class="group">
       <h3>Apoio ao Estudo:</h3>
       <p><%= current_user.apoio_estudo ? 'Sim' : 'Não' %></p>

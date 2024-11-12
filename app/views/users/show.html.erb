@@ -17,7 +17,7 @@
 </div>
 </div>
 
-  <div class='profile-h3-p'>
+  <div class='profile-h3-boxes'>
     <div class="group">
     </div>
     <div class="group">
@@ -41,9 +41,10 @@
     </div>
   </div>
 
+<% if @user.mentor? %>
 
 
-  <div class='profile-h3-p'>
+  <div class='profile-h3-boxes'>
     <div class="group">
       <h3>Apoio ao Estudo:</h3>
       <p><%= @user.apoio_estudo ? 'Sim' : 'Não' %></p>
@@ -57,6 +58,9 @@
       <p><%= @user.ajuda_social ? 'Sim' : 'Não' %></p>
     </div>
   </div>
+
+<% end %>
+
 
 <% if @user.mentor? %>
 
@@ -80,18 +84,18 @@
 <% if @user.mentor? %>
 
 
-<div class="post-container">
+  <div class="post-container">
 
-  <h2 id="posts-h1">Posts</h2>
-  <% @user.posts.each do |post| %>
-    <div class="post">
-      <h1><%= post.title %></h1>
-<%= image_tag post.default_image, alt: post.title %>
-<p id="post-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
-      <p><%= post.body %></p>
-    </div>
-  <% end %>
-</div>
+    <h2 id="posts-h1">Posts</h2>
+    <% @user.posts.each do |post| %>
+      <div class="post">
+        <h1><%= post.title %></h1>
+  <%= image_tag post.default_image, alt: post.title %>
+  <p id="post-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
+        <p><%= post.body %></p>
+      </div>
+    <% end %>
+  </div>
 
 <% end %>
 
