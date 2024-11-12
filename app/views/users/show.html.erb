@@ -2,11 +2,18 @@
   Perfil
 <% end %>
 
+<div class="x_button_show">
+      <%= link_to search_path, class: 'x_button' do %>
+        <%= image_tag "close.png", alt: "X", class: "x_button_image_edit" %>
+      <% end %>
+    </div>
+
 
 <div class="profile-page-info-1">
 <div class="user_info_container">
   <div class="profile-pic-show" style="background-image: url('<%= @user.default_photo %>')"></div>
 <p><%= @user.name %></p>
+
 </div>
 </div>
 

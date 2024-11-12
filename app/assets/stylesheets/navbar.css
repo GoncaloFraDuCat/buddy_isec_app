@@ -4,11 +4,10 @@
   width: 100%; /* Make the footer fill the width of the viewport */
   left: 0; /* Align the footer to the left of the viewport */
   right: 0; /* Ensure the footer fills the entire width */
-  background-color: #397ec4; /* Dark background */
+  background: linear-gradient(310deg, #3f7825 0%, #fdc516 100%);; /* Dark background */
   color: #ffffff; /* Light text */
   padding: 10px 0; /* Add some padding */
   height: 50px;
-  background-image:url("nav_color.png")
 }
 
 .container-fluid {

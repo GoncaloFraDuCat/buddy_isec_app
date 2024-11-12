@@ -42,10 +42,10 @@
 <% if current_user.mentor? && request.status != 'accepted' %>
   <div>
     <%= button_to accept_mentorship_request_path(request), method: :patch, class: 'yes_button' do %>
-      Yes
+      Sim
     <% end %>
     <%= button_to cancel_mentorship_request_path(id: request.id), method: :patch, class: 'no_button' do %>
-      No
+      Não
     <% end %>
   </div>
 <% end %>

@@ -5,12 +5,12 @@
 
   <div class="login-containers">
 
-    <%= image_tag 'frontpagelogo.png', alt: "frontpagelogo", class: 'FPL' %>
+    <%= image_tag 'campus_buddy_logo.png', alt: "frontpagelogo", class: 'FPL' %>
 
-    <h2>Encontra o teu Mentor :)</h2>
+
 
     <% if Rails.env.development? %>
-      <p>Para testar a aplicação, podes fazer login (apenas em testes):</p>
+
       <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
         <div class="log-in-email">
           <%= f.label :email, "Email" %><br />

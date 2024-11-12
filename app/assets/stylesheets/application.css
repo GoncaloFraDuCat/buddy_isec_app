@@ -4,7 +4,7 @@
  *
  * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
  * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
+ * if there is
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any other CSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+
 
 * {
   box-sizing: border-box;
@@ -23,12 +25,13 @@
 
 }
 
+
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #dce3f5;
+  background-color:whitesmoke;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -43,9 +46,8 @@ body {
   height: 80px;
   padding: 0 20px;
   z-index: 1000;
-  background-image: url("nav_color.png");
   padding-right: 40px;
-
+  background: linear-gradient(310deg, #3f7825 0%, #fdc516 100%);;
 }
 
 .container {
@@ -55,6 +57,7 @@ body {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+
 }
 
 .logo {
@@ -94,11 +97,10 @@ h3 {
     margin: 1rem auto;
     gap: 10px;
     font-size: 0.85em;
-    background: lavenderblush;
+    background: bisque;
     padding: 1% 5% 6% 5%;
     BORDER-RADIUS: 10px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
-    padding-bottom: 10%;
 }
 
 .profile-h3-p .group {
@@ -137,13 +139,12 @@ h1 {
 }
 
 .FPL {
-  width: 200px;
-  height: 270px;
+  width: 50vh;
   padding-top: 50px;
 }
 
 h2 {
-  color: #397ec4;
+  color: black;
 }
 
 .user_info_container {
@@ -152,10 +153,20 @@ h2 {
 }
 
 .x_button {
-  display: inline-block;
+  display: flex;
   padding: 5px;
   text-decoration: none;
   background: none;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.x_button_show{
+  display: flex;
+  padding: 5px;
+  text-decoration: none;
+  background: none;
+  justify-content: flex-end;
 }
 
 .x_button:hover {
@@ -264,12 +275,14 @@ h2 {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  gap: 2vh;
 }
 
-textarea {
-  width: 280px;
-  margin-top: 5px;
+#user_bio {
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
 }
+
 
 .photo-field {
   display: flex;
@@ -279,7 +292,6 @@ textarea {
 label {
   padding-right: 5px;
   font-weight: bold;
-  padding-top: 10px;
 }
 
 .update-bio-button {
@@ -289,6 +301,8 @@ label {
 input {
   display: flex;
   margin-top: 10px;
+  background-color: transparent;
+
 }
 
 .user-show-p p {
@@ -301,26 +315,38 @@ input {
 
 .log-in-body .log-in-email {
   padding-bottom: 5px;
-  color: #397ec4;
 }
 
 .log-in-body .log-in-id {
-  color: #397ec4;
+
 }
 
 button,
 input[type="submit"] {
-  background-color: #397ec4;
-  color: white;
+  color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background: #9DB528;
+}
+
+.post-btn-btn-danger {
+  color: black;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
+  background: white;
+  border-color: black;
+  border-style: solid;
+  border-width: thin;
 }
+
 
 button:hover,
 input[type="submit"]:hover {
-  background-color: #3067a8;
+  background-color: #9DB528;
 }
 
 input[type="text"],
@@ -336,17 +362,18 @@ input[type="url"],
 input[type="tel"],
 input[type="search"],
 textarea {
-  background-color: #ffffff;
+  background-color: bisque;
+
   color: black;
-  border: 1px solid #397ec4;
+  border: 1px solid black;
   border-radius: 5px;
   padding: 5px 10px;
 }
 
 input[type="select"],
 select {
-  background-color: #397ec4;
-  color: white;
+  background-color: #9DB528;
+  color: black;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
@@ -376,7 +403,7 @@ select {
   /* background: lavenderblush; */
   /* border-radius: 5px; */
   font-size: 0.85em;
-  background: lavenderblush;
+  background: bisque;
   padding: 1% 5% 6% 5%;
   BORDER-RADIUS: 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
@@ -413,7 +440,7 @@ select {
 }
 
 #posts-h1 {
-  color: #397ec4;
+  color: black;
     font-size: x-large;
     margin-top: 10%;
     text-align: center;
@@ -455,6 +482,7 @@ select {
   align-items: center;
   justify-content: space-between;
   align-items: start;
+  padding-top: 5%;
 }
 
 .badges-content-all {
@@ -469,8 +497,7 @@ select {
   height: 80px;
   width: 80px;
   border-radius: 50px;
-  border-style: solid;
-  border-color: #397ec4;
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 2px 7px 0px;
 }
 
 

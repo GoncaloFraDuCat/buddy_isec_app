@@ -34,7 +34,4 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:new, :create, :edit, :update, :destroy]
   resources :badges, only: [:show]
-
-
-
 end
