@@ -9,7 +9,7 @@ gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 gem 'sprockets-rails'
 
 
-gem 'pg'
+gem 'mysql2', '>= 0.5.2', '< 0.7.0'
 
 
 # Use the Puma web server [https://github.com/puma/puma]
