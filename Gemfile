@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.1.2'
+ruby '3.3.6'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
@@ -9,7 +9,7 @@ gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 gem 'sprockets-rails'
 
 
-gem 'mysql2', '>= 0.5.2', '< 0.7.0'
+gem 'mysql2', '~> 0.4.10'
 
 
 # Use the Puma web server [https://github.com/puma/puma]
