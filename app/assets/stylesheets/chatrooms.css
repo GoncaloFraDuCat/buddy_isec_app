@@ -200,3 +200,9 @@ p {
   margin-right: 10px;
   object-fit: cover;
 }
+
+.messenger_form {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}

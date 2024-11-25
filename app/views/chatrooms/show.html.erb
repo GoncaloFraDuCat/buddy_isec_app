@@ -21,14 +21,15 @@
     </div>
   </div>
 
-  <div class="form_div">
-    <%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
-      <%= f.input :content,
-        label: false,
-        placeholder: "A Tua Mensagem#{@chatroom.name}"
-      %>
-      <%= f.submit "Enviar", class: "btn btn-primary mb-3" %>
-    <% end %>
-  </div>
+<div class="form_div" style="margin-top: 15px;">
+  <%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "A Tua Mensagem#{@chatroom.name}",
+      input_html: { class: "messenger_form" }
+    %>
+    <%= f.submit "Enviar", class: "btn btn-primary mb-3" %>
+  <% end %>
+</div>
 
 </div>

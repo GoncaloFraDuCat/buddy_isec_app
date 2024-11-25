@@ -61,7 +61,7 @@ body {
 }
 
 .logo {
-  width: 15vh;
+  width: 10vh;
 }
 
 .main-content {
@@ -335,6 +335,11 @@ input {
 
 }
 
+.logo_rodape {
+  width: 33vh;
+  padding-top: 6vh;
+}
+
 button,
 input[type="submit"] {
   color: black;
@@ -383,7 +388,6 @@ textarea {
   border: 1px solid black;
   border-radius: 5px;
   padding: 5px 10px;
-  margin-top: 1vh;
   width: 35vh
 
 }

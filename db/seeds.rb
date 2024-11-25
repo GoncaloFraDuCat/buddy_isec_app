@@ -11,11 +11,23 @@
 areas_of_study = ['Comunicação Global', 'Design e Produção Gráfica', 'Educação Básica', 'Engenharia de Proteção Civil',
                   'Energias Renováveis e Ambiente', 'Gestão Aeronáutica', 'Gestão Autárquica', 'Gestão Hoteleira', 'Óptica e Optometria', 'Ciências Aeronáuticas e do Espaço', 'Ciência e Visualização de Dados']
 
-# Generate 10 students
+# Set Faker to use Portuguese locale
+Faker::Config.locale = 'pt'
+
+# Track used email addresses to ensure uniqueness
+used_emails = []
+
+# Generate 20 students
 20.times do
+  begin
+    email = "#{Faker::Internet.unique.user_name}@iseclisboa.pt"
+  end while used_emails.include?(email) # Ensure uniqueness manually, if needed
+
+  used_emails << email
+
   User.create!(
     name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
-    email: "#{Faker::Internet.user_name}@iseclisboa.pt",
+    email: email,
     bio: Faker::Lorem.paragraph(sentence_count: 5),
     area_of_study: areas_of_study.sample,
     current_year: 1,
@@ -29,9 +41,15 @@ end
 
 # Generate 10 mentors
 10.times do
+  begin
+    email = "#{Faker::Internet.unique.user_name}@iseclisboa.pt"
+  end while used_emails.include?(email)
+
+  used_emails << email
+
   User.create!(
     name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
-    email: "#{Faker::Internet.user_name}@iseclisboa.pt",
+    email: email,
     bio: Faker::Lorem.paragraph(sentence_count: 5),
     area_of_study: areas_of_study.sample,
     current_year: Faker::Number.between(from: 2, to: 3),
@@ -43,6 +61,7 @@ end
   )
 end
 
+# Admin user
 if ENV['ADMIN_EMAIL'].present?
   User.create!(
     name: 'Admin',
