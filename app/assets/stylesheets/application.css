@@ -401,8 +401,11 @@ select {
   padding: 5px 10px;
   cursor: pointer;
   margin-top: 5px;
+<<<<<<< HEAD
   font-size: 1.6vh;
   font-weight: 800;
+=======
+>>>>>>> f21460a3213302884f6c86a142db7b01bc35f628
 }
 
 .small {

@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 
+<<<<<<< HEAD
 ruby '3.3.6'
+=======
+ruby '3.1.2'
+>>>>>>> f21460a3213302884f6c86a142db7b01bc35f628
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
@@ -11,7 +15,10 @@ gem 'sprockets-rails'
 
 gem 'pg'
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f21460a3213302884f6c86a142db7b01bc35f628
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
 

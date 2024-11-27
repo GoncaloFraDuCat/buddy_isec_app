@@ -1,4 +1,5 @@
 default: &default
+<<<<<<< HEAD
   adapter: postgresql
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -16,11 +17,31 @@ development:
   host: 127.0.0.1
   port: 5432
 
+=======
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  adapter: mysql2
+  encoding: utf8mb4
+  database: isec_buddy_db
+  username: '5uDb8udDy'
+  password: 'uMGUdk>9#Yx!5G7N_AzEv}i0'
+  #username: <%= ENV.fetch("MYSQL_USER") { user } %>
+  #password: <%= ENV.fetch("MYSQL_PASSWORD") { password } %>
+  host: 127.0.0.1
+  #host: 94.46.175.52
+  port: 3306
+>>>>>>> f21460a3213302884f6c86a142db7b01bc35f628
 
   
 
 test:
   <<: *default
+<<<<<<< HEAD
   adapter: postgresql
   encoding: utf8
   database: isec_buddy_db
@@ -28,6 +49,18 @@ test:
   password: 'CampusBuddy2024'
   host: 127.0.0.1
   port: 5432
+=======
+  adapter: mysql2
+  encoding: utf8mb4
+  database: isec_buddy_db
+  username: '5uDb8udDy'
+  password: 'uMGUdk>9#Yx!5G7N_AzEv}i0'
+  #username: <%= ENV.fetch("MYSQL_USER") { user } %>
+  #password: <%= ENV.fetch("MYSQL_PASSWORD") { password } %>
+  host: 127.0.0.1
+  #host: 94.46.175.52
+  port: 3306
+>>>>>>> f21460a3213302884f6c86a142db7b01bc35f628
 
 
 production:
@@ -36,6 +69,7 @@ production:
 
 
 mysql:
+<<<<<<< HEAD
   adapter: postgresql
   encoding: utf8
   database: isec_buddy_db
@@ -43,3 +77,15 @@ mysql:
   password: 'CampusBuddy2024'
   host: 127.0.0.1
   port: 5432
+=======
+  adapter: mysql2
+  encoding: utf8mb4
+  database: isec_buddy_db
+  username: '5uDb8udDy'
+  password: 'uMGUdk>9#Yx!5G7N_AzEv}i0'
+  #username: <%= ENV.fetch("MYSQL_USER") { user } %>
+  #password: <%= ENV.fetch("MYSQL_PASSWORD") { password } %>
+  host: 127.0.0.1
+  #host: 94.46.175.52
+  port: 3306
+>>>>>>> f21460a3213302884f6c86a142db7b01bc35f628
