@@ -22,9 +22,12 @@ class PagesController < ApplicationController
   # Select 8 random mentors from the filtered list
     @pagy, @mentors = pagy(mentors, items: 8)
 
-    @areas_of_study = ['Comunicação Global', 'Design e Produção Gráfica', 'Educação Básica', 'Engenharia de Proteção Civil',
-                       'Energias Renováveis e Ambiente', 'Gestão Aeronáutica', 'Gestão Autárquica', 'Gestão Hoteleira',
-                       'Óptica e Optometria', 'Ciências Aeronáuticas e do Espaço', 'Ciência e Visualização de Dados']
+    @areas_of_study = ['Ciências Aeronáuticas e do Espaço', 'Comunicação Global', 'CTeSP em Apoio à Infância', 'CTeSP em Comunicação e Marketing', 
+	'CTeSP em Desenvolvimento de Produtos Multimédia', 'CTeSP em Gestão Financeira e Contabilidade', 'CTeSP em Gestão Hoteleira', 'CTeSP em Marketing Digital', 
+	'CTeSP em Produção Gráfica e Digital', 'CTeSP em Reparação e Manutenção de Aeronaves', 'CTeSP em Turismo e Transporte Aéreo', 'Design e Produção Gráfica', 
+	'Educação Básica', 'Energias Renováveis e Ambiente', 'Engenharia da Construção e da Reabilitação', 'Engenharia de Proteção Civil', 'Gestão Aeronáutica', 
+	'Gestão Autárquica', 'Ótica e Optometria', 'Unidades Curriculares Isoladas (ISEC)', 'Staff']
+
 
     @selected_area_of_study = params[:area_of_study]
     @selected_tipo_ajuda = params[:tipo_ajuda]
