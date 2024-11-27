@@ -1,0 +1,35 @@
+<!-- app/views/chatrooms/show.html.erb -->
+
+<div class= 'whole chatroom' data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
+  <div class='headers'>
+
+    <img src="<%= @chatroom.other_user(current_user).default_photo %>" alt="User Photo" id="chatroom-pic">
+    <h1><%= @chatroom.other_user(current_user).name %></h1>
+
+    <div class="x_button">
+      <%= link_to matches_path, class: 'x_button' do %>
+        <%= image_tag "close.png", alt: "Cancel", class: "x_button_image_edit" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container chatroom">
+    <div class="messages" data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+  </div>
+
+<div class="form_div" style="margin-top: 15px;">
+  <%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "A Tua Mensagem#{@chatroom.name}",
+      input_html: { class: "messenger_form" }
+    %>
+    <%= f.submit "Enviar", class: "btn btn-primary mb-3" %>
+  <% end %>
+</div>
+
+</div>

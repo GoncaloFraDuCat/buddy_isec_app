@@ -1,0 +1,29 @@
+<body class='log-in-body'>
+  <% content_for :page_title do %>
+    Log In
+  <% end %>
+
+  <div class="login-containers">
+
+    <%= image_tag 'campus_buddy_logo.png', alt: "frontpagelogo", class: 'FPL' %>
+
+
+
+    <% if Rails.env.development? %>
+	
+	<%= render "devise/shared/links" %>
+
+      <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
+        
+
+
+        
+      <% end %>
+    <% end %>
+
+<div class="logo-rodape1">
+<%= image_tag "logo_rodape.png", class: 'logo_rodape' %>  
+</div>
+ 
+  </div>
+</body>

@@ -1,0 +1,113 @@
+<% content_for :page_title do %>
+  Perfil
+<% end %>
+
+<div class="x_button_show">
+      <%= link_to search_path, class: 'x_button' do %>
+        <%= image_tag "close.png", alt: "X", class: "x_button_image_edit" %>
+      <% end %>
+    </div>
+
+
+<div class="profile-page-info-1">
+<div class="user_info_container">
+  <div class="profile-pic-show" style="background-image: url('<%= @user.default_photo %>')"></div>
+<p><%= @user.name %></p>
+
+</div>
+</div>
+
+  <div class='profile-h3-boxes'>
+    <div class="group">
+    </div>
+    <div class="group">
+      <h3>Area de Estudo:</h3>
+      <p><%= @user.area_of_study %></p>
+    </div>
+
+    <div class="group">
+      <h3>Ano de Curso:</h3>
+      <p><%= @user.current_year %>º</p>
+    </div>
+
+    <div class="group">
+      <h3>Email:</h3>
+      <p><%= @user.email %></p>
+    </div>
+
+    <div class="group">
+      <h3> Bio: </h3>
+      <p> <%= @user.bio %> </p>
+    </div>
+  </div>
+
+<% if @user.mentor? %>
+
+
+  <div class='profile-h3-boxes'>
+    <div class="group">
+      <h3>Apoio ao Estudo:</h3>
+      <p><%= @user.apoio_estudo ? 'Sim' : 'Não' %></p>
+    </div>
+    <div class="group">
+      <h3>Apoio a Bolsas:</h3>
+      <p><%= @user.apoio_bolsas ? 'Sim' : 'Não' %></p>
+    </div>
+    <div class="group">
+      <h3>Apoio Social:</h3>
+      <p><%= @user.ajuda_social ? 'Sim' : 'Não' %></p>
+    </div>
+  </div>
+
+<% end %>
+
+
+<% if @user.mentor? %>
+
+  <div class="badges">
+  <h2 style="text-align: center;">Badges</h2>
+<% if @user.badges.any? %>
+<div class="badges-content">
+  <% @user.badges.each do |badge| %>
+    <div class="badges-content-all">
+
+    <%= image_tag(badge.image_url) %> <%= badge.name %>
+    </div>
+  <% end %>
+</div>
+<% else %>
+  <p>Nenhum badge obtido ainda.</p>
+<% end %>
+</div>
+<% end %>
+
+<% if @user.mentor? %>
+
+
+  <div class="post-container">
+
+    <h2 id="posts-h1">Posts</h2>
+    <% @user.posts.each do |post| %>
+      <div class="post">
+        <h1><%= post.title %></h1>
+  <%= image_tag post.default_image, alt: post.title %>
+  <p id="post-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
+        <p><%= post.body %></p>
+      </div>
+    <% end %>
+  </div>
+
+<% end %>
+
+
+
+  <% if !current_user.mentor? && @user.mentor? %>
+    <%= button_to mentorship_requests_path(mentor_id: @user.id, mentee_id: current_user.id), method: :post, class: 'mentorship_request_button' do %>
+      Solicitar Mentoria
+    <% end %>
+  <% end %>
+
+  <%= link_to :back, class: "x_button" do %>
+    <%= image_tag "close.png", alt: "X", class: "x_button_image" %>
+  <% end %>
+</div>

@@ -1,0 +1,27 @@
+document.addEventListener('DOMContentLoaded', function() {
+  const deleteButtons = document.querySelectorAll('.btn-danger');
+
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const postId = this.dataset.url.split('/').pop();
+
+      fetch(this.dataset.url, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-Token': Rails.csrfToken()
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Remove the post from the DOM
+        const postElement = document.querySelector(`#post-${postId}`);
+        if (postElement) {
+          postElement.remove();
+        }
+      })
+      .catch(error => console.error('Error:', error));
+    });
+  });
+});

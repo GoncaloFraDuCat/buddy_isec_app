@@ -1,0 +1,121 @@
+<% content_for :page_title do%>
+  O Meu Perfil
+<% end %>
+
+<div class='profile-page-title' style="font-size: smaller;">
+  <div>
+    <% if current_user.mentor? %>
+      <h1> Mentor </h1>
+    <% else %>
+      <h1> Mentee </h1>
+    <% end %>
+  </div>
+  <%= button_to(image_tag("user-pen.png", alt: "Edit Profile", class: "small-img image-responsive"), edit_user_path(current_user), method: :get, class: "edit-profile-button") %>
+</div>
+
+<div class="profile-page-info-1">
+<div class="profile-pic-show" style="background-image: url('<%= @user.default_photo %>')"></div>
+<p><%= @user.name %></p>
+</div>
+
+<div class='profile-h3-boxes'>
+  <div class="group">
+
+
+  </div>
+  <div class="group">
+    <h3>Area de Estudo:</h3>
+    <p><%= @user.area_of_study %></p>
+  </div>
+
+  <div class="group">
+    <h3>Ano de Curso:</h3>
+    <p><%= @user.current_year %>º</p>
+  </div>
+  <div class="group">
+    <h3>Email:</h3>
+    <p><%= @user.email %></p>
+  </div>
+
+  <div class="group">
+    <h3> Bio: </h3>
+    <p> <%= @user.bio %> </p>
+  </div>
+</div>
+
+<% if current_user.mentor? %>
+  <div class='profile-h3-boxes' style="margin-top: 4vh">
+    <div class="group">
+      <h3>Apoio ao Estudo:</h3>
+      <p><%= current_user.apoio_estudo ? 'Sim' : 'Não' %></p>
+    </div>
+    <div class="group">
+      <h3>Apoio a Bolsas:</h3>
+      <p><%= current_user.apoio_bolsas ? 'Sim' : 'Não' %></p>
+    </div>
+    <div class="group">
+      <h3>Apoio Social:</h3>
+      <p><%= current_user.ajuda_social ? 'Sim' : 'Não' %></p>
+    </div>
+  </div>
+<% end %>
+
+<% if current_user.mentor? %>
+
+    <div class="badges">
+      <h2 style="text-align: center;">Badges</h2>
+    <% if current_user.badges.any? %>
+    <div class="badges-content">
+      <% current_user.badges.each do |badge| %>
+      <div class="badges-content-all">
+        <%= image_tag(badge.image_url) %> <%= badge.name %>
+      </div>
+      <% end %>
+    </div>
+    <% else %>
+      No Badges Added Yet
+    <% end %>
+    </div>
+<% end %>
+
+
+
+<% if current_user.mentor? %>
+<div class="post-container">
+  <h2 id="posts-h1">Posts</h2>
+  <% @user.posts.each do |post| %>
+      <% next if post.nil? %>
+
+    <div class="post">
+      <h1><%= post.title %></h1>
+            <% if post.image.attached? %>
+
+      <%= image_tag post.image, alt: post.title %>
+            <% else %>
+        <p>No image attached</p>
+      <% end %>
+
+<p id="post-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
+      <p><%= post.body %></p>
+      <div class="post-buttons">
+        <%= button_to "Apagar Post", post_path(post), method: :delete, class: "post-btn-btn-danger", data: { confirm: "Are you sure?" } %>
+      </div>
+    </div>
+  <% end %>
+
+
+<% if current_user.mentor? %>
+  <%= link_to " ", new_post_path, class: "new_post_logo" %>
+</div>
+<% end %>
+
+
+
+<% end %>
+
+
+<div class="logout-button">
+<%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light mx-2" %>
+</div>
+
+<%= javascript_tag 'posts' %>

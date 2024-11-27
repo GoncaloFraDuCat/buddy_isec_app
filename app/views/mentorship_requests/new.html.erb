@@ -1,0 +1,12 @@
+<h1>MentorshipRequests#new</h1>
+<p>Find me in app/views/mentorship_requests/new.html.erb</p>
+
+<%= form_with(model: @mentorship_request, local: true) do |form| %>
+ <div class="field">
+    <%= form.label :mentor_id, "Select a Mentor" %>
+    <%= form.collection_select :mentor_id, User.where(mentor: true), :id, :name, prompt: "Select a Mentor" %>
+ </div>
+ <div class="actions">
+    <%= form.submit "Send Request" %>
+ </div>
+<% end %>

@@ -1,0 +1,51 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagy nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  color: black;
+}
+
+.pagy nav ul li a {
+  padding: 0 10px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  color: black;
+}
+
+.page-item.active {
+  background-color: #9DB528;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.page-item {
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: black;
+}
+
+.page-item.disabled {
+  display: none;
+}
+
+.page-item:hover:not(.active) {
+  background-color: #9DB528;
+}
+
+.page-item:hover:not(.active) .page-link {
+  color: #fff !important;
+}

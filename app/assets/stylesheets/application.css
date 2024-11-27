@@ -1,0 +1,559 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ * if there is
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+* {
+  box-sizing: border-box;
+  transition: all 0.3s;
+  /* font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+
+}
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color:whitesmoke;
+  font-family: "Montserrat", sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  padding: 0 20px;
+  z-index: 1000;
+  padding-right: 40px;
+  background: linear-gradient(310deg, #3f7825 0%, #fdc516 100%);;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+
+}
+
+.logo {
+  width: 10vh;
+}
+
+.main-content {
+  padding-top: 85px;
+  padding-bottom: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: calc(100% - 30px);
+}
+
+.student {
+  width: 40%;
+  height: auto;
+  border-radius: 50px;
+  border-style: solid;
+}
+
+p,
+h3 {
+  padding-bottom: 0px;
+}
+
+.profile-h3-p {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 4vh 0vh;
+  font-size: 0.85em;
+  background: bisque;
+  padding: 1% 5% 3% 3%;
+  BORDER-RADIUS: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
+  width: 35vh;
+}
+
+.profile-h3-boxes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 4vh 0vh;
+  font-size: 0.85em;
+  background: bisque;
+  padding: 1% 5% 3% 3%;
+  BORDER-RADIUS: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
+}
+
+
+
+.profile-h3-p .group {
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    gap: 10px;
+    align-content: flex-start;
+}
+
+.profile-h3-p p,
+.profile-h3-p h3 {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin-top: 0;
+}
+
+h1 {
+}
+
+.login-containers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-containers {
+  text-align: center;
+  width: 100%;
+}
+
+.FPL {
+  width: 50vh;
+  padding-top: 50px;
+}
+
+h2 {
+  color: black;
+}
+
+.user_info_container {
+  position: relative;
+  padding-top: 10px;
+}
+
+.x_button {
+  display: flex;
+  padding: 5px;
+  text-decoration: none;
+  background: none;
+  align-items: center;
+  flex-direction: row;
+  align-content: space-between;
+  justify-content: space-between;
+  gap: 38vh;
+  color: black;
+}
+
+.x_button_show{
+  display: flex;
+  padding: 5px;
+  text-decoration: none;
+  background: none;
+  justify-content: flex-end;
+}
+
+.x_button:hover {
+  background-color: inherit;
+  color: inherit;
+}
+
+.x_button_image {
+  height: 20px !important;
+  width: 20px !important;
+  padding: 10px;
+  font-size: 12px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 10px;
+  box-sizing: content-box;
+}
+
+.form-with-x {
+  display: flex;
+  flex-direction: row;
+}
+
+.x_button_image_edit {
+  height: 20px;
+  width: 20px;
+  font-size: 12px;
+
+  top: -6px;
+  right: 5px;
+}
+
+.matches-x-button {
+  height: 20px !important;
+  width: 20px !important;
+}
+
+.show_profile {
+  height: 200px;
+  width: 200px;
+  border-radius: 30px;
+
+  border-style: solid;
+  border-color: #397ec4;
+}
+
+.page-title {
+  color: white;
+  border-radius: 10px;
+  font-size: x-large;
+}
+
+
+
+.profile-pic,
+.mentor-image {
+  height: 200px;
+  width: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50px;
+}
+
+.profile-pic {
+  height: 150px;
+  width: 150px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 80px;
+  border-style: solid;
+  border-color: #397ec4;
+  margin-bottom: 36px;
+}
+.profile-pic-show {
+  height: 180px;
+  width: 180px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 100px;
+
+  border-color: #397ec4;
+  margin-bottom: 0px;
+  background-image: url(http://res.cloudinary.com/dso6mnrzm/image/upload/g6mplcsnosgjs7oqqy4rvwvymaxd.jpeg);
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 11px;
+}
+
+.profile-page-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-profile-button {
+  border-style: none;
+  background-color: transparent;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.bio-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+#user_bio {
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
+}
+
+
+.photo-field {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  padding-right: 5px;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.update-bio-button {
+  margin-top: 10px;
+}
+
+input {
+  display: flex;
+  margin-top: 10px;
+  background-color: transparent;
+
+}
+
+.user-show-p p {
+  padding: 5px;
+}
+
+.log-in-body .main-content {
+  padding-bottom: 0;
+}
+
+.log-in-body .log-in-email {
+  padding-bottom: 5px;
+}
+
+.log-in-body .log-in-id {
+
+}
+
+.logo_rodape {
+  width: 33vh;
+  padding-top: 6vh;
+}
+
+button,
+input[type="submit"] {
+  color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background: #9DB528;
+}
+
+.post-btn-btn-danger {
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 5px;
+  cursor: pointer;
+  background: #b6ff9e;
+  border-color: black;
+  border-style: solid;
+  border-width: thin;
+  font-size: smaller;
+}
+
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #9DB528;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="url"],
+input[type="tel"],
+input[type="search"],
+textarea {
+  background-color: bisque;
+
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 35vh
+
+}
+
+input[type="select"],
+select {
+  background-color: #9DB528;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 5px;
+  font-size: 1.6vh;
+  font-weight: 800;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.small-img {
+  height: 25px !important;
+  width: 25px !important;
+}
+
+.filter-form {
+  margin-top: 15px;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10%;
+  font-size: 0.85em;
+  /* background: lavenderblush; */
+  /* border-radius: 5px; */
+  font-size: 0.85em;
+  background: bisque;
+  padding: 1% 5% 6% 5%;
+  BORDER-RADIUS: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px;
+  padding-top: 4%;
+  width: 50vh;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.post h1 {
+  font-size: medium;
+  text-decoration: underline;
+}
+
+.post img {
+  border-radius: 5px;
+  box-shadow: 1px 2px 7px 0px rgba(0, 7, 14, 0.75);
+  margin: 3% 3% 10% 3%;
+  width: 73%;
+  max-height: 30vh;
+  max-width: 30vh;
+  object-fit: contain;
+}
+
+
+#post-date {
+  font-stretch: extra-condensed;
+  font-weight: 900;
+}
+
+#posts-h1 {
+  color: black;
+    font-size: x-large;
+    margin-top: 10%;
+    text-align: center;
+
+}
+
+.create_post_display {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2vh;
+  max-width: 10vh;
+}
+
+#post_body.text_optional {
+  display: flex;
+  gap: 1vh;
+}
+
+.new_post_logo {
+  display: block;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 15%;
+  height: 11vh;
+  background-image: url('new_post.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.area-of-study-filter-form {
+  margin-top: 5%;
+}
+
+
+.badges {
+  padding-top: 2%;
+  padding-bottom: 1%;
+  font-size: 0.9em;
+}
+
+.badges-content
+{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal-width columns */
+  gap: 30px;
+  font-weight: bold;
+  width: 100%; /* Changed from 11vh to 100% */
+  align-items: center;
+  justify-content: space-between;
+  align-items: start;
+  padding-top: 5%;
+}
+
+.badges-content-all {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1vh;
+  align-items: center;
+}
+
+.badges-content img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 2px 7px 0px;
+}
+
+
+.logout-button {
+  margin-top: 5%;
+}
+
+.profile-page-info-1, .profile-page-info-1 p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0vh;
+  font-weight: 700;
+  margin-top: 3vh;
+}
+
+.mentor-image-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}

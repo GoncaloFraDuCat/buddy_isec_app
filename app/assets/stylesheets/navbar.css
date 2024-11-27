@@ -1,0 +1,47 @@
+.navbar {
+  position: fixed; /* Fix the position of the footer */
+  bottom: 0; /* Align the footer to the bottom of the page */
+  width: 100%; /* Make the footer fill the width of the viewport */
+  left: 0; /* Align the footer to the left of the viewport */
+  right: 0; /* Ensure the footer fills the entire width */
+  background: linear-gradient(310deg, #3f7825 0%, #fdc516 100%);; /* Dark background */
+  color: #ffffff; /* Light text */
+  padding: 10px 0; /* Add some padding */
+  height: 50px;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: space-between; /* Center the links */
+  align-items: center; /* Vertically center the links */
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 100%;
+}
+
+.navbar .btn {
+  margin: 0 25px;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.navbar-button .btn {
+  flex: 1; /* Makes the buttons take up equal space */
+  text-align: center; /* Centers the text/logo within the button */
+  border: none; /* Removes the default button border */
+}
+
+.navbar-logo {
+  width: 30px; /* Adjust the width of the logo */
+  height: 30px; /* Adjust the height of the logo */
+  vertical-align: middle; /* Aligns the logo vertically within the button */
+}
+
+.line {
+  width: 1px;
+  height: 100%;
+  background-color: #ffffff;
+  margin: 0;
+  height: 30px;
+}

@@ -1,0 +1,45 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  timeout: 30 # Add this line
+  reconnect: true # Add this
+
+
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: isec_buddy_db
+  username: 'postgres'
+  password: 'CampusBuddy2024'
+  host: 127.0.0.1
+  port: 5432
+
+
+  
+
+test:
+  <<: *default
+  adapter: postgresql
+  encoding: utf8
+  database: isec_buddy_db
+  username: 'postgres'
+  password: 'CampusBuddy2024'
+  host: 127.0.0.1
+  port: 5432
+
+
+production:
+  <<: *default
+  database: isec_buddy_db
+
+
+mysql:
+  adapter: postgresql
+  encoding: utf8
+  database: isec_buddy_db
+  username: 'postgres'
+  password: 'CampusBuddy2024'
+  host: 127.0.0.1
+  port: 5432

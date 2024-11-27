@@ -1,0 +1,208 @@
+.whole.chatroom {
+}
+
+.whole.chatroom .headers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* This ensures vertical alignment */
+}
+
+.matches_x_image_button {
+  /* Adjust the padding as needed to align the "X" button correctly */
+  padding-right: 10px; /* Example padding adjustment */
+}
+
+.cancel_mtr_button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* Other styles */
+}
+
+.container.chatroom {
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  height: calc(100vh - 85px - 60px - 130px);
+  height: calc(calc(var(--vh, 1vh) * 100) - 85px - 60px - 130px);
+  width: 100%;
+}
+
+.cancel_mtr_button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* Other styles */
+}
+
+.messages {
+  background-color: transparent;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+}
+
+.message {
+  position: relative;
+  padding: 15px 20px;
+  margin: 10px;
+  border-radius: 20px;
+  max-width: 80%;
+  word-wrap: break-word;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.message p {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+}
+
+.message strong {
+  font-weight: bold;
+  color: #020203;
+}
+
+.message .message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.message .message-header em {
+  font-size: 11px;
+  color: #02020399;
+}
+
+.message .message-header * {
+  white-space: nowrap;
+}
+
+.sent-by-mentor,
+.sent-by-non-mentor,
+small {
+  font-size: 13px;
+}
+
+.sent-by-mentor,
+.sent-by-non-mentor
+p {
+  font-size: 14px;
+}
+
+.sent-by-mentor {
+  background-color: #d7ff78;
+  color: black;
+  float: right;
+  clear: both;
+}
+
+.sent-by-non-mentor {
+  background-color: sandybrown;
+  color: black;
+  float: left;
+  clear: both;
+}
+
+.speech-bubble {
+  position: relative;
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.speech-bubble:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-right-color: white;
+  border-left: 0;
+  border-right: 0;
+  margin-top: -5px;
+  margin-left: -5px;
+}
+
+.sent-by-mentor .speech-bubble:after {
+  left: auto;
+  right: 0;
+  border-right-color: transparent;
+  border-left-color: white;
+}
+
+.new_message {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 50px; /* Adjust this value based on the height of your navbar */
+  left: 0;
+  right: 0;
+  z-index: 2; /* Ensure this is higher than the navbar's z-index */
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.message {
+  z-index: 5; /* Higher value to ensure it's above the form */
+}
+
+.simple_form.d-flex {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.form_div form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form_div .message_content {
+  flex-grow: 2;
+}
+
+.form_div font,
+.form_div input[type="submit"] {
+  width: auto;
+  margin-right: 0 !important;
+  border-radius: 0 5px 5px 0;
+  border-left: none;
+}
+
+.form_div input[type="text"] {
+  width: 100%;
+  border-radius: 5px 0 0 5px;
+  border-right: none;
+}
+
+.form_div input[type="text"],
+.form_div input[type="submit"] {
+  border: 1px solid black;
+}
+
+.headers h1 {
+  font-size: 23px;
+}
+
+#chatroom-pic{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.messenger_form {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
